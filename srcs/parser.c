@@ -73,7 +73,7 @@ t_tree	*ft_parser(char *str)
 	char		**cmds;
 	int			i;
 
-  tree = create_bin_tree((t_tree_node){{0, 0}, 0, NULL, NULL});
+	tree = create_bin_tree((t_tree_node){{0, 0}, 0, NULL, NULL});
 	cmds = ft_split(str, '|');
 	temp = tree->root;
 	ft_pipe_tree_parsing(cmds[0], tree->root, tree->root);
