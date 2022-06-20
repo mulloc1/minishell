@@ -7,6 +7,7 @@ SRCS = srcs/mini.c \
 	   srcs/bintree.c \
 	   srcs/parser.c \
 	   srcs/init.c \
+	   srcs/ft_split_mini.c \
 	   srcs/hashtable/hashtable_utils.c \
 	   srcs/hashtable/hashtable_create.c \
 	   srcs/hashtable/hashtable_delete.c \

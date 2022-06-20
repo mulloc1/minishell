@@ -1,5 +1,11 @@
 #include "parser.h"
 #include "libft.h"
+#include <stdio.h>
+#define	TEST1 "cat \" < file1 ls -l \" | cat "
+#define	TEST2 "echo \" cat > file2 | ls -l \" | cat "
+#define	TEST3 "echo \' \"echo HelloWorld\" \' | ls -l > file1 | wc -l"
+#define	TEST4 "echo \"HelloWorld"
+#define	TEST5 "echo HelloWorld\""
 
 int	ft_search_redirect(char *str)
 {
@@ -7,7 +13,11 @@ int	ft_search_redirect(char *str)
 
 	i = 0;
 	while (!(str[i] == '>' || str[i] == '<') && str[i])
+	{
+		if (str[i] == '\"' || str[i] == '\'')
+			ft_quote_shift(str, &i);
 		i++;
+	}
 	if (!str[i])
 		i = -1;
 	return (i);
@@ -74,7 +84,7 @@ t_tree	*ft_parser(char *str)
 	int			i;
 
 	tree = create_bin_tree((t_tree_node){{0, 0}, 0, NULL, NULL});
-	cmds = ft_split(str, '|');
+	cmds = ft_split_mini(str, '|');
 	temp = tree->root;
 	ft_pipe_tree_parsing(cmds[0], tree->root, tree->root);
 	i = 0;
@@ -87,3 +97,52 @@ t_tree	*ft_parser(char *str)
     free(cmds);
     return (tree);
 }
+
+//void displayTree(t_tree_node *node)
+//{
+//	if (node)
+//	{
+//		switch (node->data.type)
+//		{
+//		case CMD:
+//			printf("type : %s\t", "CMD");
+//			break;
+//		case REDI_L:
+//			printf("type : %s\t", "<");
+//			break;
+//		case REDI_R:
+//			printf("type : %s\t", ">");
+//			break;
+//		case DREDI_R:
+//			printf("type : %s\t", ">>");
+//			break;
+//		case DREDI_L:
+//			printf("type : %s\t", "<<");
+//			break;
+//		default:
+//			break;
+//		}
+//		printf("%s\n", node->data.token);
+//		displayTree(node->left);
+//		displayTree(node->right);
+//	}
+//}
+//
+//void	test(char	*str)
+//{
+//	t_tree	*tree;
+//
+//	printf("============== %s ==============\n", str);
+//	tree = ft_parser(str);
+//	displayTree(tree->root);
+//}
+//
+//int	main(void)
+//{
+//	test(TEST1);
+//	test(TEST2);
+//	test(TEST3);
+//	test(TEST4);
+//	test(TEST5);
+//	return (0);
+//}
