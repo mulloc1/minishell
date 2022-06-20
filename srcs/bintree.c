@@ -52,7 +52,7 @@ t_tree_node	*insert_right_node(t_tree_node *parent, t_tree_node child)
 	return (parent->right);
 }
 
-static void	delorder(t_tree_node **node)
+void	delorder(t_tree_node **node)
 {
 	t_tree_node	*temp;
 
@@ -62,6 +62,7 @@ static void	delorder(t_tree_node **node)
 		delorder(&(*node)->right);
 		temp = *node;
 		*node = NULL;
+	//	free(temp->data.token);
 		free(temp);
 	}
 }
