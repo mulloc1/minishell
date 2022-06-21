@@ -63,6 +63,7 @@ typedef struct s_cmd
 	int		pipe[2];
 	pid_t	last_pid;
 	int		builtins;
+	int		is_pipe;
 }	t_cmd;
 
 

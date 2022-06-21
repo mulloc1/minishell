@@ -10,4 +10,6 @@ void	ft_open_pipe(t_cmd *cmd, t_tree_node *node)
 		return ;
 	}
 	pipe(cmd->pipe);
+	if (!cmd->is_pipe)
+		cmd->is_pipe = TRUE;
 }

@@ -5,6 +5,8 @@
 
 // cd명령은 pipe로 다른 명령과 이어졌을 때 이동은 하지 않음
 // working directory 이동 후 PWD, OLDPWD 수정
+// 오른쪽에 파이프가 있는가? : cmd->pipe[P_WRITE] > 0
+// 왼쪽에 파이프가 있는가? : ?????
 
 void	ft_cd(t_cmd *cmd)
 {
@@ -13,9 +15,9 @@ void	ft_cd(t_cmd *cmd)
 	// cd
 	if (!cmd->argv[1])
 	{
-		if (cmd->pipe[P_WRITE] > 0 || cmd->in_fd != STDIN)
+		if (cmd->is_pipe)
 			return ;
-		chdir(getenv("HOME"));// hashtable 수정
+		chdir(getenv("HOME")); // 환경변수 home
 		// hashtable pwd 수정
 		return ;
 	}
@@ -36,7 +38,7 @@ void	ft_cd(t_cmd *cmd)
 		ft_putendl_fd(": Not a directory", 2);
 		return ;
 	}
-	if (cmd->pipe[P_WRITE] < 0 && cmd->in_fd == STDIN)
+	if (!cmd->is_pipe)
 	{
 		chdir(cmd->argv[1]);
 		// hashtable pwd, oldpwd 수정
