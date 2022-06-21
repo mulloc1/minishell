@@ -1,5 +1,8 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
+# define SINGLE_QUOTE 0
+# define DOUBLE_QUOTE 1
+# define NOT_QUOTE 2
 
 # include "hashtable.h"
 

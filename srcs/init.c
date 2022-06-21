@@ -60,7 +60,7 @@ t_init_struct   *init(int argc, char *envp[])
 
    if (argc != 1)
 	   exit(1);
-   signal_init();
+//   signal_init();
    init_struct = malloc(sizeof(t_init_struct *));
    if (!init_struct)
        return (NULL);

@@ -72,6 +72,7 @@ t_tree_node	*insert_right_node(t_tree_node *parent, t_tree_node child);
 void		delorder(t_tree_node **node);
 void		delete_tree(t_tree *tree);
 void		ft_error(char *str);
+char		**ft_split_mini(char const *s, char c);
 
 void	ft_search_tree(t_tree_node *node, t_cmd	*cmd);
 void	ft_cmd_run(t_cmd *cmd);

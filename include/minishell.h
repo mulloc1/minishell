@@ -82,6 +82,7 @@ t_init_struct	*init(int argc, char *envp[]);
 t_hashtable		*init_hashtable();
 char			**ft_split_mini(char const *s, char c);
 void			ft_quote_shift(char const *s, int *idx);
+void			env_quote_processing(t_init_struct	*init_struct);
 
 void	ft_search_tree(t_tree_node *node, t_cmd	*cmd);
 void	ft_cmd_run(t_cmd *cmd);

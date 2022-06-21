@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 20:07:00 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/20 16:53:48 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/21 10:52:14 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #define	TEST1 "echo \"ls -l | cat > file1\"| cat \"Hello World\""
@@ -83,7 +83,7 @@ static char	*ft_word_create(char const *s, char *c, int *idx)
 	return (result);
 }
 
-char	**ft_split_mini(char	const *s, char c)
+char	**ft_split_mini(char const *s, char c)
 {
 	int		word_cnt;
 	int		i;

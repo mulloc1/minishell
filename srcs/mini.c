@@ -10,19 +10,22 @@
 
 int	main(int argc, char *argv[], char *envp[])
 {
-	char	*str;
-	t_tree	*tree;
+	t_init_struct	*init_struct;
+	char			*str;
 
 	argv++;
-	init(argc, envp);
+	init_struct = init(argc, envp);
 	while (1)
 	{
 		str = readline("minishell$ ");
 		if (str && str[0] != '\0')
 		{
-			tree = ft_parser(str);
 		 	add_history(str);
-			delete_tree(tree);
+			init_struct->tree = ft_parser(str);
+			// tree에서 표준입력을 count해서 17개 이상이면 shell 종료시키기
+			env_quote_processing(init_struct);
+			delete_tree(init_struct->tree);
+			init_struct->tree = NULL;
 		}
 		free(str);
 	}

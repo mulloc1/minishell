@@ -7,7 +7,7 @@
 #define	TEST4 "echo \"HelloWorld"
 #define	TEST5 "echo HelloWorld\""
 
-int	ft_search_redirect(char *str)
+static int	ft_search_redirect(char *str)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ int	ft_search_redirect(char *str)
 	return (i);
 }
 
-int	ft_redirection_case(char *cmd, int *i)
+static int	ft_redirection_case(char *cmd, int *i)
 {
 	int	len;
 	int	res;
@@ -46,7 +46,7 @@ int	ft_redirection_case(char *cmd, int *i)
 	return (res);
 }
 
-t_token	ft_redirection_token_make(char *cmd, int i)
+static t_token	ft_redirection_token_make(char *cmd, int i)
 {
 	t_token	res;
 	int		temp;
@@ -62,7 +62,7 @@ t_token	ft_redirection_token_make(char *cmd, int i)
 	return (res);
 }
 
-void	ft_pipe_tree_parsing(char *cmd, t_tree_node *left, t_tree_node *right)
+static void	ft_pipe_tree_parsing(char *cmd, t_tree_node *left, t_tree_node *right)
 {
 	int	temp;
 
