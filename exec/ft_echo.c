@@ -22,7 +22,6 @@ static void	ft_set_fd(t_cmd *cmd)
 
 static void	ft_child_proc(t_cmd *cmd)
 {
-	// if (cmd->path) -> cmd |
 	ft_set_fd(cmd);
 	if (!cmd->argv[1])
 		printf("\n");
@@ -30,7 +29,7 @@ static void	ft_child_proc(t_cmd *cmd)
 		printf("%s", cmd->argv[2]);
 	else
 		printf("%s\n", cmd->argv[1]);
-	exit(1);
+	exit(0);
 }
 
 void	ft_echo(t_cmd *cmd)
