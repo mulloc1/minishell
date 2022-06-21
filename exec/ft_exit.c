@@ -13,7 +13,7 @@
 // -> exit_status : 255
 // +, - 부호는 한 개는 허용한다.
 
-static void	ft_child_proc(t_cmd *cmd)
+static void	ft_run_exit(t_cmd *cmd)
 {
 	unsigned char	exit_status;
 
@@ -27,7 +27,8 @@ static void	ft_child_proc(t_cmd *cmd)
 
 void	ft_exit(t_cmd *cmd)
 {
-	pid_t	pid;
+	pid_t			pid;
+	unsigned char	exit_status;
 
 	if (cmd->is_pipe)
 	{
@@ -35,8 +36,10 @@ void	ft_exit(t_cmd *cmd)
 		if (pid < 0)
 			ft_error("fork fail\n");
 		else if (pid == 0)
-			ft_child_proc(cmd);
+			ft_run_exit(cmd);
 		cmd->last_pid = pid;
 		return ;
 	}
+	printf("exit\n");
+	ft_run_exit(cmd);
 }
