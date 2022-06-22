@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 15:12:18 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/22 16:17:34 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/22 17:00:20 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,16 @@ int	double_quote_processing(t_tree_node *node, int idx, t_hashtable_node *hashta
 	backup_idx = idx;
 	temp = ft_strdup(node->data.token);
 	key = check_env(node, idx);
-	if (value)
+	while (key)
 	{
 		value = hashtable_search(hashtable, key);
 		temp2 = ft_calloc(ft_strlen(temp) + ft_strlen(value), sizeof(char));
 		free(value);
 		free(key);
 		free(temp);
-		
+		key = check_env(node, idx);
 	}
 	// 있다면 환경변수 추가
 	single_quote_processing(t_tree_node *node, idx);
 	return (0);
 }
-
