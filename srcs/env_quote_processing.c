@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:00:25 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/22 16:17:46 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/23 01:26:25 by mulloc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	env_quote_processing(t_init_struct	*init_struct)
 			if (temp == SINGLE_QUOTE)
 				i = single_quote_processing(node, i);
 			else if (temp == DOUBLE_QUOTE)
-				i = double_quote_processing(node, i, init_struct->hashtable);
+				i = double_quote_processing(node, i, init_struct->table);
 			else
 				i++;
 		}
@@ -134,20 +134,22 @@ t_init_struct	*test(char *str, int argc, char *envp[])
 # define TEST8 "echo \'\"Hello\'\'Hello\'"
 # define TEST9 "ls -l | echo \'\"Hello\"\'"
 # define TEST10 "ls -l | echo \'\"Hello\'\'Hello\'"
+# define TEST11 "ls -l \"$HOME\""
 
 int	main(int argc, char *argv[], char *envp[])
 {
 	argv++;
-	test(TEST1, argc, envp);
-	test(TEST2, argc, envp);
-	test(TEST3, argc, envp);
-	test(TEST4, argc, envp);
-	test(TEST5, argc, envp);
-	test(TEST6, argc, envp);
-	test(TEST7, argc, envp);
-	test(TEST8, argc, envp);
-	test(TEST9, argc, envp);
-	test(TEST10, argc, envp);
+//	test(TEST1, argc, envp);
+//	test(TEST2, argc, envp);
+//	test(TEST3, argc, envp);
+//	test(TEST4, argc, envp);
+//	test(TEST5, argc, envp);
+//	test(TEST6, argc, envp);
+//	test(TEST7, argc, envp);
+//	test(TEST8, argc, envp);
+//	test(TEST9, argc, envp);
+//	test(TEST10, argc, envp);
+	test(TEST11, argc, envp);
 	//system("leaks a.out");
 	return (0);
 }

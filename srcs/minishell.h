@@ -53,7 +53,7 @@ char			**ft_split_mini(char const *s, char c);
 void			ft_quote_shift(char const *s, int *idx);
 t_tree			*ft_parser(char *str);
 void			env_quote_processing(t_init_struct	*init_struct);
-int				double_quote_processing(t_tree_node *node, int idx, t_hashtable_node *hashtable);
+int				double_quote_processing(t_tree_node *node, int idx, t_hashtable *hashtable);
 int				single_quote_processing(t_tree_node *node, int idx);
 
 #endif

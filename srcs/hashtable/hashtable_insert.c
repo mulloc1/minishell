@@ -12,7 +12,7 @@ int hashtable_insert(t_hashtable *table, char *key, char *value)
         return (0);
     hashcode = hashcode_making(key);
     idx = hashcode % table->size;
-    data = malloc(sizeof(t_hashtable_data));
+    data = ft_calloc(1, sizeof(t_hashtable_data));
     if (!data)
         return (0);
     data->key = key;

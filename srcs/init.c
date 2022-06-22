@@ -3,6 +3,7 @@
 #include "minishell.h"
 #include <signal.h>
 #include <termios.h>
+#include <stdio.h>
 
 static t_hashtable *hashtable_init(char *envp[])
 {
@@ -14,6 +15,7 @@ static t_hashtable *hashtable_init(char *envp[])
 	{
 		sp_envp = ft_split(*envp, '=');
 		hashtable_insert(table, sp_envp[0], sp_envp[1]);
+		printf("%s=%s\n", sp_envp[0], hashtable_search(table, sp_envp[0]));
 		envp++;	
 	}
 	return (table);
@@ -69,3 +71,11 @@ t_init_struct   *init(int argc, char *envp[])
    init_struct->tree = NULL;
    return (init_struct);
 }
+
+//int main(int argc, char *argv[], char *envp[])
+//{
+//	argc++;
+//	argv++;
+//	hashtable_init(envp);
+//	return (0);
+//}
