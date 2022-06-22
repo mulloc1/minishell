@@ -1,5 +1,5 @@
-#include "parser.h"
 #include "libft.h"
+#include "minishell.h"
 #include <stdio.h>
 #define	TEST1 "cat \" < file1 ls -l \" | cat "
 #define	TEST2 "echo \" cat > file2 | ls -l \" | cat "

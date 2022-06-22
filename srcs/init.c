@@ -47,12 +47,12 @@ static char    **envp_init(char *envp[])
 	return (res);
 }
 
-static void	signal_init()
-{
-	signal(SIGINT, sigint_handler());
-	signal(SIGQUIT, sigquit_handler());
-	signal(SIGTERM, sigteam_handler());
-}
+//static void	signal_init()
+//{
+//	signal(SIGINT, sigint_handler());
+//	signal(SIGQUIT, sigquit_handler());
+//	signal(SIGTERM, sigteam_handler());
+//}
 
 t_init_struct   *init(int argc, char *envp[])
 {

@@ -8,6 +8,7 @@ SRCS = srcs/mini.c \
 	   srcs/parser.c \
 	   srcs/init.c \
 	   srcs/ft_split_mini.c \
+	   srcs/env_quote_processing.c \
 	   srcs/hashtable/hashtable_utils.c \
 	   srcs/hashtable/hashtable_create.c \
 	   srcs/hashtable/hashtable_delete.c \
@@ -32,6 +33,6 @@ re : fclean all
 
 $(NAME) : $(OBJS)
 	@make -C libft
-	$(CC) $(OFLAG) $(CFLAG)  -o $@ $^ libft/libft.a
+	$(CC) $(OFLAG) $(CFLAG) -o $@ $^ libft/libft.a
 
 .PHONY : re fclean clean all
