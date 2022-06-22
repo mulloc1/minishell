@@ -63,7 +63,7 @@ t_init_struct   *init(int argc, char *envp[])
    if (argc != 1)
 	   exit(1);
 //   signal_init();
-   init_struct = malloc(sizeof(t_init_struct *));
+   init_struct = malloc(sizeof(t_init_struct));
    if (!init_struct)
        return (NULL);
    init_struct->table = hashtable_init(envp);
