@@ -1,6 +1,7 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 # include <sys/wait.h>
+# include "hashtable.h"
 # define FAIL 0
 # define SUCCESS 1
 # define FALSE 0
@@ -55,15 +56,16 @@ typedef struct s_tree
 
 typedef struct s_cmd
 {
-	char	*path;
-	char	**argv;
-	char	**envp;
-	int		in_fd;
-	int		out_fd;
-	int		pipe[2];
-	pid_t	last_pid;
-	int		builtins;
-	int		is_pipe;
+	char		*path;
+	char		**argv;
+	char		**envp;
+	int			in_fd;
+	int			out_fd;
+	int			pipe[2];
+	pid_t		last_pid;
+	int			builtins;
+	int			is_pipe;
+	t_hashtable	*table;
 }	t_cmd;
 
 

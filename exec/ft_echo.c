@@ -20,15 +20,25 @@ static void	ft_set_fd(t_cmd *cmd)
 	close(cmd->pipe[P_WRITE]);
 }
 
+static void	ft_print(char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (argv[i])
+	{
+		printf("%s", argv[i++]);
+		if (argv[i])
+			printf(" ");
+	}
+	if (!argv[i] || ft_strncmp(argv[1], "-n", 5))
+		printf("\n");
+}
+
 static void	ft_child_proc(t_cmd *cmd)
 {
 	ft_set_fd(cmd);
-	if (!cmd->argv[1])
-		printf("\n");
-	else if (!ft_strncmp(cmd->argv[1], "-n", 5))
-		printf("%s", cmd->argv[2]);
-	else
-		printf("%s\n", cmd->argv[1]);
+	ft_print(cmd->argv);
 	exit(0);
 }
 
