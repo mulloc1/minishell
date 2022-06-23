@@ -15,8 +15,8 @@ int hashtable_insert(t_hashtable *table, char *key, char *value)
     data = ft_calloc(1, sizeof(t_hashtable_data));
     if (!data)
         return (0);
-    data->key = key;
-    data->value = value;
+    data->key = ft_strdup(key);
+    data->value = ft_strdup(value);
     node = key_overlap_check(table->hashtable[idx].top, data->key);
     if (node)
     {

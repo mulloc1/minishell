@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:00:25 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/23 01:26:25 by mulloc           ###   ########.fr       */
+/*   Updated: 2022/06/23 16:12:38 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,56 +135,28 @@ t_init_struct	*test(char *str, int argc, char *envp[])
 # define TEST9 "ls -l | echo \'\"Hello\"\'"
 # define TEST10 "ls -l | echo \'\"Hello\'\'Hello\'"
 # define TEST11 "ls -l \"$HOME\""
+# define TEST12 "ls -l \"\'$HOME\'\""
+# define TEST13 "ls -l \"$HOME $HOME\""
+# define TEST14 "ls -l \"$HOME\" \"$HOME\""
+# define TEST15 "ls -l \"$HOME $HOME\" \"$HOME\""
+# define TEST16 "ls -l \"$HOME$\""
+# define TEST17 "ls -l \"$HOME%\""
+# define TEST18 "ls -l \"$HOME@\""
+# define TEST19 "ls -l \"$HOME$ \""
+# define TEST20 "ls -l \"$HOME\""
 
 int	main(int argc, char *argv[], char *envp[])
 {
 	argv++;
-//	test(TEST1, argc, envp);
-//	test(TEST2, argc, envp);
-//	test(TEST3, argc, envp);
-//	test(TEST4, argc, envp);
-//	test(TEST5, argc, envp);
-//	test(TEST6, argc, envp);
-//	test(TEST7, argc, envp);
-//	test(TEST8, argc, envp);
-//	test(TEST9, argc, envp);
-//	test(TEST10, argc, envp);
 	test(TEST11, argc, envp);
+	test(TEST12, argc, envp);
+	test(TEST13, argc, envp);
+	test(TEST14, argc, envp);
+	test(TEST15, argc, envp);
+	test(TEST16, argc, envp);
+	test(TEST17, argc, envp);
+	test(TEST18, argc, envp);
+	test(TEST19, argc, envp);
 	//system("leaks a.out");
 	return (0);
 }
-
-//#include <stdio.h>
-//#define TEST1 "\"$PATH\""
-//#define TEST2 "\"$PATH"
-//#define TEST3 "$PATH\""
-//#define TEST4 "\'$PAHT\'"
-//#define TEST5 "\'$PATH"
-//#define TEST6 "$PATH\'"
-//#define TEST7 "export $PATH"
-//#define TEST8 " export $PATH"
-//#define TEST9 "cat $PATH"
-//#define TEST10 "cat export$PATH"
-//#define TEST11 "\'\"Hello\"\'"
-//#define TEST12 "\"\'Hello\'\""
-//#define TEST13 "\'\"Hello\'"
-//#define TEST14 "\"\'Hello\'"
-//int	main(void)
-//{
-//	printf("%s : %d\n", TEST1, quote_check(TEST1));
-//	printf("%s : %d\n", TEST2, quote_check(TEST2));
-//	printf("%s : %d\n", TEST3, quote_check(TEST3));
-//	printf("%s : %d\n", TEST4, quote_check(TEST4));
-//	printf("%s : %d\n", TEST5, quote_check(TEST5));
-//	printf("%s : %d\n", TEST6, quote_check(TEST6));
-//	printf("%s : %d\n", TEST11, quote_check(TEST11));
-//	printf("%s : %d\n", TEST12, quote_check(TEST12));
-//	printf("%s : %d\n", TEST13, quote_check(TEST13));
-//	printf("%s : %d\n", TEST14, quote_check(TEST14));
-//
-//	printf("%s : %d\n", TEST7, export_check(TEST7));
-//	printf("%s : %d\n", TEST8, export_check(TEST8));
-//	printf("%s : %d\n", TEST9, export_check(TEST9));
-//	printf("%s : %d\n", TEST10, export_check(TEST10));
-//	return (0);
-//}

@@ -15,7 +15,6 @@ static t_hashtable *hashtable_init(char *envp[])
 	{
 		sp_envp = ft_split(*envp, '=');
 		hashtable_insert(table, sp_envp[0], sp_envp[1]);
-		printf("%s=%s\n", sp_envp[0], hashtable_search(table, sp_envp[0]));
 		envp++;	
 	}
 	return (table);

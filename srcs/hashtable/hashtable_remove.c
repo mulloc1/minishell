@@ -49,6 +49,6 @@ int hashtable_remove(t_hashtable *table, char *key)
         table->hashtable[idx].top = table->hashtable[idx].top->next;
     ft_lstdelone(temp, del_node);
     table->hashtable[idx].size--;
-    return (0); 
+    return (1); 
 }
 
