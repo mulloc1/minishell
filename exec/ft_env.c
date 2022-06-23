@@ -1,6 +1,5 @@
 #include "minishell.h"
-#include "libft.h"
-#include <stdio.h>
+#include "unistd.h"
 
 static void	ft_set_fd(t_cmd *cmd)
 {
@@ -22,17 +21,22 @@ static void	ft_set_fd(t_cmd *cmd)
 
 static void	ft_child_proc(t_cmd *cmd)
 {
+	char	*name;
+	char	*value;
+
 	ft_set_fd(cmd);
-	if (!cmd->argv[1])
-		printf("\n");
-	else if (!ft_strncmp(cmd->argv[1], "-n", 5))
-		printf("%s", cmd->argv[2]);
-	else
-		printf("%s\n", cmd->argv[1]);
+	// 환경변수 get
+	// name = key, value = value
+	while (name)
+	{
+		if (!value)
+			continue ;
+		printf("%s=%s\n", name, value);
+	}
 	exit(0);
 }
 
-void	ft_echo(t_cmd *cmd)
+void	ft_env(t_cmd *cmd)
 {
 	pid_t	pid;
 

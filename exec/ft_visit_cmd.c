@@ -1,5 +1,6 @@
 #include "minishell.h"
 #include "libft.h"
+// exitstatus 필요 : cd, export(add), unset
 // ◦ echo with option -n
 // ◦ cd with only a relative or absolute path
 // ◦ pwd with no options
