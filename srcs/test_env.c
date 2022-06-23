@@ -67,6 +67,15 @@ t_init_struct	*test(char *str, int argc, char *envp[])
 # define TEST19 "ls -l \"$HOME$ \""
 # define TEST20 "ls -l $HOME"
 # define TEST21 "ls -l \'$HOME\' \"$HOME\""
+# define TEST22 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
+# define TEST23 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
+# define TEST24 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
+# define TEST25 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
+# define TEST26 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
+# define TEST27 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
+# define TEST28 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
+# define TEST29 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
+# define TEST30 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
 
 int	main(int argc, char *argv[], char *envp[])
 {
