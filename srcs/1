@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 15:12:18 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/23 17:44:20 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/23 16:45:44 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,8 @@ int	double_quote_processing(t_tree_node *node, int idx, t_hashtable *hashtable)
 	return (i);
 }
 
-//int	not_quote_processing(t_tree_node *node, int idx, t_hashtable *init_struct->table)
-//{
-//	
-//}
+
+int	env_processing(t_tree_node *node, int idx, t_hashtable *init_struct->table)
+{
+
+}
