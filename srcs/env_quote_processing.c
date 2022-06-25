@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:00:25 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/23 19:05:32 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/23 22:19:10 by mulloc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,24 @@ int	quote_check(char *token)
 
 void	env_quote_processing(t_init_struct	*init_struct)
 {
-	// note_quote env processing
-	// double_quote_processing
-	// single_quote_processing
+	t_tree_node	*node;
+	int			i;
+	int			temp;
+
+	node = init_struct->tree->root;
+	while (node)
+	{
+		i = 0;
+		while (node->data.token[i])
+		{
+			temp = quote_check(&node->data.token[i]);
+			if (temp == SINGLE_QUOTE)
+				i = single_quote_processing(node, i);
+			else if (temp == DOUBLE_QUOTE)
+				i = double_quote_processing(node, i, init_struct->table);
+			else
+				i++;
+		}
+		node = node->right;
+	}
 }

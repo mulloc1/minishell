@@ -1,6 +1,7 @@
 #include "hashtable.h"
 #include "libft.h"
 #include "minishell.h"
+#include "sort_env_list.h"
 #include <signal.h>
 #include <termios.h>
 #include <stdio.h>
@@ -48,6 +49,33 @@ static char    **envp_init(char *envp[])
 	return (res);
 }
 
+void	display(t_list *list)
+{
+	while (list)
+	{
+		printf("%s\n", (char *)list->content);
+		list = list->next;
+	}
+	printf("\n");
+}
+
+t_list *sort_env_list_init(char *envp[])
+{
+	char	**envp_sp;
+	t_list	*list;
+	int		i;
+
+	list = NULL;
+	i = -1;
+	while (envp[++i])
+	{
+		envp_sp = ft_split(envp[i], '=');
+		sort_env_list_insert(&list, envp_sp[0]);
+   		display(list);
+	}
+	return (list);
+}
+
 //static void	signal_init()
 //{
 //	signal(SIGINT, sigint_handler());
@@ -65,16 +93,16 @@ t_init_struct   *init(int argc, char *envp[])
    init_struct = malloc(sizeof(t_init_struct));
    if (!init_struct)
        return (NULL);
+   init_struct->list = sort_env_list_init(envp);
    init_struct->table = hashtable_init(envp);
    init_struct->envp = envp_init(envp);
    init_struct->tree = NULL;
    return (init_struct);
 }
 
-//int main(int argc, char *argv[], char *envp[])
-//{
-//	argc++;
-//	argv++;
-//	hashtable_init(envp);
-//	return (0);
-//}
+int main(int argc, char *argv[], char *envp[])
+{
+	argv++;
+	init(argc, envp);
+	return (0);
+}

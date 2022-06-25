@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 15:12:18 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/23 19:05:17 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/23 23:46:33 by mulloc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	single_quote_processing(t_tree_node *node, int idx)
 	return (temp_idx);
 }
 
-char	*processing(char *temp, t_hashtable_data *data, int *i)
+char	*processing(char *temp, t_hashtable_data *data, int *i, int *point)
 {
 	char	*temp2;
 	int		z;
@@ -78,6 +78,7 @@ char	*processing(char *temp, t_hashtable_data *data, int *i)
 	j = -1;
 	while ((*data).value[++j])
 		temp2[(*i)++] = (*data).value[j];
+	*point = *i - 2;
 	while ((temp[z] == '$' || ft_isnaming(temp[z])) && temp[z])
 	{
 		if (temp[z] == '$' && (temp[z + 1] == ' ' || temp[z + 1] == '\0' || temp[z + 1] == '\"'))
@@ -95,23 +96,25 @@ int	double_quote_processing(t_tree_node *node, int idx, t_hashtable *hashtable)
 	char				*temp; 
 	char				*temp2;
 	int					i;
+	int					point;
 
 	temp = node->data.token;
+	i = 0;
 	while (1)
 	{
 		data.key = check_env(temp, idx);
-		if (!data.key)
+		if (!data.key || !temp[i])
 			break ;
 		data.value = hashtable_search(hashtable, data.key);
 		i = -1;
-		temp2 = processing(temp, &data, &i);	
+		temp2 = processing(temp, &data, &i, &point);	
 		free(data.key);
 		free(temp);
 		temp = temp2;
 	}
 	node->data.token = temp;
 	single_quote_processing(node, idx);
-	return (i);
+	return (point);
 }
 
 //int	not_quote_processing(t_tree_node *node, int idx, t_hashtable *init_struct->table)

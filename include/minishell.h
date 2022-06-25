@@ -56,6 +56,7 @@ typedef struct s_tree
 typedef struct s_init_struct
 {
     t_hashtable *table;
+	t_list		*list;
     t_tree      *tree;
     char        **envp;
 }               t_init_struct;
@@ -82,7 +83,10 @@ t_init_struct	*init(int argc, char *envp[]);
 t_hashtable		*init_hashtable();
 char			**ft_split_mini(char const *s, char c);
 void			ft_quote_shift(char const *s, int *idx);
+t_tree			*ft_parser(char *str);
 void			env_quote_processing(t_init_struct	*init_struct);
+int				double_quote_processing(t_tree_node *node, int idx, t_hashtable *hashtable);
+int				single_quote_processing(t_tree_node *node, int idx);
 
 void	ft_search_tree(t_tree_node *node, t_cmd	*cmd);
 void	ft_cmd_run(t_cmd *cmd);

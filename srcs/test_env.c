@@ -67,15 +67,11 @@ t_init_struct	*test(char *str, int argc, char *envp[])
 # define TEST19 "ls -l \"$HOME$ \""
 # define TEST20 "ls -l $HOME"
 # define TEST21 "ls -l \'$HOME\' \"$HOME\""
-# define TEST22 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
-# define TEST23 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
-# define TEST24 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
-# define TEST25 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
-# define TEST26 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
-# define TEST27 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
-# define TEST28 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
-# define TEST29 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
-# define TEST30 "echo \"\'$HOME\' $HOME\" \'$HOME\'"
+# define TEST22 "ls -l \"$HOME\" \'$HOME\'"
+# define TEST23 "ls -l \"$HOME\" \'$HOME\' \"$HOME\" \'$HOME\'"
+# define TEST24 "ls -l \"$HOME\" \'$HOME\'"
+# define TEST25 "ls -l \"$HOME\" \'$HOME\'"
+# define TEST26 "ls -l \"$HOME\" \'$HOME\'"
 
 int	main(int argc, char *argv[], char *envp[])
 {
@@ -91,6 +87,8 @@ int	main(int argc, char *argv[], char *envp[])
 	test(TEST19, argc, envp);
 	test(TEST20, argc, envp);
 	test(TEST21, argc, envp);
+	test(TEST22, argc, envp);
+	test(TEST23, argc, envp);
 	//system("leaks a.out");
 	return (0);
 }
