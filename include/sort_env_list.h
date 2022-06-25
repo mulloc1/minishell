@@ -4,5 +4,6 @@
 #include "libft.h"
 
 void	sort_env_list_insert(t_list **list, char *key);
+int		sort_env_list_remove(t_list **list, char *key);
 
 #endif

@@ -59,7 +59,7 @@ void	display(t_list *list)
 	printf("\n");
 }
 
-t_list *sort_env_list_init(char *envp[])
+static t_list *sort_env_list_init(char *envp[])
 {
 	char	**envp_sp;
 	t_list	*list;
@@ -71,7 +71,6 @@ t_list *sort_env_list_init(char *envp[])
 	{
 		envp_sp = ft_split(envp[i], '=');
 		sort_env_list_insert(&list, envp_sp[0]);
-   		display(list);
 	}
 	return (list);
 }
@@ -100,9 +99,17 @@ t_init_struct   *init(int argc, char *envp[])
    return (init_struct);
 }
 
-int main(int argc, char *argv[], char *envp[])
-{
-	argv++;
-	init(argc, envp);
-	return (0);
-}
+//int main(int argc, char *argv[], char *envp[])
+//{
+//	argv++;
+//	t_init_struct *init_struct = init(argc, envp);
+//	display(init_struct->list);
+//	sort_env_list_remove(&init_struct->list, "COLORFGBG");
+//	sort_env_list_remove(&init_struct->list, "LANG");
+//	sort_env_list_remove(&init_struct->list, "SHLVL");
+//	sort_env_list_remove(&init_struct->list, "TERM");
+//	sort_env_list_remove(&init_struct->list, "TERM_PROGRAM");
+//	sort_env_list_remove(&init_struct->list, "USER");
+//	display(init_struct->list);
+//	return (0);
+//}

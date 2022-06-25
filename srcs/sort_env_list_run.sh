@@ -1,1 +1,1 @@
-gcc -I../include ../libft/libft.a init.c hashtable/*.c sort_env_list/sort_env_list_insert.c -g
+gcc -I../include ../libft/libft.a init.c hashtable/*.c sort_env_list/sort_env_list_insert.c sort_env_list/sort_env_list_remove.c -g
