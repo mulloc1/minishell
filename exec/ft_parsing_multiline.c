@@ -30,7 +30,7 @@ static int	ft_parsing_env(char *str, t_cmd *cmd)
 	return (result);
 }
 
-static void	*ft_print_line(char *str, t_cmd *cmd)
+static void	ft_print_line(char *str, t_cmd *cmd)
 {
 	int	i;
 
@@ -41,7 +41,7 @@ static void	*ft_print_line(char *str, t_cmd *cmd)
 			i += 2;
 		else if (str[i] == '$' && str[i + 1] && str[i + 1] != ' '\
 		&& str[i + 1] != '\'' && str[i + 1] != '\"')
-			i += ft_parsing_env(str[i], cmd);
+			i += ft_parsing_env(&str[i], cmd);
 		else
 			write(cmd->pipe[P_WRITE], &str[i++], 1);
 	}

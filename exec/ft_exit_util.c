@@ -25,6 +25,7 @@ void	ft_exit_error(char *argv)
 unsigned char	ft_get_exit_status(char *num)
 {
 	unsigned long	result;
+	unsigned long	long_max;
 	int				i;
 	int				minus;
 
@@ -35,12 +36,13 @@ unsigned char	ft_get_exit_status(char *num)
 		i++;
 	if (num[0] == '-')
 		minus = 1;
+	long_max = LONG_MAX;
 	while (num[++i])
 	{
 		if (!ft_isdigit(num[i]))
 			ft_exit_error(num);
 		result = (result * 10) + (num[i] - '0');
-		if ((!minus && result > LONG_MAX) || (minus && result > LONG_MAX + 1))
+		if ((!minus && result > long_max) || (minus && result > long_max + 1))
 			ft_exit_error(num);
 	}
 	return ((unsigned char)result);

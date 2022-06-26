@@ -69,25 +69,42 @@ typedef struct s_cmd
 }	t_cmd;
 
 
-t_tree		*create_bin_tree(t_tree_node root_node);
-t_tree_node	*insert_left_node(t_tree_node *parent, t_tree_node child);
-t_tree_node	*insert_right_node(t_tree_node *parent, t_tree_node child);
-void		delorder(t_tree_node **node);
-void		delete_tree(t_tree *tree);
-void		ft_error(char *str);
-char		**ft_split_mini(char const *s, char c);
+t_tree			*create_bin_tree(t_tree_node root_node);
+t_tree_node		*insert_left_node(t_tree_node *parent, t_tree_node child);
+t_tree_node		*insert_right_node(t_tree_node *parent, t_tree_node child);
+void			delorder(t_tree_node **node);
+void			delete_tree(t_tree *tree);
+void			ft_error(char *str);
+char			**ft_split_mini(char const *s, char c);
 
-void	ft_search_tree(t_tree_node *node, t_cmd	*cmd);
-void	ft_cmd_run(t_cmd *cmd);
-char	*ft_get_path(char *str, char **envp);
-void	ft_open_pipe(t_cmd *cmd, t_tree_node *node);
-int		ft_visit_cmd(t_token token, t_cmd *cmd);
-int		ft_visit_double_redi_left(t_token token, t_cmd *cmd);
-int		ft_visit_double_redi_right(t_token token, t_cmd *cmd);
-int		ft_visit_redi_left(t_token token, t_cmd *cmd);
-int		ft_visit_redi_right(t_token token, t_cmd *cmd);
-int		ft_visit(t_token token, t_cmd *cmd);
-char	*ft_check_eof(char *eof);
-void	ft_pasing_multiline(char *eof, int out_fd);
+void			ft_search_tree(t_tree_node *node, t_cmd	*cmd);
+void			ft_cmd_run(t_cmd *cmd);
+char			*ft_get_path(char *str, char **envp);
+void			ft_open_pipe(t_cmd *cmd, t_tree_node *node);
+int				ft_visit_cmd(t_token token, t_cmd *cmd);
+int				ft_visit_double_redi_left(t_token token, t_cmd *cmd);
+int				ft_visit_double_redi_right(t_token token, t_cmd *cmd);
+int				ft_visit_redi_left(t_token token, t_cmd *cmd);
+int				ft_visit_redi_right(t_token token, t_cmd *cmd);
+int				ft_visit(t_token token, t_cmd *cmd);
+char			*ft_check_eof(char *eof);
+void			ft_parsing_multiline(char *eof, t_cmd *cmd);
+
+void			ft_add_env(t_cmd *cmd);
+void			ft_builtin_run(t_cmd *cmd);
+void			ft_cd(t_cmd *cmd);
+char			*ft_check_eof(char *eof);
+void			ft_echo(t_cmd *cmd);
+void			ft_env(t_cmd *cmd);
+void			ft_exit_error(char *argv);
+unsigned char	ft_get_exit_status(char *num);
+void			ft_exit(t_cmd *cmd);
+void			ft_export_error(char *name, int type);
+int				ft_check_name_valid(char *name, int type);
+void			ft_export_print(t_cmd *cmd);
+char			**ft_export_split(char *src);
+void			ft_export(t_cmd *cmd);
+void			ft_pwd(t_cmd *cmd);
+void			ft_unset(t_cmd *cmd);
 
 #endif
