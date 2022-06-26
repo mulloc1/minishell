@@ -46,49 +46,37 @@ t_init_struct	*test(char *str, int argc, char *envp[])
 	return (init_struct);
 }
 
-# define TEST1 "\'Hello\'"
-# define TEST2 "\'Hello"
-# define TEST3 "Hello\'"
-# define TEST4 "\'\"Hello\"\'"
-# define TEST5 "\'\"Hello\'"
-# define TEST6 "\'Hello\"\'"
-# define TEST7 "echo \'\"Hello\"\'"
-# define TEST8 "echo \'\"Hello\'\'Hello\'"
-# define TEST9 "ls -l | echo \'\"Hello\"\'"
-# define TEST10 "ls -l | echo \'\"Hello\'\'Hello\'"
-# define TEST11 "ls -l \"$HOME\""
-# define TEST12 "ls -l \"\'$HOME\'\""
-# define TEST13 "ls -l \"$HOME $HOME\""
-# define TEST14 "ls -l \"$HOME\" \"$HOME\""
-# define TEST15 "ls -l \"$HOME $HOME\" \"$HOME\""
-# define TEST16 "ls -l \"$HOME$\""
-# define TEST17 "ls -l \"$HOME%\""
-# define TEST18 "ls -l \"$HOME@\""
-# define TEST19 "ls -l \"$HOME$ \""
-# define TEST20 "ls -l $HOME"
-# define TEST21 "ls -l \'$HOME\' \"$HOME\""
-# define TEST22 "ls -l \"$HOME\" \'$HOME\'"
-# define TEST23 "ls -l \"$HOME\" \'$HOME\' \"$HOME\" \'$HOME\'"
-# define TEST24 "ls -l \"$HOME\" \'$HOME\'"
-# define TEST25 "ls -l \"$HOME\" \'$HOME\'"
-# define TEST26 "ls -l \"$HOME\" \'$HOME\'"
+# define TEST1 "\"$HOME\""
+# define TEST2 "\"$HOME $HOME\""
+# define TEST3 "\"$HOME\" \"$HOME\""
+# define TEST4 "\"$HOME\" \"$HOME\" \"$HOME\""
+# define TEST5 "\'$HOME\'"
+# define TEST6 "\'$HOME $HOME\'"
+# define TEST7 "\'$HOME\' \'$HOME\'"
+# define TEST8 "\'$HOME $HOME\' \'$HOME $HOME\'"
+# define TEST9 "\"$HOME\" \'$HOME\' \"$HOME\""
+# define TEST10 "\" $HOME \" \' $HOME \' \" $HOME \""
+# define TEST11 "\'Hello $HOME\'\"$HOME $HOME\" \'$HOME $HOME\' \"$HOME\""
+# define TEST12 "\'Hello $HOME\' \"Hello $HOME $HOME\" \'$HOME $HOME\' \"$HOME\""
+# define TEST13 "\"MY HOME DIRCTORY : $HOME\""
 
 int	main(int argc, char *argv[], char *envp[])
 {
 	argv++;
+
+	test(TEST1, argc, envp);
+	test(TEST2, argc, envp);
+	test(TEST3, argc, envp);
+	test(TEST4, argc, envp);
+	test(TEST5, argc, envp);
+	test(TEST6, argc, envp);
+	test(TEST7, argc, envp);
+	test(TEST8, argc, envp);
+	test(TEST9, argc, envp);
+	test(TEST10, argc, envp);
 	test(TEST11, argc, envp);
 	test(TEST12, argc, envp);
 	test(TEST13, argc, envp);
-	test(TEST14, argc, envp);
-	test(TEST15, argc, envp);
-	test(TEST16, argc, envp);
-	test(TEST17, argc, envp);
-	test(TEST18, argc, envp);
-	test(TEST19, argc, envp);
-	test(TEST20, argc, envp);
-	test(TEST21, argc, envp);
-	test(TEST22, argc, envp);
-	test(TEST23, argc, envp);
 	//system("leaks a.out");
 	return (0);
 }

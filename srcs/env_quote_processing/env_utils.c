@@ -1,17 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_quote_processing.c                             :+:      :+:    :+:   */
+/*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 10:00:25 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/23 22:19:10 by mulloc           ###   ########.fr       */
+/*   Created: 2022/06/26 14:17:12 by jaebae            #+#    #+#             */
+/*   Updated: 2022/06/26 14:19:19 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "hashtable.h"
+#include "env.h"
+
+int	ft_isnaming(char c)
+{
+	if (c >= 97 && c <= 122)
+		return (1);
+	else if (c >= 48 && c <= 57)
+		return (1);
+	else if (c >= 65 && c <= 90)
+		return (1);
+	else if (c == '-')
+		return (1);
+	else
+		return (0);
+}
+
+char	*check_env(char *temp, int idx)
+{
+	char	*res;
+	int		i;
+
+	res = ft_calloc(50, sizeof(char));
+	while (temp[idx] != '$' && temp[idx])
+		idx++;
+	if (temp[idx] != '$' || temp[idx + 1] == '\0' || temp[idx + 1] == ' ' || temp[idx + 1] == '\"')
+		return (NULL);
+	i = -1;
+	while (ft_isnaming(temp[++idx]) && temp[idx])
+		res[++i] = temp[idx];
+	return (res);
+}
 
 int	export_check(char *token)
 {
@@ -46,28 +75,4 @@ int	quote_check(char *token)
 		}
 	}
 	return (NOT_QUOTE);
-}
-
-void	env_quote_processing(t_init_struct	*init_struct)
-{
-	t_tree_node	*node;
-	int			i;
-	int			temp;
-
-	node = init_struct->tree->root;
-	while (node)
-	{
-		i = 0;
-		while (node->data.token[i])
-		{
-			temp = quote_check(&node->data.token[i]);
-			if (temp == SINGLE_QUOTE)
-				i = single_quote_processing(node, i);
-			else if (temp == DOUBLE_QUOTE)
-				i = double_quote_processing(node, i, init_struct->table);
-			else
-				i++;
-		}
-		node = node->right;
-	}
 }
