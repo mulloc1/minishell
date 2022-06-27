@@ -59,6 +59,7 @@ t_init_struct	*test(char *str, int argc, char *envp[])
 # define TEST11 "\'Hello $HOME\'\"$HOME $HOME\" \'$HOME $HOME\' \"$HOME\""
 # define TEST12 "\'Hello $HOME\' \"Hello $HOME $HOME\" \'$HOME $HOME\' \"$HOME\""
 # define TEST13 "\"MY HOME DIRCTORY : $HOME\""
+# define TEST14 "\"MY HOME DIRCTORY : $HAHAHA\""
 
 int	main(int argc, char *argv[], char *envp[])
 {

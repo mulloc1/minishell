@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:16:14 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/26 16:49:48 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/27 10:15:31 by mulloc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static char	*processing(char *temp, t_hashtable_data *data, int *idx, int *point
 
 	temp2 = ft_calloc(ft_strlen(temp) + ft_strlen((*data).value) + 1, sizeof(char));
 	i = -1;
-	while (temp[++i] != '$' && temp[i] && i <= *idx)
+	while (temp[++i] != '$' && temp[i])
 		temp2[i] = temp[i];
 	z = i;
 	j = -1;
-	while ((*data).value[++j])
+	while (data->value && (*data).value[++j])
 		temp2[i++] = (*data).value[j];
 	*idx = i;
 	*point = i + 1;
@@ -62,6 +62,7 @@ int	double_quote_processing(t_tree_node *node, int idx, t_hashtable *hashtable)
 		temp2 = processing(temp, &data, &i, &point);	
 		free(data.key);
 		free(temp);
+		data.value = NULL;
 		temp = temp2;
 	}
 	node->data.token = temp;

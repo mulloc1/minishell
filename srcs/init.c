@@ -72,6 +72,7 @@ static t_list *sort_env_list_init(char *envp[])
 		envp_sp = ft_split(envp[i], '=');
 		sort_env_list_insert(&list, envp_sp[0]);
 	}
+	sort_env_list_remove(&list, "_");
 	return (list);
 }
 

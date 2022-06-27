@@ -11,7 +11,10 @@ char	 *hashtable_search(t_hashtable *table, char *key)
 	hashcode = hashcode_making(key);
 	idx = hashcode % table->size;
 	if (table->hashtable[idx].size == 1)
-	    return (((t_hashtable_data *)table->hashtable[idx].top->content)->value);
+	{
+		if (!ft_strncmp(key, ((t_hashtable_data *)(table->hashtable[idx].top->content))->key, ft_strlen(key) + 1))
+	    	return (((t_hashtable_data *)table->hashtable[idx].top->content)->value);
+	}
     else if (table->hashtable[idx].size > 1)
     {
         temp = key_overlap_check(table->hashtable[idx].top, key);
