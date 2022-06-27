@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:16:14 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/27 10:15:31 by mulloc           ###   ########.fr       */
+/*   Updated: 2022/06/27 19:05:31 by mulloc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,29 @@ static char	*processing(char *temp, t_hashtable_data *data, int *idx, int *point
 	int		z;
 	int		j;
 
-	temp2 = ft_calloc(ft_strlen(temp) + ft_strlen((*data).value) + 1, sizeof(char));
+	temp2 = ft_calloc(ft_strlen(temp) + ft_strlen(data->value) + 1, sizeof(char));
 	i = -1;
-	while (temp[++i] != '$' && temp[i])
+	while (++i <= *idx)
 		temp2[i] = temp[i];
+	while (temp[i] != '$' && temp[i])
+	{
+		temp2[i] = temp[i];
+		i++;
+	}
 	z = i;
 	j = -1;
-	while (data->value && (*data).value[++j])
-		temp2[i++] = (*data).value[j];
+	if (data->value)
+	{
+		while (data->value && data->value[++j])
+			temp2[i++] = data->value[j];
+	}
 	*idx = i;
 	*point = i + 1;
+	// env가 공백없이 존재할 때
+	// shift 함수 작성
 	while ((temp[z] == '$' || ft_isnaming(temp[z])) && temp[z])
 	{
-		if (temp[z] == '$' && (temp[z + 1] == ' ' || temp[z + 1] == '\0' || temp[z + 1] == '\"'))
+		if (temp[z] == '$' && (temp[z + 1] == ' ' || temp[z + 1] == '\0' || temp[z + 1] == '\"' || temp[z + 1] == '\''))
 			break ;
 		z++;
 	}
@@ -66,6 +76,6 @@ int	double_quote_processing(t_tree_node *node, int idx, t_hashtable *hashtable)
 		temp = temp2;
 	}
 	node->data.token = temp;
-	single_quote_processing(node, idx);
-	return (point - idx - 1);
+	point = single_quote_processing(node, idx);
+	return (point);
 }

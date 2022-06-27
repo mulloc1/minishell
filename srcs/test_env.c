@@ -1,8 +1,7 @@
 # include <stdio.h>
 # include "env.h"
 
-void displayTree(t_tree_node *node)
-{
+void displayTree(t_tree_node *node) {
 	if (node)
 	{
 		switch (node->data.type)
@@ -60,6 +59,10 @@ t_init_struct	*test(char *str, int argc, char *envp[])
 # define TEST12 "\'Hello $HOME\' \"Hello $HOME $HOME\" \'$HOME $HOME\' \"$HOME\""
 # define TEST13 "\"MY HOME DIRCTORY : $HOME\""
 # define TEST14 "\"MY HOME DIRCTORY : $HAHAHA\""
+# define TEST15 "Hello World \"$HOME\""
+# define TEST16 "Hello World $HOME \"$HOME\""
+# define TEST17 "Hello World $HOME"
+# define TEST18 "ls -l | echo \"$HOME\" | < $HOME \"$HOME\""
 
 int	main(int argc, char *argv[], char *envp[])
 {
@@ -78,6 +81,11 @@ int	main(int argc, char *argv[], char *envp[])
 	test(TEST11, argc, envp);
 	test(TEST12, argc, envp);
 	test(TEST13, argc, envp);
+	test(TEST14, argc, envp);
+	test(TEST15, argc, envp);
+	test(TEST16, argc, envp);
+	test(TEST17, argc, envp);
+	test(TEST18, argc, envp);
 	//system("leaks a.out");
 	return (0);
 }

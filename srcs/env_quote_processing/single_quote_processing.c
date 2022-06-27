@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:15:49 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/26 15:40:33 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/27 15:59:17 by mulloc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ int	single_quote_processing(t_tree_node *node, int idx)
 	temp[temp_idx] = '\0';
 	free(token);
 	node->data.token = temp;
-	return (backup2_idx - backup_idx + 1);
+	return (backup2_idx - backup_idx);
 }

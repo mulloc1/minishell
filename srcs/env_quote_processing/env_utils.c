@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:17:12 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/26 14:19:19 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/27 18:32:50 by mulloc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_isnaming(char c)
 		return (1);
 	else if (c >= 65 && c <= 90)
 		return (1);
-	else if (c == '-')
+	else if (c == '_')
 		return (1);
 	else
 		return (0);
