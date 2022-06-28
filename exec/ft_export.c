@@ -23,19 +23,11 @@ static void	ft_set_fd(t_cmd *cmd)
 
 static void	ft_child_proc(t_cmd *cmd)
 {
-	char	*name;
-	char	*value;
-
 	ft_set_fd(cmd);
-	// 환경변수 get
-	while (name)
-	{
-		printf("declare -x %s", name);
-		if (value)
-			printf("=\"%s\"\n", value);
-		else
-			printf("\n");
-	}
+	if (!cmd->argv[1])
+		ft_export_print(cmd);
+	else
+		ft_add_env(cmd);
 	exit(0);
 }
 
@@ -43,7 +35,7 @@ void	ft_export(t_cmd *cmd)
 {
 	pid_t	pid;
 
-	if (!cmd->argv[1])
+	if (cmd->is_pipe || !cmd->argv[1])
 	{	
 		pid = fork();
 		if (pid < 0)

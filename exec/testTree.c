@@ -671,7 +671,7 @@ int main(int ac, char **av, char **env)
 	t_cmd	cmd;
 	int		status;
 
-	tree = ft_test38();
+	tree = ft_test35();
 	cmd.path = NULL;
 	cmd.argv = NULL;
 	cmd.envp = env;
@@ -685,6 +685,11 @@ int main(int ac, char **av, char **env)
 	delete_tree(tree);
 	cmd.path = NULL;
 	cmd.argv = NULL;
+
+	// char *cwd = getcwd(NULL, 10);
+	// printf("%s\n", cwd);
+	// free(cwd);
+
 	// tree = ft_test2();
 	// delete_tree(tree);
 	// tree = ft_test3();

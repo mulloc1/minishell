@@ -51,6 +51,8 @@ static void	ft_clear_cmd(t_cmd *cmd)
 		free(cmd->argv[i]);
 	free(cmd->argv);
 	cmd->argv = NULL;
+	if (cmd->builtins)
+		cmd->builtins = FALSE;
 }
 
 void	ft_cmd_run(t_cmd *cmd)

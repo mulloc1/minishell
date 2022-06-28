@@ -21,18 +21,12 @@ static void	ft_set_fd(t_cmd *cmd)
 
 static void	ft_child_proc(t_cmd *cmd)
 {
-	char	*name;
-	char	*value;
+	int	i;
 
 	ft_set_fd(cmd);
-	// 환경변수 get
-	// name = key, value = value
-	while (name)
-	{
-		if (!value)
-			continue ;
-		printf("%s=%s\n", name, value);
-	}
+	i = -1;
+	while (cmd->envp[++i])
+		printf("%s\n", cmd->envp[i]);
 	exit(0);
 }
 

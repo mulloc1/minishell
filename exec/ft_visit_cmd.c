@@ -10,7 +10,7 @@
 // ◦ exit with no options
 static int	ft_is_builtin(t_cmd *cmd)
 {
-	const char	**builtins = \
+	const char	*builtins[8] = \
 	{"echo", "cd", "pwd", "export", "unset", "env", "exit", NULL};
 	int	i;
 
