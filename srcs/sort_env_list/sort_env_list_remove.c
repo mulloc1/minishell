@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   sort_env_list_remove.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 20:22:54 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/28 13:22:51 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/28 16:22:46 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort_env_list.h"
+#include <stdlib.h>
 
 int	sort_env_list_remove(t_list **list, char *key)
 {

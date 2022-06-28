@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   single_quote_processing.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:15:49 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/27 15:59:17 by mulloc           ###   ########.fr       */
+/*   Updated: 2022/06/28 16:23:47 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "hashtable.h"
 #include "env.h"
+#include <stdlib.h>
 
 int	single_quote_processing(t_tree_node *node, int idx)
 {

@@ -1,6 +1,7 @@
 #include "minishell.h"
 #include "libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 static void	ft_set_fd(t_cmd *cmd)
 {
@@ -59,18 +60,20 @@ void	ft_export_print(t_cmd *cmd)
 {
 	char	*name;
 	char	*value;
+	t_list	*temp;
 
 	ft_set_fd(cmd);
-	// 환경변수 get
-	// key값을 정렬해서 출력
-	// $?값 변경
-	while (name)
+	temp = cmd->env_list;
+	while (temp)
 	{
+		name = temp->content;
+		value = hashtable_search(cmd->table, name);
 		printf("declare -x %s", name);
 		if (value)
 			printf("=\"%s\"\n", value);
 		else
 			printf("\n");
+		temp = temp->next;
 	}
 	exit(0);
 }

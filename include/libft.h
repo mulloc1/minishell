@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:38:12 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/28 20:29:02 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/06/28 15:38:25 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define LIBFT_H
 
 # include <unistd.h>
-# include <stdlib.h>
-# include <limits.h>
+# define INT_MAX 2147483647
+# define LONG_MAX 9223372036854775807
+
 typedef struct s_list
 {
 	void			*content;

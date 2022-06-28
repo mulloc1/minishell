@@ -5,6 +5,7 @@
 #include <signal.h>
 #include <termios.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 static t_hashtable *hashtable_init(char *envp[])
 {

@@ -2,6 +2,7 @@
 # define MINISHELL_H
 
 # include <sys/wait.h>
+# include "hashtable.h"
 # define FAIL 0
 # define SUCCESS 1
 # define FALSE 0
@@ -11,7 +12,6 @@
 # define STDIN 0
 # define STDOUT 1
 
-# include "hashtable.h"
 
 enum e_builtins
 {
@@ -63,19 +63,23 @@ typedef struct s_init_struct
 
 typedef struct s_cmd
 {
-	char	*path;
-	char	**argv;
-	char	**envp;
-	int		in_fd;
-	int		out_fd;
-	int		pipe[2];
-	pid_t	last_pid;
-	int		builtins;
+	char		*path;
+	char		**argv;
+	char		**envp;
+	int			in_fd;
+	int			out_fd;
+	int			pipe[2];
+	pid_t		last_pid;
+	int			builtins;
+	int			is_pipe;
+	t_hashtable	*table;
+	t_list		*env_list;
 }	t_cmd;
 
 t_tree			*create_bin_tree(t_tree_node root_node);
 t_tree_node		*insert_left_node(t_tree_node *parent, t_tree_node child);
 t_tree_node		*insert_right_node(t_tree_node *parent, t_tree_node child);
+void			delorder(t_tree_node **node);
 void			delete_tree(t_tree *tree);
 void			ft_error(char *str);
 
@@ -99,6 +103,24 @@ int		ft_visit_redi_left(t_token token, t_cmd *cmd);
 int		ft_visit_redi_right(t_token token, t_cmd *cmd);
 int		ft_visit(t_token token, t_cmd *cmd);
 char	*ft_check_eof(char *eof);
-void	ft_pasing_multiline(char *eof, int out_fd);
+void	ft_parsing_multiline(char *eof, t_cmd *cmd);
+
+void			ft_add_env(t_cmd *cmd);
+void			ft_builtin_run(t_cmd *cmd);
+void			ft_cd(t_cmd *cmd);
+char			*ft_check_eof(char *eof);
+void			ft_echo(t_cmd *cmd);
+void			ft_env(t_cmd *cmd);
+void			ft_exit_error(char *argv);
+unsigned char	ft_get_exit_status(char *num);
+void			ft_exit(t_cmd *cmd);
+void			ft_export_error(char *name, int type);
+int				ft_check_name_valid(char *name, int type);
+void			ft_export_print(t_cmd *cmd);
+char			**ft_export_split(char *src);
+void			ft_export(t_cmd *cmd);
+void			ft_pwd(t_cmd *cmd);
+void			ft_unset(t_cmd *cmd);
+void			ft_excution(t_init_struct *init_struct);
 
 #endif

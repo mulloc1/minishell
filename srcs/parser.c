@@ -1,6 +1,7 @@
 #include "libft.h"
 #include "minishell.h"
 #include <stdio.h>
+#include <stdlib.h>
 #define	TEST1 "cat \" < file1 ls -l \" | cat "
 #define	TEST2 "echo \" cat > file2 | ls -l \" | cat "
 #define	TEST3 "echo \' \"echo HelloWorld\" \' | ls -l > file1 | wc -l"

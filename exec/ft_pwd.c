@@ -1,6 +1,7 @@
 #include "minishell.h"
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 static void	ft_set_fd(t_cmd *cmd)
 {

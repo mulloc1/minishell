@@ -2,12 +2,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void	ft_error(char *str)
-{
-	printf("%s", str);
-	exit(1);
-}
-
 t_tree	*create_bin_tree(t_tree_node root_node)
 {
 	t_tree		*bintree;
@@ -62,7 +56,7 @@ void	delorder(t_tree_node **node)
 		delorder(&(*node)->right);
 		temp = *node;
 		*node = NULL;
-	//	free(temp->data.token);
+		free(temp->data.token);
 		free(temp);
 	}
 }

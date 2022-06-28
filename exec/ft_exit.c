@@ -2,6 +2,7 @@
 #include "libft.h"
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 // exit 인자는 exit명령어의 종료상태
 // 인자의 수는 0, 1
@@ -28,7 +29,6 @@ static void	ft_run_exit(t_cmd *cmd)
 void	ft_exit(t_cmd *cmd)
 {
 	pid_t			pid;
-	unsigned char	exit_status;
 
 	if (cmd->is_pipe)
 	{

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   double_quote_processing.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:16:14 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/28 14:18:38 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/28 16:23:51 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "hashtable.h"
 #include "env.h"
+#include <stdlib.h>
 
 static char	*processing(char *temp, t_hashtable_data *data, int *idx, int *point)
 {

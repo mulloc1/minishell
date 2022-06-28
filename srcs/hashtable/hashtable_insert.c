@@ -1,5 +1,6 @@
 #include "hashtable.h"
 #include "libft.h"
+#include <stdlib.h>
 
 int hashtable_insert(t_hashtable *table, char *key, char *value)
 {

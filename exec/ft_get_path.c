@@ -1,5 +1,6 @@
 #include "minishell.h"
 #include "libft.h"
+#include <stdlib.h>
 
 static void	ft_set_string(t_cmd *cmd, char *str)
 {

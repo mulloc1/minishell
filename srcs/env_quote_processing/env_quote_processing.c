@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   env_quote_processing.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:00:25 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/27 19:40:40 by mulloc           ###   ########.fr       */
+/*   Updated: 2022/06/28 16:24:56 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "hashtable.h"
 #include "env.h"
+#include <stdlib.h>
 
 static	void	processing(t_init_struct *init_struct, t_tree_node	*node)
 {
@@ -36,8 +37,6 @@ void	env_quote_processing(t_init_struct	*init_struct)
 {
 	t_tree_node	*cmd;
 	t_tree_node *redi;
-	int			i;
-	int			temp;
 
 	cmd = init_struct->tree->root;
 	while (cmd)

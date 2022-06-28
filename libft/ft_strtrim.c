@@ -6,11 +6,13 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 17:21:00 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/25 13:37:24 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/06/28 16:18:32 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	start;

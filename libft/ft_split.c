@@ -6,11 +6,13 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:05:38 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/12/01 17:24:37 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/06/28 16:18:05 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
+
 static void	ft_free_arr(char **result, size_t r_index)
 {
 	size_t	i;

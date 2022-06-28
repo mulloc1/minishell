@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   sort_env_list_insert.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mulloc <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 09:36:54 by mulloc            #+#    #+#             */
-/*   Updated: 2022/06/28 12:55:25 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/28 16:22:39 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort_env_list.h"
+#include <stdlib.h>
 
 void	sort_env_list_insert(t_list **list, char *key)
 {

@@ -1,5 +1,6 @@
 #include "hashtable.h"
 #include "libft.h"
+#include <stdlib.h>
 
 static t_list  *key_search(t_list *top, char *key)
 {

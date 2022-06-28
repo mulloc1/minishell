@@ -2,6 +2,7 @@
 #include "libft.h"
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 static void	ft_clear_cmd(t_cmd *cmd)
 {

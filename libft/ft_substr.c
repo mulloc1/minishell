@@ -6,11 +6,13 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 16:16:02 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/23 18:19:49 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/06/28 16:18:40 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*result;
