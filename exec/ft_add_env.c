@@ -22,20 +22,25 @@ static int	ft_get_name_value(char *str, char **name, char **value)
 	return (result);
 }
 
-void	ft_add_env(t_cmd *cmd)
+int	ft_add_env(t_cmd *cmd)
 {
 	int		i;
+	int		exit_status;
 	char	*name;
 	char	*value;
 
 	i = 0;
+	exit_status = 0;
 	while (cmd->argv[++i])
 	{
-		if (ft_get_name_value(cmd->argv[i], &name, &value))
+		if (!ft_get_name_value(cmd->argv[i], &name, &value))
+			exit_status = 1;
+		else
 		{
 			hashtable_insert(cmd->table, name, value);
 			free(name);
 			free(value);
 		}
 	}
+	return (exit_status);
 }

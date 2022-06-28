@@ -25,7 +25,7 @@ static void	ft_child_proc(t_cmd *cmd)
 	// if (cmd->path) -> cmd |
 	if (cmd->path && !cmd->path[0])
 	{
-		ft_putstr_fd("bash : ", 2);
+		ft_putstr_fd("minishell : ", 2);
 		ft_putstr_fd(cmd->argv[0], 2);
 		ft_putstr_fd(": command not found\n", 2);
 		exit(127);

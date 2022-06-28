@@ -105,14 +105,14 @@ int		ft_visit(t_token token, t_cmd *cmd);
 char	*ft_check_eof(char *eof);
 void	ft_parsing_multiline(char *eof, t_cmd *cmd);
 
-void			ft_add_env(t_cmd *cmd);
+int				ft_add_env(t_cmd *cmd);
 void			ft_builtin_run(t_cmd *cmd);
 void			ft_cd(t_cmd *cmd);
 char			*ft_check_eof(char *eof);
 void			ft_echo(t_cmd *cmd);
 void			ft_env(t_cmd *cmd);
-void			ft_exit_error(char *argv);
-unsigned char	ft_get_exit_status(char *num);
+int				ft_exit_error(char *argv);
+void			ft_check_exit_status(char *num);
 void			ft_exit(t_cmd *cmd);
 void			ft_export_error(char *name, int type);
 int				ft_check_name_valid(char *name, int type);

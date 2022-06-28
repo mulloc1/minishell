@@ -33,7 +33,8 @@ static void	ft_child_proc(t_cmd *cmd)
 
 void	ft_export(t_cmd *cmd)
 {
-	pid_t	pid;
+	pid_t		pid;
+	extern int	exit_code;
 
 	if (cmd->is_pipe || !cmd->argv[1])
 	{	
@@ -45,5 +46,6 @@ void	ft_export(t_cmd *cmd)
 		cmd->last_pid = pid;
 		return ;
 	}
-	ft_add_env(cmd);
+	exit_code = ft_add_env(cmd);
+	cmd->last_pid = -1;
 }

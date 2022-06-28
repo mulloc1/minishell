@@ -31,8 +31,8 @@ static void	ft_child_proc(t_cmd *cmd)
 
 void	ft_unset(t_cmd *cmd)
 {
-	pid_t	pid;
-	int		exit_status;
+	pid_t		pid;
+	extern int	exit_code;
 
 	if (cmd->is_pipe)
 	{	
@@ -44,7 +44,7 @@ void	ft_unset(t_cmd *cmd)
 		cmd->last_pid = pid;
 		return ;
 	}
-	exit_status = ft_remove_env(cmd);
-	// [전역변수] = exit_status
+	exit_code = ft_remove_env(cmd);
+	cmd->last_pid = -1;
 }
 

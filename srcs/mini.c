@@ -8,6 +8,8 @@
 #include "parser.h"
 #include "libft.h"
 
+int	exit_code;
+
 void displayTree(t_tree_node *node)
 {
 	if (node)
