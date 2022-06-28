@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:17:12 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/27 18:32:50 by mulloc           ###   ########.fr       */
+/*   Updated: 2022/06/28 13:52:44 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ char	*check_env(char *temp, int idx)
 	while (temp[idx] != '$' && temp[idx])
 		idx++;
 	if (temp[idx] != '$' || temp[idx + 1] == '\0' || temp[idx + 1] == ' ' || temp[idx + 1] == '\"')
+	{
+		free(res);
 		return (NULL);
+	}
 	i = -1;
 	while (ft_isnaming(temp[++idx]) && temp[idx])
 		res[++i] = temp[idx];

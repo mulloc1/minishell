@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:16:14 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/27 19:05:31 by mulloc           ###   ########.fr       */
+/*   Updated: 2022/06/28 14:18:38 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,12 @@ static char	*processing(char *temp, t_hashtable_data *data, int *idx, int *point
 	z = i;
 	j = -1;
 	if (data->value)
-	{
 		while (data->value && data->value[++j])
 			temp2[i++] = data->value[j];
-	}
 	*idx = i;
 	*point = i + 1;
-	// env가 공백없이 존재할 때
-	// shift 함수 작성
 	while ((temp[z] == '$' || ft_isnaming(temp[z])) && temp[z])
-	{
-		if (temp[z] == '$' && (temp[z + 1] == ' ' || temp[z + 1] == '\0' || temp[z + 1] == '\"' || temp[z + 1] == '\''))
-			break ;
 		z++;
-	}
 	while (temp[z])
 		temp2[i++] = temp[z++];
 	return (temp2);
@@ -67,12 +59,15 @@ int	double_quote_processing(t_tree_node *node, int idx, t_hashtable *hashtable)
 	{
 		data.key = check_env(temp, i);
 		if (!data.key || !temp[point] || (point > 0 && (temp[point + 1] == '\"' || temp[point + 1] == '\'')))
+		{
+			if (data.key)
+				free(data.key);
 			break ;
+		}
 		data.value = hashtable_search(hashtable, data.key);
 		temp2 = processing(temp, &data, &i, &point);	
 		free(data.key);
 		free(temp);
-		data.value = NULL;
 		temp = temp2;
 	}
 	node->data.token = temp;

@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 20:22:54 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/25 21:39:21 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/28 13:22:51 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	sort_env_list_remove(t_list **list, char *key)
 	if (!ft_strncmp(key, (*list)->content, key_len + 1))
 	{
 		*list = (*list)->next;
+		free(temp->content);
 		free(temp);
 		return (1);
 	}
@@ -32,6 +33,7 @@ int	sort_env_list_remove(t_list **list, char *key)
 		{
 			temp2 = temp->next;
 			temp->next = temp->next->next;
+			free(temp2->content);
 			free(temp2);
 			return (1);
 		}

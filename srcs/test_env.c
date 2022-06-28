@@ -39,8 +39,6 @@ t_init_struct	*test(char *str, int argc, char *envp[])
 	displayTree(init_struct->tree->root);
 	env_quote_processing(init_struct);
 	displayTree(init_struct->tree->root);
-	delete_tree(init_struct->tree);
-	init_struct->tree = NULL;
 	printf("\n");
 	return (init_struct);
 }
@@ -64,28 +62,28 @@ t_init_struct	*test(char *str, int argc, char *envp[])
 # define TEST17 "Hello World $HOME"
 # define TEST18 "ls -l | echo \"$HOME\" | < $HOME \"$HOME\""
 
-int	main(int argc, char *argv[], char *envp[])
-{
-	argv++;
-
-	test(TEST1, argc, envp);
-	test(TEST2, argc, envp);
-	test(TEST3, argc, envp);
-	test(TEST4, argc, envp);
-	test(TEST5, argc, envp);
-	test(TEST6, argc, envp);
-	test(TEST7, argc, envp);
-	test(TEST8, argc, envp);
-	test(TEST9, argc, envp);
-	test(TEST10, argc, envp);
-	test(TEST11, argc, envp);
-	test(TEST12, argc, envp);
-	test(TEST13, argc, envp);
-	test(TEST14, argc, envp);
-	test(TEST15, argc, envp);
-	test(TEST16, argc, envp);
-	test(TEST17, argc, envp);
-	test(TEST18, argc, envp);
-	//system("leaks a.out");
-	return (0);
-}
+//int	main(int argc, char *argv[], char *envp[])
+//{
+//	argv++;
+//
+//	t_init_struct *init_struct1 = test(TEST1, argc, envp);
+//	t_init_struct *init_struct2 = test(TEST2, argc, envp);
+//	t_init_struct *init_struct3 = test(TEST3, argc, envp);
+//	t_init_struct *init_struct4 = test(TEST4, argc, envp);
+//	t_init_struct *init_struct5 = test(TEST5, argc, envp);
+//	t_init_struct *init_struct6 = test(TEST6, argc, envp);
+//	t_init_struct *init_struct7 = test(TEST7, argc, envp);
+//	t_init_struct *init_struct8 = test(TEST8, argc, envp);
+//	t_init_struct *init_struct9 = test(TEST9, argc, envp);
+//	t_init_struct *init_struct10 = test(TEST10, argc, envp);
+//	t_init_struct *init_struct11 = test(TEST11, argc, envp);
+//	t_init_struct *init_struct12 = test(TEST12, argc, envp);
+//	t_init_struct *init_struct13 = test(TEST13, argc, envp);
+//	t_init_struct *init_struct14 = test(TEST14, argc, envp);
+//	t_init_struct *init_struct15 = test(TEST15, argc, envp);
+//	t_init_struct *init_struct16 = test(TEST16, argc, envp);
+//	t_init_struct *init_struct17 = test(TEST17, argc, envp);
+//	t_init_struct *init_struct18 = test(TEST18, argc, envp);
+//	system("leaks a.out");
+//	return (0);
+//}

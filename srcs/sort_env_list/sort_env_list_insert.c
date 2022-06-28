@@ -6,7 +6,7 @@
 /*   By: mulloc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 09:36:54 by mulloc            #+#    #+#             */
-/*   Updated: 2022/06/25 13:31:27 by mulloc           ###   ########.fr       */
+/*   Updated: 2022/06/28 12:55:25 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sort_env_list_insert(t_list **list, char *key)
 	int		key_len;
 
 	key_len = ft_strlen(key);
-	new = ft_lstnew(key);
+	new = ft_lstnew(ft_strdup(key));
 	if (*list == NULL)
 	{
 		*list = new;

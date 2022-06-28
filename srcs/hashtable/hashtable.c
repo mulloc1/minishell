@@ -8,126 +8,126 @@
 //    t_hashtable *table;
 //    
 //    table = hashtable_create();
-//    hashtable_insert(table, ft_strdup("TERM_SESSION_ID"), ft_strdup("w0t0p1:7735EF5A-5EA6-4538-BBD4-77AF7C43E104"));
-//    hashtable_remove(table, "TERM_SESSION_ID");
+//    hashtable_insert(table, "TERM_SESSION_ID", "w0t0p1:7735EF5A-5EA6-4538-BBD4-77AF7C43E104");
+//    //hashtable_remove(table, "TERM_SESSION_ID");
 //    printf("%s=%s\n", "TERM_SESSION_ID", hashtable_search(table, "TERM_SESSION_ID"));
 //
-//    hashtable_insert(table, ft_strdup("SSH_AUTH_SOCK"), ft_strdup("/private/tmp/com.apple.launchd.zJLa4Mxc5h/Listeners"));
-//    hashtable_remove(table, "SSH_AUTH_SOCK");
+//    hashtable_insert(table, "SSH_AUTH_SOCK", "/private/tmp/com.apple.launchd.zJLa4Mxc5h/Listeners");
+//    //hashtable_remove(table, "SSH_AUTH_SOCK");
 //    printf("%s=%s\n", "SSH_AUTH_SOCK", hashtable_search(table, "SSH_AUTH_SOCK"));
 //    
-//    hashtable_insert(table, ft_strdup("LC_TERMINAL_VERSION"), ft_strdup("3.3.7"));
-//    hashtable_remove(table, "LC_TERMINAL_VERSION");
+//    hashtable_insert(table, "LC_TERMINAL_VERSION", "3.3.7");
+//    //hashtable_remove(table, "LC_TERMINAL_VERSION");
 //    printf("%s=%s\n", "LC_TERMINAL_VERSION", hashtable_search(table, "LC_TERMINAL_VERSION"));
 //    
-//    hashtable_insert(table, ft_strdup("COLORFGBG"), ft_strdup("7;0"));
-//    hashtable_remove(table, "COLORFGBG");
+//    hashtable_insert(table, "COLORFGBG", "7;0");
+//    //hashtable_remove(table, "COLORFGBG");
 //    printf("%s=%s\n", "COLORFGBG", hashtable_search(table, "COLORFGBG"));
 //
-//    hashtable_insert(table, ft_strdup("ITERM_PROFILE"), ft_strdup("Default"));
-//    hashtable_remove(table, "ITERM_PROFILE");
+//    hashtable_insert(table, "ITERM_PROFILE", "Default");
+//    //hashtable_remove(table, "ITERM_PROFILE");
 //    printf("%s=%s\n", "ITERM_PROFILE", hashtable_search(table, "ITERM_PROFILE"));
 //
-//    hashtable_insert(table, ft_strdup("XPC_FLAGS"), ft_strdup("0x0"));
-//    hashtable_remove(table, "XPC_FLAGS");
+//    hashtable_insert(table, "XPC_FLAGS", "0x0");
+//    //hashtable_remove(table, "XPC_FLAGS");
 //    printf("%s=%s\n", "XPC_FLAGS", hashtable_search(table, "XPC_FLAGS"));
 //
-//    hashtable_insert(table, ft_strdup("LANG"), ft_strdup("en_US.UTF-8"));
-//    hashtable_remove(table, "LANG");
+//    hashtable_insert(table, "LANG", "en_US.UTF-8");
+//    //hashtable_remove(table, "LANG");
 //    printf("%s=%s\n", "LANG", hashtable_search(table, "LANG"));
 //
-//    hashtable_insert(table, ft_strdup("PWD"), ft_strdup("/Users/jaebae/backup/srcs/hashtable"));
-//    hashtable_remove(table, "PWD");
+//    hashtable_insert(table, "PWD", "/Users/jaebae/backup/srcs/hashtable");
+//    //hashtable_remove(table, "PWD");
 //    printf("%s=%s\n", "PWD", hashtable_search(table, "PWD"));
 //
-//    hashtable_insert(table, ft_strdup("SHELL"), ft_strdup("/bin/zsh"));
-//    hashtable_remove(table, "SHELL");
+//    hashtable_insert(table, "SHELL", "/bin/zsh");
+//    //hashtable_remove(table, "SHELL");
 //    printf("%s=%s\n", "SHELL", hashtable_search(table, "SHELL"));
 //
-//    hashtable_insert(table, ft_strdup("SECURITYSESSIONID"), ft_strdup("186a5"));
-//    hashtable_remove(table, "SECURITYSESSIONID");
+//    hashtable_insert(table, "SECURITYSESSIONID", "186a5");
+//    //hashtable_remove(table, "SECURITYSESSIONID");
 //    printf("%s=%s\n", "SECURITYSESSIONID", hashtable_search(table, "SECURITYSESSIONID"));
 //
-//    hashtable_insert(table, ft_strdup("TERM_PROGRAM_VERSION"), ft_strdup("3.3.7"));
-//    hashtable_remove(table, "TERM_PROGRAM_VERSION");
+//    hashtable_insert(table, "TERM_PROGRAM_VERSION", "3.3.7");
+//    //hashtable_remove(table, "TERM_PROGRAM_VERSION");
 //    printf("%s=%s\n", "TERM_PROGRAM_VERSION", hashtable_search(table, "TERM_PROGRAM_VERSION"));
 //
-//    hashtable_insert(table, ft_strdup("TERM_PROGRAM"), ft_strdup("iTerm.app"));
-//    hashtable_remove(table, "TERM_PROGRAM");
+//    hashtable_insert(table, "TERM_PROGRAM", "iTerm.app");
+//    //hashtable_remove(table, "TERM_PROGRAM");
 //    printf("%s=%s\n", "TERM_PROGRAM", hashtable_search(table, "TERM_PROGRAM"));
 //
-//    hashtable_insert(table, ft_strdup("PATH"), ft_strdup("/Users/jaebae/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki"));
-//    hashtable_remove(table, "PATH");
+//    hashtable_insert(table, "PATH", "/Users/jaebae/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki");
+//    //hashtable_remove(table, "PATH");
 //    printf("%s=%s\n", "PATH", hashtable_search(table, "PATH"));
 //
-//    hashtable_insert(table, ft_strdup("LC_TERMINAL"), ft_strdup("iTerm2"));
-//    hashtable_remove(table, "LC_TERMINAL");
+//    hashtable_insert(table, "LC_TERMINAL", "iTerm2");
+//    //hashtable_remove(table, "LC_TERMINAL");
 //    printf("%s=%s\n", "LC_TERMINAL", hashtable_search(table, "LC_TERMINAL"));
 //
-//    hashtable_insert(table, ft_strdup("COLORTERM"), ft_strdup("truecolor"));
-//    hashtable_remove(table, "COLORTERM");
+//    hashtable_insert(table, "COLORTERM", "truecolor");
+//    //hashtable_remove(table, "COLORTERM");
 //    printf("%s=%s\n", "COLORTERM", hashtable_search(table, "COLORTERM"));
 //
-//    hashtable_insert(table, ft_strdup("COMMAND_MODE"), ft_strdup("unix2003"));
-//    hashtable_remove(table, "COMMAND_MODE");
+//    hashtable_insert(table, "COMMAND_MODE", "unix2003");
+//    //hashtable_remove(table, "COMMAND_MODE");
 //    printf("%s=%s\n", "COMMAND_MODE", hashtable_search(table, "COMMAND_MODE"));
 //
-//    hashtable_insert(table, ft_strdup("TERM"), ft_strdup("xterm-256color"));
-//    hashtable_remove(table, "TERM");
+//    hashtable_insert(table, "TERM", "xterm-256color");
+//    //hashtable_remove(table, "TERM");
 //    printf("%s=%s\n", "TERM", hashtable_search(table, "TERM"));
 //
-//    hashtable_insert(table, ft_strdup("HOME"), ft_strdup("/Users/jaebae"));
-//    hashtable_remove(table, "HOME");
+//    hashtable_insert(table, "HOME", "/Users/jaebae");
+//    //hashtable_remove(table, "HOME");
 //    printf("%s=%s\n", "HOME", hashtable_search(table, "HOME"));
 //
-//    hashtable_insert(table, ft_strdup("TMPDIR"), ft_strdup("/var/folders/zz/zyxvpxvq6csfxvn_n000cmx800357_/T/"));
-//    hashtable_remove(table, "TMPDIR");
+//    hashtable_insert(table, "TMPDIR", "/var/folders/zz/zyxvpxvq6csfxvn_n000cmx800357_/T/");
+//    //hashtable_remove(table, "TMPDIR");
 //    printf("%s=%s\n", "TMPDIR", hashtable_search(table, "TMPDIR"));
 //
-//    hashtable_insert(table, ft_strdup("USER"), ft_strdup("jaebae"));
-//    hashtable_remove(table, "USER");
+//    hashtable_insert(table, "USER", "jaebae");
+//    //hashtable_remove(table, "USER");
 //    printf("%s=%s\n", "USER", hashtable_search(table, "USER"));
 //
-//    hashtable_insert(table, ft_strdup("XPC_SERVICE_NAME"), ft_strdup("0"));
-//    hashtable_remove(table, "XPC_SERVICE_NAME");
+//    hashtable_insert(table, "XPC_SERVICE_NAME", "0");
+//    //hashtable_remove(table, "XPC_SERVICE_NAME");
 //    printf("%s=%s\n", "XPC_SERVICE_NAME", hashtable_search(table, "XPC_SERVICE_NAME"));
 //
-//    hashtable_insert(table, ft_strdup("LOGNAME"), ft_strdup("jaebae"));
-//    hashtable_remove(table, "LOGNAME");
+//    hashtable_insert(table, "LOGNAME", "jaebae");
+//    //hashtable_remove(table, "LOGNAME");
 //    printf("%s=%s\n", "LOGNAME", hashtable_search(table, "LOGNAME"));
 //
-//    hashtable_insert(table, ft_strdup("LaunchInstanceID"), ft_strdup("22CDBC20-D0D3-46C3-A342-EFBD04400400"));
-//    hashtable_remove(table, "LaunchInstanceID");
+//    hashtable_insert(table, "LaunchInstanceID", "22CDBC20-D0D3-46C3-A342-EFBD04400400");
+//    //hashtable_remove(table, "LaunchInstanceID");
 //    printf("%s=%s\n", "LaunchInstanceID", hashtable_search(table, "LaunchInstanceID"));
 //
-//    hashtable_insert(table, ft_strdup("__CF_USER_TEXT_ENCODING"), ft_strdup("0x194EA:0x3:0x33"));
-//    hashtable_remove(table, "__CF_USER_TEXT_ENCODING");
+//    hashtable_insert(table, "__CF_USER_TEXT_ENCODING", "0x194EA:0x3:0x33");
+//    //hashtable_remove(table, "__CF_USER_TEXT_ENCODING");
 //    printf("%s=%s\n", "__CF_USER_TEXT_ENCODING", hashtable_search(table, "__CF_USER_TEXT_ENCODING"));
 //
-//    hashtable_insert(table, ft_strdup("ITERM_SESSION_ID"), ft_strdup("w0t0p4:1F2523D7-AE1D-4066-9D90-6223A946F9BF"));
-//    hashtable_remove(table, "ITERM_SESSION_ID");
+//    hashtable_insert(table, "ITERM_SESSION_ID", "w0t0p4:1F2523D7-AE1D-4066-9D90-6223A946F9BF");
+//    //hashtable_remove(table, "ITERM_SESSION_ID");
 //    printf("%s=%s\n", "ITERM_SESSION_ID", hashtable_search(table, "ITERM_SESSION_ID"));
 //
-//    hashtable_insert(table, ft_strdup("SHLVL"), ft_strdup("1"));
-//    hashtable_remove(table, "SHLVL");
+//    hashtable_insert(table, "SHLVL", "1");
+//    //hashtable_remove(table, "SHLVL");
 //    printf("%s=%s\n", "SHLVL", hashtable_search(table, "SHLVL"));
 //
-//    hashtable_insert(table, ft_strdup("OLDPWD"), ft_strdup("/Users/jaebae/backup"));
-//    hashtable_remove(table, "OLDPWD");
+//    hashtable_insert(table, "OLDPWD", "/Users/jaebae/backup");
+//    //hashtable_remove(table, "OLDPWD");
 //    printf("%s=%s\n", "OLDPWD", hashtable_search(table, "OLDPWD"));
 //
-//    hashtable_insert(table, ft_strdup("MAIL"), ft_strdup("jaebae@student.42seoul.kr"));
-//    hashtable_remove(table, "MAIL");
+//    hashtable_insert(table, "MAIL", "jaebae@student.42seoul.kr");
+//    //hashtable_remove(table, "MAIL");
 //    printf("%s=%s\n", "MAIL", hashtable_search(table, "MAIL"));
 //
-//    hashtable_insert(table, ft_strdup("_"), ft_strdup("/usr/bin/env"));
-//    hashtable_remove(table, "_");
-//    hashtable_remove(table, "_");
+//    hashtable_insert(table, "_", "/usr/bin/env");
+//    //hashtable_remove(table, "_");
+//    //hashtable_remove(table, "_");
 //    printf("%s=%s\n", "_", hashtable_search(table, "_"));
-//
+//	system("leaks a.out");
 //    return (0);
 //}
-//
+
 ////int main(void)
 ////{
 ////    for (int i = 100; i < 101; i++)
