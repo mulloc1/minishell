@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:00:25 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/29 13:12:57 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/29 14:37:56 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static	void	processing(t_init_struct *init_struct, t_tree_node	*node)
 	int	temp;
 
 	i = 0;
-	while (node->data.token[i])
+	while (node->data.token[i] && node->data.type != DREDI_L)
 	{
 		temp = quote_check(&node->data.token[i]);
 		if (temp == SINGLE_QUOTE)
