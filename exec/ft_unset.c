@@ -1,5 +1,6 @@
 #include "minishell.h"
 #include "hashtable.h"
+#include "sort_env_list.h"
 #include <stdlib.h>
 
 static int	ft_remove_env(t_cmd *cmd)
@@ -17,6 +18,7 @@ static int	ft_remove_env(t_cmd *cmd)
 			continue ;
 		}
 		hashtable_remove(cmd->table, cmd->argv[i]);
+		sort_env_list_remove(&cmd->env_list, cmd->argv[i]);
 	}
 	return (exit_status);
 }
@@ -31,8 +33,9 @@ static void	ft_child_proc(t_cmd *cmd)
 
 void	ft_unset(t_cmd *cmd)
 {
-	pid_t		pid;
-	extern int	exit_code;
+	pid_t	pid;
+	int		exit_code;
+	char	*exit_str;
 
 	if (cmd->is_pipe)
 	{	
@@ -45,6 +48,11 @@ void	ft_unset(t_cmd *cmd)
 		return ;
 	}
 	exit_code = ft_remove_env(cmd);
+	exit_str = ft_itoa(exit_code);
+	if (!exit_str)
+		ft_error("malloc fail\n");
+	hashtable_insert(cmd->table, "?", exit_str);
+	free(exit_str);
 	cmd->last_pid = -1;
 }
 

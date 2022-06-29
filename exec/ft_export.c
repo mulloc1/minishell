@@ -33,8 +33,9 @@ static void	ft_child_proc(t_cmd *cmd)
 
 void	ft_export(t_cmd *cmd)
 {
-	pid_t		pid;
-	extern int	exit_code;
+	pid_t	pid;
+	int		exit_code;
+	char	*exit_str;
 
 	if (cmd->is_pipe || !cmd->argv[1])
 	{	
@@ -47,5 +48,10 @@ void	ft_export(t_cmd *cmd)
 		return ;
 	}
 	exit_code = ft_add_env(cmd);
+	exit_str = ft_itoa(exit_code);
+	if (!exit_str)
+		ft_error("malloc fail\n");
+	hashtable_insert(cmd->table, "?", exit_str);
+	free(exit_str);
 	cmd->last_pid = -1;
 }

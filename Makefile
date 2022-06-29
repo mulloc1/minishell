@@ -2,7 +2,8 @@ NAME = minishell
 
 CC = gcc
 CFLAG = -Werror -Wall -Wextra -I include -g
-OFLAG = -lreadline -L ~/.brew/opt/readline/lib -I ~/.brew/opt/readline/include 
+# OFLAG = -lreadline -L ~/.brew/opt/readline/lib -I ~/.brew/opt/readline/include
+OFLAG = -lreadline -L/opt/homebrew/opt/readline/lib -I/opt/homebrew/opt/readline/include
 SRCS = srcs/mini.c \
 	   srcs/bintree.c \
 	   srcs/parser.c \
@@ -34,6 +35,7 @@ EXECS = exec/ft_add_env.c \
 		exec/ft_export.c \
 		exec/ft_export_util.c \
 		exec/ft_get_path.c \
+		exec/ft_get_path_util.c \
 		exec/ft_open_pipe.c \
 		exec/ft_parsing_multiline.c \
 		exec/ft_pwd.c \

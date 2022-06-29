@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 // exit 인자는 exit명령어의 종료상태
 // 인자의 수는 0, 1
@@ -53,8 +54,9 @@ static void	ft_child_proc(t_cmd *cmd)
 
 void	ft_exit(t_cmd *cmd)
 {
-	pid_t			pid;
-	extern int		exit_code;
+	pid_t	pid;
+	int		exit_code;
+	char	*exit_str;
 
 	if (cmd->is_pipe)
 	{
@@ -68,5 +70,10 @@ void	ft_exit(t_cmd *cmd)
 	}
 	printf("exit\n");
 	exit_code = ft_run_exit(cmd);
+	exit_str = ft_itoa(exit_code);
+	if (!exit_str)
+		ft_error("malloc fail\n");
+	hashtable_insert(cmd->table, "?", exit_str);
+	free(exit_str);
 	cmd->last_pid = -1;
 }

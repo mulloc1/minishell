@@ -35,7 +35,7 @@ static int	ft_cd_error(char *path, int flag)
 	return (1);
 }
 
-static int	ft_check_path(t_cmd *cmd)
+static int	ft_check_cd_path(t_cmd *cmd)
 {
 	struct stat st;
 
@@ -52,14 +52,15 @@ static void	ft_child_proc(t_cmd *cmd)
 {
 	int	exit_status;
 
-	exit_status = ft_check_path(cmd);
+	exit_status = ft_check_cd_path(cmd);
 	exit(exit_status);
 }
 
 void	ft_cd(t_cmd *cmd)
 {
-	pid_t		pid;
-	extern int	exit_code;
+	pid_t	pid;
+	int		exit_code;
+	char	*exit_str;
 
 	if (cmd->is_pipe)
 	{	
@@ -71,6 +72,11 @@ void	ft_cd(t_cmd *cmd)
 		cmd->last_pid = pid;
 		return ;
 	}
-	exit_code = ft_check_path(cmd);
+	exit_code = ft_check_cd_path(cmd);
+	exit_str = ft_itoa(exit_code);
+	if (!exit_str)
+		ft_error("malloc fail\n");
+	hashtable_insert(cmd->table, "?", exit_str);
+	free(exit_str);
 	cmd->last_pid = -1;
 }

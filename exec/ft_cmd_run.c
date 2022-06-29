@@ -61,7 +61,8 @@ static void	ft_clear_cmd(t_cmd *cmd)
 		close(cmd->in_fd);
 	if (cmd->out_fd > STDOUT)
 		close(cmd->out_fd);
-	free(cmd->path);
+	if (cmd->path)
+		free(cmd->path);
 	cmd->path = NULL;
 	i = -1;
 	while(cmd->argv[++i])

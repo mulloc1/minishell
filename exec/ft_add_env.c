@@ -1,5 +1,6 @@
 #include "minishell.h"
 #include "hashtable.h"
+#include "sort_env_list.h"
 #include "libft.h"
 #include <stdlib.h>
 
@@ -38,6 +39,7 @@ int	ft_add_env(t_cmd *cmd)
 		else
 		{
 			hashtable_insert(cmd->table, name, value);
+			sort_env_list_insert(&cmd->env_list, name);
 			free(name);
 			free(value);
 		}

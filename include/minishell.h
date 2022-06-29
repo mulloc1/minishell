@@ -114,6 +114,10 @@ int		ft_visit_redi_right(t_token token, t_cmd *cmd);
 int		ft_visit(t_token token, t_cmd *cmd);
 char	*ft_check_eof(char *eof);
 void	ft_read_parsing(char *eof, t_cmd *cmd);
+void	ft_create_path_list(t_cmd *cmd);
+void	ft_delete_path_list(void *list);
+void	ft_check_path(t_cmd *cmd, char *check_path);
+void	ft_check_join_path(t_cmd *cmd, char *env_path, char *path_tmp);
 
 int				ft_add_env(t_cmd *cmd);
 void			ft_builtin_run(t_cmd *cmd);

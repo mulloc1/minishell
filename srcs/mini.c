@@ -64,5 +64,6 @@ int	main(int argc, char *argv[], char *envp[])
 		}
 		free(str);
 	}
+	ft_lstclear(&path_list, ft_delete_path_list);
 	return (0);
 }
