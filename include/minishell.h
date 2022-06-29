@@ -104,6 +104,7 @@ int		ft_visit_redi_right(t_token token, t_cmd *cmd);
 int		ft_visit(t_token token, t_cmd *cmd);
 char	*ft_check_eof(char *eof);
 void	ft_parsing_multiline(char *eof, t_cmd *cmd);
+void	dredi_l_check(t_tree_node *tree);
 
 void			ft_add_env(t_cmd *cmd);
 void			ft_builtin_run(t_cmd *cmd);

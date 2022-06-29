@@ -38,6 +38,27 @@ void displayTree(t_tree_node *node)
 	}
 }
 
+void	dredi_l_check(t_tree_node *tree)
+{
+	t_tree_node	*redi;
+	int			cnt;
+
+	cnt = 0;
+	while (tree)
+	{
+		redi = tree->left;
+		while (redi)
+		{
+			if (redi->data.type == DREDI_L)
+				cnt++;
+			redi = redi->left;
+		}
+		tree = tree->right;
+	}
+	if (cnt > 16)
+		ft_error("bash: maximum here-document count exceeded\n");
+}
+
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_init_struct	*init_struct;
@@ -53,7 +74,7 @@ int	main(int argc, char *argv[], char *envp[])
 		{
 		 	add_history(str);
 			init_struct->tree = ft_parser(str);
-			// tree에서 표준입력을 count해서 17개 이상이면 shell 종료시키기
+			dredi_l_check(init_struct->tree->root);
 			env_quote_processing(init_struct);
 			// displayTree(init_struct->tree->root);
 			ft_excution(init_struct);
