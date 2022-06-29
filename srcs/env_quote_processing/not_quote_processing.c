@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:17:30 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/28 16:23:46 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/06/29 12:01:07 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ static char	*processing(char *temp, t_hashtable_data *data, int *idx, int *point
 
 	temp2 = ft_calloc(ft_strlen(temp) + ft_strlen(data->value) + 1, sizeof(char));
 	i = -1;
-	while (++i <= *idx)
+	while (++i < *idx)
 		temp2[i] = temp[i];
-	i--;
 	while (temp[i] != '$' && temp[i])
 	{
 		temp2[i] = temp[i];
@@ -57,7 +56,7 @@ int	not_quote_processing(t_tree_node *node, int idx, t_hashtable *hashtable)
 	token = node->data.token;
 	point = 0;
 	i = idx;
-	while (token[i] && token[i] != '\'' && token[i] != '\"')
+	while (token[i] && !quote_check(&token[i]))
 	{
 		if (token[i] == '$')
 		{
