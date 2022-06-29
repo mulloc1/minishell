@@ -61,6 +61,10 @@ t_init_struct	*test(char *str, int argc, char *envp[])
 # define TEST16 "Hello World $HOME \"$HOME\""
 # define TEST17 "Hello World $HOME"
 # define TEST18 "ls -l | echo \"$HOME\" | < $HOME \"$HOME\""
+# define TEST19 "echo    '$HOME' '$HOME' "
+# define TEST20 "echo    '$HOME' '$HOME'  $HOME"
+# define TEST21 "echo \"$HOME $HOME $HOME $HOME       $HOME\""
+# define TEST22 "echo '$HOME     $HOME    \"$HOME\" '" 
 
 //int	main(int argc, char *argv[], char *envp[])
 //{

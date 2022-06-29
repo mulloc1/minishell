@@ -80,7 +80,6 @@ static t_list *sort_env_list_init(char *envp[])
 		free(envp_sp);
 	}
 	sort_env_list_remove(&list, "_");
-	sort_env_list_remove(&list, "");
 	return (list);
 }
 
