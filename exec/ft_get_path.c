@@ -1,82 +1,80 @@
 #include "minishell.h"
 #include "libft.h"
 #include <stdlib.h>
+#include <sys/stat.h>
 
-static void	ft_set_string(t_cmd *cmd, char *str)
+// 디렉토리 fail 126
+// 파일 권한 없음 fail 126
+
+static int	ft_permission_check(t_cmd *cmd, struct stat st)
 {
-	int	len;
+	char			*id_str;
+	unsigned int	id_digit;
 
-	len = ft_strlen(str) + 1;
-	cmd->path = malloc(sizeof(char) * 15);
-	cmd->argv = malloc(sizeof(char *) * 3);
-	if (!cmd->path || !cmd->argv)
-		ft_error("malloc fail\n");
-	cmd->argv[0] = malloc(sizeof(char) * 6);
-	cmd->argv[1] = malloc(sizeof(char) * len);
-	cmd->argv[2] = NULL;
-	if (!cmd->argv[0] || !cmd->argv[1])
-		ft_error("malloc fail\n");
-	ft_strlcpy(cmd->path, "/usr/bin/which", 20);
-	ft_strlcpy(cmd->argv[0], "which", 10);
-	ft_strlcpy(cmd->argv[1], str, len);
-}
-
-static char	*ft_set_path(char *path)
-{
-	int	i;
-
-	i = -1;
-	while (path[++i])
+	id_str = hashtable_search(cmd->table, "UID");
+	if (id_str)
 	{
-		if (path[i] == '\n')
-			path[i] = '\0';
+		id_digit = ft_atoi(id_str);
+		if (id_digit == st.st_uid && ((st.st_mode & S_IXUSR) == 0100))
+			return (TRUE);
 	}
-	return (path);
-}
-
-static char	*ft_read_pipe(int fd)
-{
-	char	*path;
-	char	*temp;
-	char	buf[512];
-	int		buf_size;
-
-	path = ft_strdup("");
-	if (!path)
-		ft_error("malloc fail\n");
-	buf_size = 1;
-	while (buf_size > 0)
+	id_str = hashtable_search(cmd->table, "GROUPS");
+	if (id_str)
 	{
-		buf_size = read(fd, buf, 500);
-		if (buf_size < 0)
-			ft_error("read fail\n");
-		else if (!buf_size)
-			break ;
-		buf[buf_size] = '\0';
-		temp = path;
-		path = ft_strjoin(temp, buf);
-		if (!path)
-			ft_error("malloc fail\n");
-		free(temp);
+		id_digit = ft_atoi(id_str);
+		if (id_digit == st.st_gid && ((st.st_mode & S_IXGRP) == 0100))
+			return (TRUE);
 	}
-	return (ft_set_path(path));
+	if ((st.st_mode & S_IXOTH) == 0100)
+		return (TRUE);
+	return (FALSE);
 }
 
-char	*ft_get_path(char *str, char **envp)
+static void	ft_check_path(t_cmd *cmd)
 {
-	t_cmd	cmd;
-	int		status;
-	char	*path;
+	struct stat		st;
 
-	ft_set_string(&cmd, str);
-	pipe(cmd.pipe);
-	cmd.in_fd = STDIN;
-	cmd.out_fd = STDOUT;
-	cmd.envp = envp;
-	cmd.builtins = FALSE;
-	ft_cmd_run(&cmd);
-	waitpid(cmd.last_pid, &status, 0);
-	path = ft_read_pipe(cmd.pipe[P_READ]);
-	close(cmd.pipe[P_READ]);
-	return (path);
+	if (stat(cmd->argv[0], &st) < 0)
+		return ;
+	if (S_ISDIR(st.st_mode))
+	{
+		cmd->path_state = IS_DIR;
+		return ;
+	}
+	else if (S_ISREG(st.st_mode))
+	{
+		if (!ft_permission_check(cmd, st));
+		{
+			cmd->path_state = PM_DENIED;
+			return ;
+		}
+	}
+	cmd->path = ft_strdup(cmd->argv[0]);
+	if (!cmd->path)
+		ft_error("malloc fail\n");
+}
+
+static int	ft_path_join_check(t_cmd *cmd, char *env_path)
+{
+	char	*join_path;
+
+	join_path = ft_strjoin(env_path, cmd->argv[0]);
+}
+
+void	ft_get_path(t_cmd *cmd)
+{
+	extern t_list	*path_list;
+	t_list			*temp;
+
+	if (!path_list)
+		ft_create_path_list(cmd);
+	ft_check_path(cmd);
+	temp = path_list;
+	while (!cmd->path && temp)
+	{
+		if (ft_path_join_check(cmd, temp->content))
+			return ;
+		temp = temp->next;
+	}
+	cmd->path_state = NOT_VALID;
 }

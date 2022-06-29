@@ -47,7 +47,7 @@ static void	ft_print_line(char *str, t_cmd *cmd)
 	}
 }
 
-void	ft_parsing_multiline(char *eof, t_cmd *cmd)
+void	ft_read_parsing(char *eof, t_cmd *cmd)
 {
 	char	*str;
 	size_t	len;
@@ -59,6 +59,7 @@ void	ft_parsing_multiline(char *eof, t_cmd *cmd)
 		if (!ft_strncmp(eof, str, len + 10))
 			break ;
 		ft_print_line(str, cmd);
+		write(cmd->pipe[P_WRITE], "\n", 1);
 		free(str);
 	}
 	free(str);

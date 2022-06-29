@@ -40,10 +40,10 @@ void	ft_check_exit_status(char *num)
 	while (num[++i])
 	{
 		if (!ft_isdigit(num[i]))
-			(unsigned char)ft_exit_error(num);
+			ft_exit_error(num);
 		result = (result * 10) + (num[i] - '0');
 		if ((!minus && result > long_max) || (minus && result > long_max + 1))
-			(unsigned char)ft_exit_error(num);
+			ft_exit_error(num);
 	}
 	exit ((unsigned char)result);
 }

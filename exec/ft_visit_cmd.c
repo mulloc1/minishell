@@ -33,6 +33,6 @@ int	ft_visit_cmd(t_token token, t_cmd *cmd)
 		ft_error("split malloc fail\n");
 	if (ft_is_builtin(cmd))
 		return (SUCCESS);
-	cmd->path = ft_get_path(cmd->argv[0], cmd->envp);
+	ft_get_path(cmd);
 	return (SUCCESS);
 }

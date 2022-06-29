@@ -11,6 +11,7 @@
 # define P_WRITE 1
 # define STDIN 0
 # define STDOUT 1
+# define VALID 1
 
 
 enum e_builtins
@@ -31,6 +32,14 @@ enum e_token_type
 	REDI_R,
 	DREDI_L,
 	DREDI_R
+};
+
+enum e_cmd_state
+{
+	NOT_VALID = 1, // 127
+	IS_DIR, // 126
+	PM_DENIED, // 126
+	IN_PUT_ERR // 1
 };
 
 typedef struct s_token
@@ -72,6 +81,7 @@ typedef struct s_cmd
 	pid_t		last_pid;
 	int			builtins;
 	int			is_pipe;
+	int			path_state;
 	t_hashtable	*table;
 	t_list		*env_list;
 }	t_cmd;
@@ -94,7 +104,7 @@ int				single_quote_processing(t_tree_node *node, int idx);
 
 void	ft_search_tree(t_tree_node *node, t_cmd	*cmd);
 void	ft_cmd_run(t_cmd *cmd);
-char	*ft_get_path(char *str, char **envp);
+void	ft_get_path(t_cmd *cmd);
 void	ft_open_pipe(t_cmd *cmd, t_tree_node *node);
 int		ft_visit_cmd(t_token token, t_cmd *cmd);
 int		ft_visit_double_redi_left(t_token token, t_cmd *cmd);
@@ -103,7 +113,7 @@ int		ft_visit_redi_left(t_token token, t_cmd *cmd);
 int		ft_visit_redi_right(t_token token, t_cmd *cmd);
 int		ft_visit(t_token token, t_cmd *cmd);
 char	*ft_check_eof(char *eof);
-void	ft_parsing_multiline(char *eof, t_cmd *cmd);
+void	ft_read_parsing(char *eof, t_cmd *cmd);
 
 int				ft_add_env(t_cmd *cmd);
 void			ft_builtin_run(t_cmd *cmd);

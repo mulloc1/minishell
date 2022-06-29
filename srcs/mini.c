@@ -8,7 +8,7 @@
 #include "parser.h"
 #include "libft.h"
 
-int	exit_code;
+t_list	*path_list;
 
 void displayTree(t_tree_node *node)
 {

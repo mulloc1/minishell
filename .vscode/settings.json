@@ -6,6 +6,7 @@
 		"readline.h": "c",
 		"history.h": "c",
 		"hashtable.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"fcntl.h": "c"
 	}
 }
