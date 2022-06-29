@@ -1,13 +1,14 @@
 #include "hashtable.h"
 #include "libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 int hashtable_insert(t_hashtable *table, char *key, char *value)
 {
 	unsigned long long  hashcode;
 	unsigned int		idx;
 	t_hashtable_data	*data;
-	t_list			  *node;
+	t_list				*node;
 
 	if (!key || !table)
 		return (0);

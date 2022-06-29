@@ -1,5 +1,6 @@
 #include "libft.h"
 #include "hashtable.h"
+#include <stdio.h>
 
 unsigned long long   hashcode_making(char *key)
 {
@@ -21,8 +22,9 @@ t_list  *key_overlap_check(t_list *top, char *key)
 {
     if (!top)
         return (NULL);
-    while (!top && ft_strncmp(((t_hashtable_data *)top->content)->key, key, ft_strlen(key)))
-        top = top->next;
+    while (!top && !ft_strncmp(((t_hashtable_data *)top->content)->key, key, ft_strlen(key) + 1))
+    	top = top->next;
+	if (ft_strncmp(((t_hashtable_data *)top->content)->key, key, ft_strlen(key) + 1))
+		top = top->next;
     return (top);
 }
-

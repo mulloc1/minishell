@@ -15,7 +15,7 @@ static t_hashtable *hashtable_init(char *envp[])
 	table = hashtable_create();
 	while (*envp)
 	{
-		sp_envp = ft_split(*envp, '=');
+		sp_envp = ft_export_split(*envp);
 		hashtable_insert(table, sp_envp[0], sp_envp[1]);
 		free(sp_envp[0]);
 		free(sp_envp[1]);
@@ -73,13 +73,14 @@ static t_list *sort_env_list_init(char *envp[])
 	i = -1;
 	while (envp[++i])
 	{
-		envp_sp = ft_split(envp[i], '=');
+		envp_sp = ft_export_split(envp[i]);
 		sort_env_list_insert(&list, envp_sp[0]);
 		free(envp_sp[0]);
 		free(envp_sp[1]);
 		free(envp_sp);
 	}
 	sort_env_list_remove(&list, "_");
+	sort_env_list_remove(&list, "");
 	return (list);
 }
 
