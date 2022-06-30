@@ -12,6 +12,8 @@ static int	ft_search_redirect(char *str)
 {
 	int	i;
 
+	if (!str)
+		return (-1);
 	i = 0;
 	while (!(str[i] == '>' || str[i] == '<') && str[i])
 	{
@@ -88,9 +90,11 @@ t_tree	*ft_parser(char *str)
 	cmds = ft_split_mini(str, '|');
 	temp = tree->root;
 	ft_pipe_tree_parsing(cmds[0], tree->root, tree->root);
-	i = 0;
+	i = -1;
 	while (cmds[++i])
 	{
+		if (i == 0)
+			continue ;
 		temp = insert_right_node(temp, (t_tree_node){{0, 0}, 0, NULL, NULL});
 		ft_pipe_tree_parsing(cmds[i], temp, temp);
 	}

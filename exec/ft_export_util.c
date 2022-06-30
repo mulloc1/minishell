@@ -87,7 +87,7 @@ static int	ft_keydup(char **ret, char *src)
 	while (src[++i])
 		if (src[i] == '=')
 			break ;
-	ret[0] = malloc(sizeof(char) * i);
+	ret[0] = malloc(sizeof(char) * (i + 1));
 	if (!ret[0])
 		ft_error("malloc fail\n");
 	ret[0][i] = '\0';
