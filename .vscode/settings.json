@@ -8,6 +8,17 @@
 		"hashtable.h": "c",
 		"stdlib.h": "c",
 		"fcntl.h": "c",
-		"functional": "c"
+		"functional": "c",
+		"__hash_table": "c",
+		"__split_buffer": "c",
+		"array": "c",
+		"bitset": "c",
+		"initializer_list": "c",
+		"iterator": "c",
+		"string": "c",
+		"string_view": "c",
+		"unordered_map": "c",
+		"utility": "c",
+		"vector": "c"
 	}
 }

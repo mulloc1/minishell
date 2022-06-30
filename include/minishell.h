@@ -39,7 +39,8 @@ enum e_cmd_state
 	NOT_VALID = 1, // 127
 	IS_DIR, // 126
 	PM_DENIED, // 126
-	IN_PUT_ERR // 1
+	IN_PUT_ERR, // 1
+	SPACE
 };
 
 typedef struct s_token
@@ -136,5 +137,6 @@ void			ft_export(t_cmd *cmd);
 void			ft_pwd(t_cmd *cmd);
 void			ft_unset(t_cmd *cmd);
 void			ft_excution(t_init_struct *init_struct);
+char			**ft_split_argv(char *token, t_hashtable *table)
 
 #endif

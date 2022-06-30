@@ -28,9 +28,8 @@ static int	ft_is_builtin(t_cmd *cmd)
 
 int	ft_visit_cmd(t_token token, t_cmd *cmd)
 {
-	cmd->argv = ft_split(token.token, ' ');
-	if (!cmd->argv)
-		ft_error("split malloc fail\n");
+	cmd->argv = ft_split_argv(token.token, cmd->table);
+		return (SUCCESS);
 	if (ft_is_builtin(cmd))
 		return (SUCCESS);
 	ft_get_path(cmd);

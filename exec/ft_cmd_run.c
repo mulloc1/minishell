@@ -64,13 +64,15 @@ static void	ft_clear_cmd(t_cmd *cmd)
 	if (cmd->path)
 		free(cmd->path);
 	cmd->path = NULL;
+	if (cmd->builtins)
+		cmd->builtins = FALSE;
+	if (!cmd->argv)
+		return ;
 	i = -1;
 	while(cmd->argv[++i])
 		free(cmd->argv[i]);
 	free(cmd->argv);
 	cmd->argv = NULL;
-	if (cmd->builtins)
-		cmd->builtins = FALSE;
 }
 
 void	ft_cmd_run(t_cmd *cmd)
@@ -83,11 +85,14 @@ void	ft_cmd_run(t_cmd *cmd)
 		ft_clear_cmd(cmd);
 		return ;
 	}
-	pid = fork();
-	if (pid < 0)
-		ft_error("fork fail\n");
-	else if (pid == 0)
-		ft_child_proc(cmd);
+	if (cmd->argv)
+	{
+		pid = fork();
+		if (pid < 0)
+			ft_error("fork fail\n");
+		else if (pid == 0)
+			ft_child_proc(cmd);
+		cmd->last_pid = pid;
+	}
 	ft_clear_cmd(cmd);
-	cmd->last_pid = pid;
 }

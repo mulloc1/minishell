@@ -21,13 +21,14 @@
 
 int	ft_visit_redi_left(t_token token, t_cmd *cmd)
 {
+	char	*filename;
+
+	//filename = sdfnlsdf(token.token, cmd->table);
 	if (cmd->in_fd != STDIN)
 		close(cmd->in_fd);
-	cmd->in_fd = open(token.token, O_RDONLY);
+	cmd->in_fd = open(filename, O_RDONLY);
 	if (cmd->in_fd < 0)
 	{
-		if (cmd->out_fd > 1)
-			close(cmd->out_fd);
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(token.token, 2);
 		ft_putstr_fd(": No such file or directory\n", 2);
