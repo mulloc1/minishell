@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:16:14 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/28 16:23:51 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/06/30 14:00:12 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char	*processing(char *temp, t_hashtable_data *data, int *idx, int *point
 		while (data->value && data->value[++j])
 			temp2[i++] = data->value[j];
 	*idx = i;
-	*point = i + 1;
+	*point = i;
 	while ((temp[z] == '$' || ft_isnaming(temp[z])) && temp[z])
 		z++;
 	while (temp[z])
@@ -59,7 +59,7 @@ int	double_quote_processing(t_tree_node *node, int idx, t_hashtable *hashtable)
 	while (1)
 	{
 		data.key = check_env(temp, i);
-		if (!data.key || !temp[point] || (point > 0 && (temp[point + 1] == '\"' || temp[point + 1] == '\'')))
+		if (!data.key || !temp[point] || (point > 0 && (temp[point] == '\"' || temp[point + 1] == '\"')))
 		{
 			if (data.key)
 				free(data.key);
