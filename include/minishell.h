@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:24:51 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 18:28:42 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/30 19:16:51 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void			env_quote_processing(t_init_struct	*init_struct);
 int				double_quote_processing(t_tree_node *node, \
 		int idx, t_hashtable *hashtable);
 int				single_quote_processing(t_tree_node *node, int idx);
+int				ft_end_env(char *key, char *token, int point);
 
 void			ft_search_tree(t_tree_node *node, t_cmd	*cmd);
 void			ft_cmd_run(t_cmd *cmd);

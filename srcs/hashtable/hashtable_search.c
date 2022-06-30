@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:01:23 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 17:09:31 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/30 19:05:23 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ char	*hashtable_search(t_hashtable *table, char *key)
 		return (NULL);
 	hashcode = hashcode_making(key);
 	idx = hashcode % table->size;
-	data = table->hashtable[idx].top->content;
+	if (table->hashtable[idx].top)
+		data = table->hashtable[idx].top->content;
+	else
+		return (NULL);
 	if (table->hashtable[idx].size == 1)
 	{
 		if (!ft_strncmp(key, data->key, ft_strlen(key) + 1))

@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:23:31 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 17:23:59 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/30 19:03:24 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,52 +110,3 @@ t_tree	*ft_parser(char *str)
 	free(cmds);
 	return (tree);
 }
-
-//void displayTree(t_tree_node *node)
-//{
-//	if (node)
-//	{
-//		switch (node->data.type)
-//		{
-//		case CMD:
-//			printf("type : %s\t", "CMD");
-//			break;
-//		case REDI_L:
-//			printf("type : %s\t", "<");
-//			break;
-//		case REDI_R:
-//			printf("type : %s\t", ">");
-//			break;
-//		case DREDI_R:
-//			printf("type : %s\t", ">>");
-//			break;
-//		case DREDI_L:
-//			printf("type : %s\t", "<<");
-//			break;
-//		default:
-//			break;
-//		}
-//		printf("%s\n", node->data.token);
-//		displayTree(node->left);
-//		displayTree(node->right);
-//	}
-//}
-//
-//void	test(char	*str)
-//{
-//	t_tree	*tree;
-//
-//	printf("============== %s ==============\n", str);
-//	tree = ft_parser(str);
-//	displayTree(tree->root);
-//}
-//
-//int	main(void)
-//{
-//	test(TEST1);
-//	test(TEST2);
-//	test(TEST3);
-//	test(TEST4);
-//	test(TEST5);
-//	return (0);
-//}

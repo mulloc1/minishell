@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:16:14 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 17:22:11 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/30 19:24:26 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,9 @@ static char	*processing(char *temp, \
 	i = -1;
 	while (++i <= *idx)
 		temp2[i] = temp[i];
-	while (temp[i] != '$' && temp[i])
-	{
+	i--;
+	while (temp[++i] != '$' && temp[i])
 		temp2[i] = temp[i];
-		i++;
-	}
 	z = i;
 	j = -1;
 	if (data->value)
@@ -51,30 +49,26 @@ int	double_quote_processing(t_tree_node *node, int idx, t_hashtable *hashtable)
 {
 	t_hashtable_data	data;
 	char				*temp;
-	char				*temp2;
 	int					point;
 	int					i;
 
-	temp = node->data.token;
 	point = 0;
 	i = idx;
 	while (1)
 	{
-		data.key = check_env(temp, i);
-		if (!data.key || !temp[point] || \
-				(point > 0 && (temp[point] == '\"' || temp[point + 1] == '\"')))
+		data.key = check_env(node->data.token, i);
+		if (ft_end_env(data.key, node->data.token, point))
 		{
 			if (data.key)
 				free(data.key);
 			break ;
 		}
 		data.value = hashtable_search(hashtable, data.key);
-		temp2 = processing(temp, &data, &i, &point);
+		temp = processing(node->data.token, &data, &i, &point);
 		free(data.key);
-		free(temp);
-		temp = temp2;
+		free(node->data.token);
+		node->data.token = temp;
 	}
-	node->data.token = temp;
 	point = single_quote_processing(node, idx);
 	return (point);
 }

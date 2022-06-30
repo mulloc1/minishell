@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:27:16 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 17:33:43 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/30 19:26:51 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,7 @@ t_init_struct	*init(int argc, char *envp[])
 
 	if (argc != 1)
 		exit(1);
-//	 signal_init();
-init_struct = malloc(sizeof(t_init_struct));
+	init_struct = malloc(sizeof(t_init_struct));
 	if (!init_struct)
 		return (NULL);
 	init_struct->list = sort_env_list_init(envp);

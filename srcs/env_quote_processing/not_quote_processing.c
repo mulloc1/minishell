@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:17:30 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 17:20:38 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/30 19:23:58 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,9 @@ static char	*processing(char *temp, \
 	i = -1;
 	while (++i < *idx)
 		temp2[i] = temp[i];
-	while (temp[i] != '$' && temp[i])
-	{
+	i--;
+	while (temp[++i] != '$' && temp[i])
 		temp2[i] = temp[i];
-		i++;
-	}
 	z = i;
 	j = -1;
 	if (data->value)
@@ -50,31 +48,27 @@ static char	*processing(char *temp, \
 int	not_quote_processing(t_tree_node *node, int idx, t_hashtable *hashtable)
 {
 	t_hashtable_data	data;
-	char				*token;
 	char				*temp;
 	int					point;
 	int					i;
 
-	token = node->data.token;
 	point = 0;
 	i = idx;
-	while (token[i] && !quote_check(&token[i]))
+	while (node->data.token[i] && !quote_check(&node->data.token[i]))
 	{
-		if (token[i] == '$')
+		if (node->data.token[i] == '$')
 		{
-			data.key = check_env(token, i);
-			if (!data.key || !token[point] || (point > 0 && \
-						(token[point + 1] == '\"' || token[point + 1] == '\'')))
+			data.key = check_env(node->data.token, i);
+			if (ft_end_env(data.key, node->data.token, point))
 				break ;
 			data.value = hashtable_search(hashtable, data.key);
-			temp = processing(token, &data, &i, &point);
+			temp = processing(node->data.token, &data, &i, &point);
 			free(data.key);
-			free(token);
-			token = temp;
+			free(node->data.token);
+			node->data.token = temp;
 		}
 		else
 			i++;
 	}
-	node->data.token = token;
 	return (i - idx);
 }

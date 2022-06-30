@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:17:12 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 17:18:27 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/30 19:26:33 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,12 @@ int	quote_check(char *token)
 		}
 	}
 	return (NOT_QUOTE);
+}
+
+int	ft_end_env(char *key, char *token, int point)
+{
+	if (!key || !token[point] || \
+			(point > 0 && (token[point] == '\"' || token[point + 1] == '\"')))
+		return (1);
+	return (0);
 }
