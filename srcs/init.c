@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:27:16 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 17:27:17 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/30 17:33:43 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ static t_list	*sort_env_list_init(char *envp[])
 		free(envp_sp[1]);
 		free(envp_sp);
 	}
+	sort_env_list_remove(&list, "_");
 	return (list);
 }
 
