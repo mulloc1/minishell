@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:17:12 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 13:54:08 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/30 17:18:27 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ char	*check_env(char *temp, int idx)
 	res = ft_calloc(50, sizeof(char));
 	while (temp[idx] != '$' && temp[idx])
 		idx++;
-	if (temp[idx] != '$' || temp[idx + 1] == '\0' || temp[idx + 1] == ' ' || temp[idx + 1] == '\"')
+	if (temp[idx] != '$' || temp[idx + 1] == '\0' || \
+			temp[idx + 1] == ' ' || temp[idx + 1] == '\"')
 	{
 		free(res);
 		return (NULL);

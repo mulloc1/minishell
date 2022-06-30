@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:00:25 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/29 14:37:56 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/30 17:18:49 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static	void	processing(t_init_struct *init_struct, t_tree_node	*node)
 void	env_quote_processing(t_init_struct	*init_struct)
 {
 	t_tree_node	*cmd;
-	t_tree_node *redi;
+	t_tree_node	*redi;
 
 	cmd = init_struct->tree->root;
 	while (cmd)

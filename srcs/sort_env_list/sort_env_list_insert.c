@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 09:36:54 by mulloc            #+#    #+#             */
-/*   Updated: 2022/06/30 15:20:47 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/06/30 17:22:42 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	sort_env_list_insert(t_list **list, char *key)
 	}
 	if (ft_strncmp(key, (char *)temp->content, key_len + 1) == 1)
 		temp->next = new;
-	else 
+	else
 	{
 		free(new->content);
 		free(new);

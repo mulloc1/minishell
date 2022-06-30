@@ -1,12 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 17:23:31 by jaebae            #+#    #+#             */
+/*   Updated: 2022/06/30 17:23:59 by jaebae           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "minishell.h"
 #include <stdio.h>
 #include <stdlib.h>
-#define	TEST1 "cat \" < file1 ls -l \" | cat "
-#define	TEST2 "echo \" cat > file2 | ls -l \" | cat "
-#define	TEST3 "echo \' \"echo HelloWorld\" \' | ls -l > file1 | wc -l"
-#define	TEST4 "echo \"HelloWorld"
-#define	TEST5 "echo HelloWorld\""
 
 static int	ft_search_redirect(char *str)
 {
@@ -65,7 +72,8 @@ static t_token	ft_redirection_token_make(char *cmd, int i)
 	return (res);
 }
 
-static void	ft_pipe_tree_parsing(char *cmd, t_tree_node *left, t_tree_node *right)
+static void	ft_pipe_tree_parsing(char *cmd, \
+		t_tree_node *left, t_tree_node *right)
 {
 	int	temp;
 
@@ -99,8 +107,8 @@ t_tree	*ft_parser(char *str)
 		ft_pipe_tree_parsing(cmds[i], temp, temp);
 	}
 	free(cmds[i]);
-    free(cmds);
-    return (tree);
+	free(cmds);
+	return (tree);
 }
 
 //void displayTree(t_tree_node *node)

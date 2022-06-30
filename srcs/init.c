@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 17:27:16 by jaebae            #+#    #+#             */
+/*   Updated: 2022/06/30 17:27:17 by jaebae           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "hashtable.h"
 #include "libft.h"
 #include "minishell.h"
@@ -7,7 +19,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static t_hashtable *hashtable_init(char *envp[])
+static t_hashtable	*hashtable_init(char *envp[])
 {
 	t_hashtable	*table;
 	char		**sp_envp;
@@ -20,19 +32,19 @@ static t_hashtable *hashtable_init(char *envp[])
 		free(sp_envp[0]);
 		free(sp_envp[1]);
 		free(sp_envp);
-		envp++;	
+		envp++;
 	}
 	return (table);
 }
 
-static char    **envp_init(char *envp[])
+static char	**envp_init(char *envp[])
 {
 	char	**res;
 	int		cnt;
 	int		idx;
 
 	cnt = -1;
-    while (envp[++cnt])
+	while (envp[++cnt])
 		;
 	res = malloc(cnt * sizeof(char *));
 	if (!res)
@@ -53,7 +65,7 @@ static char    **envp_init(char *envp[])
 	return (res);
 }
 
-static t_list *sort_env_list_init(char *envp[])
+static t_list	*sort_env_list_init(char *envp[])
 {
 	char	**envp_sp;
 	t_list	*list;
@@ -79,20 +91,19 @@ static t_list *sort_env_list_init(char *envp[])
 //	signal(SIGTERM, sigteam_handler());
 //}
 
-t_init_struct   *init(int argc, char *envp[])
+t_init_struct	*init(int argc, char *envp[])
 {
-   t_init_struct    *init_struct;
+	t_init_struct	*init_struct;
 
-   if (argc != 1)
-	   exit(1);
-//   signal_init();
-   init_struct = malloc(sizeof(t_init_struct));
-   if (!init_struct)
-       return (NULL);
-   init_struct->list = sort_env_list_init(envp);
-   init_struct->table = hashtable_init(envp);
-   init_struct->envp = envp_init(envp);
-   init_struct->tree = NULL;
-   return (init_struct);
+	if (argc != 1)
+		exit(1);
+//	 signal_init();
+init_struct = malloc(sizeof(t_init_struct));
+	if (!init_struct)
+		return (NULL);
+	init_struct->list = sort_env_list_init(envp);
+	init_struct->table = hashtable_init(envp);
+	init_struct->envp = envp_init(envp);
+	init_struct->tree = NULL;
+	return (init_struct);
 }
-
