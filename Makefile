@@ -2,7 +2,6 @@ NAME = minishell
 
 CC = gcc
 CFLAG = -Werror -Wall -Wextra -I include -g
-# OFLAG = -lreadline -L ~/.brew/opt/readline/lib -I ~/.brew/opt/readline/include
 OFLAG = -lreadline -L/opt/homebrew/opt/readline/lib -I/opt/homebrew/opt/readline/include
 SRCS = srcs/mini.c \
 	   srcs/bintree.c \

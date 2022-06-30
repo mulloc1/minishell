@@ -34,30 +34,6 @@ void	ft_delete_path_list(void *list)
 	free(list);
 }
 
-static int	ft_permission_check(t_cmd *cmd, struct stat st)
-{
-	char			*id_str;
-	unsigned int	id_digit;
-
-	id_str = hashtable_search(cmd->table, "UID");
-	if (id_str)
-	{
-		id_digit = ft_atoi(id_str);
-		if (id_digit == st.st_uid && ((st.st_mode & S_IXUSR) == S_IXUSR))
-			return (TRUE);
-	}
-	id_str = hashtable_search(cmd->table, "GROUPS");
-	if (id_str)
-	{
-		id_digit = ft_atoi(id_str);
-		if (id_digit == st.st_gid && ((st.st_mode & S_IXGRP) == S_IXGRP))
-			return (TRUE);
-	}
-	if ((st.st_mode & S_IXOTH) == S_IXOTH)
-		return (TRUE);
-	return (FALSE);
-}
-
 void	ft_check_path(t_cmd *cmd, char *check_path)
 {
 	struct stat		st;
@@ -73,13 +49,14 @@ void	ft_check_path(t_cmd *cmd, char *check_path)
 	}
 	else if (S_ISREG(st.st_mode))
 	{
-		if (!ft_permission_check(cmd, st))
+		if ((st.st_mode & S_IXOTH) == S_IXOTH\
+		&& (st.st_mode & S_IROTH) == S_IROTH)
+			cmd->path = check_path;
+		else
 		{
 			cmd->path_state = PM_DENIED;
 			free(check_path);
 		}
-		else
-			cmd->path = check_path;
 	}
 }
 

@@ -23,6 +23,6 @@ void	ft_get_path(t_cmd *cmd)
 		temp = temp->next;
 	}
 	free(path_tmp);
-	if (!cmd->path)
+	if (!cmd->path && !cmd->path_state)
 		cmd->path_state = NOT_VALID;
 }
