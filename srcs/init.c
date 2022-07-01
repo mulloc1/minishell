@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:27:16 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/01 14:21:48 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/01 16:11:00 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	**envp_init(char *envp[])
 	cnt = -1;
 	while (envp[++cnt])
 		;
-	res = malloc(cnt + 1 * sizeof(char *));
+	res = malloc((cnt + 1) * sizeof(char *));
 	if (!res)
 		ft_error("envp_init() char * malloc failed");
 	idx = -1;

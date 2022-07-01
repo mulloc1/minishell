@@ -56,5 +56,6 @@ void	ft_modify_envp(t_cmd *cmd, char *str, char *new_key)
 	new_envp = ft_calloc(i + 1, sizeof(char *));
 	if (!new_envp)
 		ft_error("malloc fail\n");
+	ft_copy_envp(new_envp, cmd->envp);
 	cmd->envp = new_envp;
 }

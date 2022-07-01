@@ -1,6 +1,5 @@
 #include "minishell.h"
 #include "libft.h"
-#include "env.h"
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -23,18 +22,24 @@
 int	ft_visit_redi_left(t_token token, t_cmd *cmd)
 {
 	char	*filename;
+	char	**split_name;
+	int		result;
 
-	filename = block_make_valid(token.token, cmd->table);
+	split_name = ft_split_argv(token.token, cmd->table);
+	filename = split_name[0];
 	if (cmd->in_fd != STDIN)
 		close(cmd->in_fd);
+	result = TRUE;
 	cmd->in_fd = open(filename, O_RDONLY);
 	if (cmd->in_fd < 0)
 	{
 		ft_putstr_fd("minishell: ", 2);
-		ft_putstr_fd(token.token, 2);
+		ft_putstr_fd(filename, 2);
 		ft_putstr_fd(": No such file or directory\n", 2);
 		cmd->path_state = IN_PUT_ERR;
-		return (FAIL);
+		result = FALSE;
 	}
-	return (SUCCESS);
+	free(split_name);
+	free(filename);
+	return (result);
 }

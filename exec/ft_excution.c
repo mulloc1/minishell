@@ -25,6 +25,12 @@ void	ft_excution(t_init_struct *init_struct)
 	int		exit_code;
 	char	*exit_str;
 
+	if (!init_struct->tree)
+	{
+		ft_putendl_fd("minishell: syntax error", 2);
+		hashtable_insert(init_struct->table, "?", "258");
+		return ;
+	}
 	ft_init_struct_cmd(&cmd, init_struct);
 	ft_search_tree(init_struct->tree->root, &cmd);
 	init_struct->envp = cmd.envp;
