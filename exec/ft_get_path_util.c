@@ -22,7 +22,7 @@ void	ft_create_path_list(t_cmd *cmd)
 		temp = ft_lstnew(path_split[i]);
 		if (!temp)
 			ft_error("malloc fail\n");
-		ft_lstadd_front(&path_list, temp);
+		ft_lstadd_back(&path_list, temp);
 	}
 	free(path_split[i]);
 	free(path_split);
