@@ -6,7 +6,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-static void	ft_multiline(char *eof, int out_fd)
+static void	ft_read(char *eof, int out_fd)
 {
 	char	*str;
 	size_t	len;
@@ -31,9 +31,9 @@ static void	ft_read_multiline(char *eof, t_cmd *cmd)
 
 	new_eof = ft_check_eof(eof);
 	if (!new_eof)
-		ft_parsing_multiline(eof, cmd);
+		ft_read_parsing(eof, cmd);
 	else
-		ft_multiline(new_eof, cmd->pipe[P_WRITE]);
+		ft_read(new_eof, cmd->pipe[P_WRITE]);
 	close(cmd->pipe[P_WRITE]);
 }
 

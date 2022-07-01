@@ -1,7 +1,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-void	ft_exit_error(char *argv)
+int	ft_exit_error(char *argv)
 {
 	char	*err_msg;
 	int		exit_status;
@@ -9,20 +9,20 @@ void	ft_exit_error(char *argv)
 	if (argv)
 	{
 		err_msg = ": numeric argument required";
-		exit_status = 255;
+		exit (255);
 	}
 	else
 	{
 		err_msg = "too many arguments";
 		exit_status = 1;
 	}
-	ft_putstr_fd("bash: exit: ", 2);
+	ft_putstr_fd("minishell: exit: ", 2);
 	ft_putstr_fd(argv, 2);
 	ft_putendl_fd(err_msg, 2);
-	exit(exit_status);
+	return (exit_status);
 }
 
-unsigned char	ft_get_exit_status(char *num)
+void	ft_check_exit_status(char *num)
 {
 	unsigned long	result;
 	unsigned long	long_max;
@@ -45,5 +45,5 @@ unsigned char	ft_get_exit_status(char *num)
 		if ((!minus && result > long_max) || (minus && result > long_max + 1))
 			ft_exit_error(num);
 	}
-	return ((unsigned char)result);
+	exit ((unsigned char)result);
 }

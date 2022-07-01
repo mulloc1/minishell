@@ -46,7 +46,7 @@ static char	**envp_init(char *envp[])
 	cnt = -1;
 	while (envp[++cnt])
 		;
-	res = malloc(cnt * sizeof(char *));
+	res = malloc(cnt + 1 * sizeof(char *));
 	if (!res)
 		ft_error("envp_init() char * malloc failed");
 	idx = -1;
@@ -96,14 +96,16 @@ t_init_struct	*init(int argc, char *envp[])
 {
 	t_init_struct	*init_struct;
 
-	if (argc != 1)
-		ft_error("argc few");
-	init_struct = malloc(sizeof(t_init_struct));
-	if (!init_struct)
-		ft_error("init_struct malloc failed");
-	init_struct->list = sort_env_list_init(envp);
-	init_struct->table = hashtable_init(envp);
-	init_struct->envp = envp_init(envp);
-	init_struct->tree = NULL;
-	return (init_struct);
+   if (argc != 1)
+	   exit(1);
+//   signal_init();
+   init_struct = malloc(sizeof(t_init_struct));
+   if (!init_struct)
+       return (NULL);
+   init_struct->list = sort_env_list_init(envp);
+   init_struct->table = hashtable_init(envp);
+   init_struct->envp = envp_init(envp);
+   init_struct->tree = NULL;
+   init_struct->split_path = NULL;
+   return (init_struct);
 }

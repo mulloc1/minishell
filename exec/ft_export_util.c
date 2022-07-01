@@ -29,7 +29,7 @@ void	ft_export_error(char *name, int type)
 		cmd = "export: `";
 	else
 		cmd = "unset: `";
-	ft_putstr_fd("bash: ", 2);
+	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd(cmd, 2);
 	ft_putstr_fd(name, 2);
 	ft_putendl_fd("\': not a valid identifier", 2);

@@ -23,7 +23,7 @@ static int	ft_copy_eof(char *eof, char *new_eof, char quote)
 		}
 		new_eof[j++] = eof[i];
 	}
-	return (j - 1);
+	return (j);
 }
 
 char	*ft_check_eof(char *eof)

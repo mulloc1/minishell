@@ -23,6 +23,7 @@
 # define P_WRITE 1
 # define STDIN 0
 # define STDOUT 1
+# define VALID 1
 
 enum e_builtins
 {
@@ -42,6 +43,15 @@ enum e_token_type
 	REDI_R,
 	DREDI_L,
 	DREDI_R
+};
+
+enum e_cmd_state
+{
+	NOT_VALID = 1, // 127
+	IS_DIR, // 126
+	PM_DENIED, // 126
+	IN_PUT_ERR, // 1
+	SPACE
 };
 
 typedef struct s_token
@@ -68,9 +78,10 @@ typedef struct s_init_struct
 {
 	t_hashtable	*table;
 	t_list		*list;
-	t_tree		*tree;
-	char		**envp;
-}				t_init_struct;
+    t_tree      *tree;
+    char        **envp;
+	char		**split_path;
+}               t_init_struct;
 
 typedef struct s_cmd
 {
@@ -83,8 +94,10 @@ typedef struct s_cmd
 	pid_t		last_pid;
 	int			builtins;
 	int			is_pipe;
+	int			path_state;
 	t_hashtable	*table;
 	t_list		*env_list;
+	char		**split_path;
 }	t_cmd;
 
 t_tree			*create_bin_tree(t_tree_node root_node);
@@ -101,29 +114,35 @@ void			ft_quote_shift(char const *s, int *idx);
 t_tree			*ft_parser(char *str);
 int				ft_end_env(char *key, char *token, int point);
 
-void			ft_search_tree(t_tree_node *node, t_cmd	*cmd);
-void			ft_cmd_run(t_cmd *cmd);
-char			*ft_get_path(char *str, char **envp);
-void			ft_open_pipe(t_cmd *cmd, t_tree_node *node);
-int				ft_visit_cmd(t_token token, t_cmd *cmd);
-int				ft_visit_double_redi_left(t_token token, t_cmd *cmd);
-int				ft_visit_double_redi_right(t_token token, t_cmd *cmd);
-int				ft_visit_redi_left(t_token token, t_cmd *cmd);
-int				ft_visit_redi_right(t_token token, t_cmd *cmd);
-int				ft_visit(t_token token, t_cmd *cmd);
-char			*ft_check_eof(char *eof);
-void			ft_parsing_multiline(char *eof, t_cmd *cmd);
+void	ft_search_tree(t_tree_node *node, t_cmd	*cmd);
+void	ft_cmd_run(t_cmd *cmd);
+void	ft_get_path(t_cmd *cmd);
+void	ft_open_pipe(t_cmd *cmd, t_tree_node *node);
+int		ft_visit_cmd(t_token token, t_cmd *cmd);
+int		ft_visit_double_redi_left(t_token token, t_cmd *cmd);
+int		ft_visit_double_redi_right(t_token token, t_cmd *cmd);
+int		ft_visit_redi_left(t_token token, t_cmd *cmd);
+int		ft_visit_redi_right(t_token token, t_cmd *cmd);
+int		ft_visit(t_token token, t_cmd *cmd);
+char	*ft_check_eof(char *eof);
+void	ft_read_parsing(char *eof, t_cmd *cmd);
+void	ft_create_split_path(t_cmd *cmd);
+void	ft_modyfy_split_path(t_cmd *cmd);
+void	ft_check_path(t_cmd *cmd, char *check_path);
+void	ft_check_join_path(t_cmd *cmd, char *env_path, char *path_tmp);
+char	**ft_split_argv(char *token, t_hashtable *table);
 void			dredi_l_check(t_tree_node *tree);
 void			null_guard(void *ptr);
 
-void			ft_add_env(t_cmd *cmd);
+
+int				ft_add_env(t_cmd *cmd);
 void			ft_builtin_run(t_cmd *cmd);
 void			ft_cd(t_cmd *cmd);
 char			*ft_check_eof(char *eof);
 void			ft_echo(t_cmd *cmd);
 void			ft_env(t_cmd *cmd);
-void			ft_exit_error(char *argv);
-unsigned char	ft_get_exit_status(char *num);
+int				ft_exit_error(char *argv);
+void			ft_check_exit_status(char *num);
 void			ft_exit(t_cmd *cmd);
 void			ft_export_error(char *name, int type);
 int				ft_check_name_valid(char *name, int type);
@@ -133,5 +152,7 @@ void			ft_export(t_cmd *cmd);
 void			ft_pwd(t_cmd *cmd);
 void			ft_unset(t_cmd *cmd);
 void			ft_excution(t_init_struct *init_struct);
+void			ft_pop_envp(char **envp, char *name);
+void			ft_modify_envp(t_cmd *cmd, char *str, char *new_key);
 
 #endif
