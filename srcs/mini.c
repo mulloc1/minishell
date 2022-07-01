@@ -121,7 +121,6 @@ int	main(int argc, char *argv[], char *envp[])
 				dredi_l_check(init_struct->tree->root);
 				syntax_error_check(init_struct);
 			}
-			env_quote_processing(init_struct);
 			//displayTree(init_struct->tree->root);
 			ft_excution(init_struct);
 			if (init_struct->tree)

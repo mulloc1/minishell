@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   not_quote_processing.c                             :+:      :+:    :+:   */
+/*   double_quote_processing.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/26 14:17:30 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 19:23:58 by jaebae           ###   ########.fr       */
+/*   Created: 2022/06/26 14:16:14 by jaebae            #+#    #+#             */
+/*   Updated: 2022/07/01 13:41:57 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*processing(char *temp, \
 	temp2 = ft_calloc(ft_strlen(temp) + \
 			ft_strlen(data->value) + 1, sizeof(char));
 	i = -1;
-	while (++i < *idx)
+	while (++i <= *idx)
 		temp2[i] = temp[i];
 	i--;
 	while (temp[++i] != '$' && temp[i])
@@ -37,7 +37,7 @@ static char	*processing(char *temp, \
 		while (data->value && data->value[++j])
 			temp2[i++] = data->value[j];
 	*idx = i;
-	*point = i + 1;
+	*point = i;
 	while ((temp[z] == '$' || ft_isnaming(temp[z])) && temp[z])
 		z++;
 	while (temp[z])
@@ -45,7 +45,7 @@ static char	*processing(char *temp, \
 	return (temp2);
 }
 
-int	not_quote_processing(t_tree_node *node, int idx, t_hashtable *hashtable)
+int	double_quote_processing(char **block, int idx, t_hashtable *hashtable)
 {
 	t_hashtable_data	data;
 	char				*temp;
@@ -54,21 +54,21 @@ int	not_quote_processing(t_tree_node *node, int idx, t_hashtable *hashtable)
 
 	point = 0;
 	i = idx;
-	while (node->data.token[i] && !quote_check(&node->data.token[i]))
+	while (1)
 	{
-		if (node->data.token[i] == '$')
+		data.key = check_env(*block, i);
+		if (ft_end_env(data.key, *block, point))
 		{
-			data.key = check_env(node->data.token, i);
-			if (ft_end_env(data.key, node->data.token, point))
-				break ;
-			data.value = hashtable_search(hashtable, data.key);
-			temp = processing(node->data.token, &data, &i, &point);
-			free(data.key);
-			free(node->data.token);
-			node->data.token = temp;
+			if (data.key)
+				free(data.key);
+			break ;
 		}
-		else
-			i++;
+		data.value = hashtable_search(hashtable, data.key);
+		temp = processing(*block, &data, &i, &point);
+		free(data.key);
+		free(*block);
+		*block = temp;
 	}
-	return (i - idx);
+	point = single_quote_processing(block, idx);
+	return (point);
 }

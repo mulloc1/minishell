@@ -30,17 +30,17 @@ void displayTree(t_tree_node *node) {
 	}
 }
 
-t_init_struct	*test(char *str, int argc, char *envp[])
+char	*test(char *str, int argc, char *envp[])
 {
 	t_init_struct	*init_struct;
+	char			*temp;
 
 	init_struct = init(argc, envp);
-	init_struct->tree = ft_parser(str);
-	displayTree(init_struct->tree->root);
-	env_quote_processing(init_struct);
-	displayTree(init_struct->tree->root);
+	temp = block_make_valid(str, init_struct->table);
+	printf("%s\n", str);
+	printf("%s\n", temp);
 	printf("\n");
-	return (init_struct);
+	return (temp);
 }
 
 # define TEST1 "\"$HOME\""
@@ -70,28 +70,28 @@ int	main(int argc, char *argv[], char *envp[])
 {
 	argv++;
 
-	t_init_struct *init_struct1 = test(TEST1, argc, envp);
-	t_init_struct *init_struct2 = test(TEST2, argc, envp);
-	t_init_struct *init_struct3 = test(TEST3, argc, envp);
-	t_init_struct *init_struct4 = test(TEST4, argc, envp);
-	t_init_struct *init_struct5 = test(TEST5, argc, envp);
-	t_init_struct *init_struct6 = test(TEST6, argc, envp);
-	t_init_struct *init_struct7 = test(TEST7, argc, envp);
-	t_init_struct *init_struct8 = test(TEST8, argc, envp);
-	t_init_struct *init_struct9 = test(TEST9, argc, envp);
-	t_init_struct *init_struct10 = test(TEST10, argc, envp);
-	t_init_struct *init_struct11 = test(TEST11, argc, envp);
-	t_init_struct *init_struct12 = test(TEST12, argc, envp);
-	t_init_struct *init_struct13 = test(TEST13, argc, envp);
-	t_init_struct *init_struct14 = test(TEST14, argc, envp);
-	t_init_struct *init_struct15 = test(TEST15, argc, envp);
-	t_init_struct *init_struct16 = test(TEST16, argc, envp);
-	t_init_struct *init_struct17 = test(TEST17, argc, envp);
-	t_init_struct *init_struct18 = test(TEST18, argc, envp);
-	t_init_struct *init_struct19 = test(TEST19, argc, envp);
-	t_init_struct *init_struct20 = test(TEST20, argc, envp);
-	t_init_struct *init_struct21 = test(TEST21, argc, envp);
-	t_init_struct *init_struct22 = test(TEST22, argc, envp);
+	char *init_struct1 = test(TEST1, argc, envp);
+	char *init_struct2 = test(TEST2, argc, envp);
+	char *init_struct3 = test(TEST3, argc, envp);
+	char *init_struct4 = test(TEST4, argc, envp);
+	char *init_struct5 = test(TEST5, argc, envp);
+	char *init_struct6 = test(TEST6, argc, envp);
+	char *init_struct7 = test(TEST7, argc, envp);
+	char *init_struct8 = test(TEST8, argc, envp);
+	char *init_struct9 = test(TEST9, argc, envp);
+	char *init_struct10 = test(TEST10, argc, envp);
+	char *init_struct11 = test(TEST11, argc, envp);
+	char *init_struct12 = test(TEST12, argc, envp);
+	char *init_struct13 = test(TEST13, argc, envp);
+	char *init_struct14 = test(TEST14, argc, envp);
+	char *init_struct15 = test(TEST15, argc, envp);
+	char *init_struct16 = test(TEST16, argc, envp);
+	char *init_struct17 = test(TEST17, argc, envp);
+	char *init_struct18 = test(TEST18, argc, envp);
+	char *init_struct19 = test(TEST19, argc, envp);
+	char *init_struct20 = test(TEST20, argc, envp);
+	char *init_struct21 = test(TEST21, argc, envp);
+	char *init_struct22 = test(TEST22, argc, envp);
 //	system("leaks a.out");
 	return (0);
 }
