@@ -3,35 +3,29 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 
-void	ft_create_path_list(t_cmd *cmd)
+void	ft_create_split_path(t_cmd *cmd)
 {
-	extern t_list	*path_list;
-	char			**path_split;
-	t_list			*temp;
-	int				i;
-
-	path_split = ft_split(hashtable_search(cmd->table, "PATH"), ':');
-	if (!path_split)
-		ft_error("split malloc fail\n");
-	path_list = ft_lstnew(path_split[0]);
-	if (!path_list)
+	cmd->split_path = ft_split(hashtable_search(cmd->table, "PATH"), ':');
+	if (!cmd->split_path)
 		ft_error("malloc fail\n");
-	i = 0;
-	while (path_split[++i])
-	{
-		temp = ft_lstnew(path_split[i]);
-		if (!temp)
-			ft_error("malloc fail\n");
-		ft_lstadd_back(&path_list, temp);
-	}
-	free(path_split[i]);
-	free(path_split);
 }
 
-void	ft_delete_path_list(void *list)
+void	ft_modyfy_split_path(t_cmd *cmd)
 {
-	free(((t_list *)list)->content);
-	free(list);
+	char	*new_path;
+	int		i;
+
+	i = -1;
+	while (cmd->split_path[++i])
+		free(cmd->split_path[i]);
+	free(cmd->split_path);
+	new_path = hashtable_search(cmd->table, "PATH");
+	if (!new_path)
+		cmd->split_path = ft_calloc(sizeof(char *));
+	else
+		cmd->split_path = ft_split(hashtable_search(cmd->table, "PATH"), ':');
+	if (!cmd->split_path)
+		ft_error("malloc fail\n");
 }
 
 void	ft_check_path(t_cmd *cmd, char *check_path)

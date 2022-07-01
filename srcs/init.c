@@ -25,7 +25,7 @@ static t_hashtable *hashtable_init(char *envp[])
 	return (table);
 }
 
-static char    **envp_init(char *envp[])
+static char    **envp_init(char **envp)
 {
 	char	**res;
 	int		cnt;
@@ -34,7 +34,7 @@ static char    **envp_init(char *envp[])
 	cnt = -1;
     while (envp[++cnt])
 		;
-	res = malloc(cnt * sizeof(char *));
+	res = malloc(cnt + 1 * sizeof(char *));
 	if (!res)
 		return (NULL);
 	idx = -1;
@@ -104,6 +104,7 @@ t_init_struct   *init(int argc, char *envp[])
    init_struct->table = hashtable_init(envp);
    init_struct->envp = envp_init(envp);
    init_struct->tree = NULL;
+   init_struct->split_path = NULL;
    return (init_struct);
 }
 

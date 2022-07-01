@@ -19,6 +19,9 @@ static int	ft_remove_env(t_cmd *cmd)
 		}
 		hashtable_remove(cmd->table, cmd->argv[i]);
 		sort_env_list_remove(&cmd->env_list, cmd->argv[i]);
+		ft_pop_envp(cmd->envp, cmd->argv[i]);
+		if (!ft_strncmp(cmd->argv[i], "PATH", ft_strlen(cmd->argv[i])))
+			ft_modify_split_path(cmd);
 	}
 	return (exit_status);
 }

@@ -69,6 +69,7 @@ typedef struct s_init_struct
 	t_list		*list;
     t_tree      *tree;
     char        **envp;
+	char		**split_path;
 }               t_init_struct;
 
 typedef struct s_cmd
@@ -85,6 +86,7 @@ typedef struct s_cmd
 	int			path_state;
 	t_hashtable	*table;
 	t_list		*env_list;
+	char		**split_path;
 }	t_cmd;
 
 t_tree			*create_bin_tree(t_tree_node root_node);
@@ -115,10 +117,11 @@ int		ft_visit_redi_right(t_token token, t_cmd *cmd);
 int		ft_visit(t_token token, t_cmd *cmd);
 char	*ft_check_eof(char *eof);
 void	ft_read_parsing(char *eof, t_cmd *cmd);
-void	ft_create_path_list(t_cmd *cmd);
-void	ft_delete_path_list(void *list);
+void	ft_create_split_path(t_cmd *cmd);
+void	ft_modyfy_split_path(t_cmd *cmd);
 void	ft_check_path(t_cmd *cmd, char *check_path);
 void	ft_check_join_path(t_cmd *cmd, char *env_path, char *path_tmp);
+char	**ft_split_argv(char *token, t_hashtable *table);
 
 int				ft_add_env(t_cmd *cmd);
 void			ft_builtin_run(t_cmd *cmd);
@@ -137,6 +140,7 @@ void			ft_export(t_cmd *cmd);
 void			ft_pwd(t_cmd *cmd);
 void			ft_unset(t_cmd *cmd);
 void			ft_excution(t_init_struct *init_struct);
-char			**ft_split_argv(char *token, t_hashtable *table)
+void			ft_pop_envp(char **envp, char *name);
+void			ft_modify_envp(t_cmd *cmd, char *str, char *new_key);
 
 #endif

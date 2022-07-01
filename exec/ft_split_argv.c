@@ -19,7 +19,7 @@ static int	ft_one_block_size(char *token, char quote)
 	return (i);
 }
 
-static char *ft_parsing_block(char **token, t_hashtable *table);
+static char *ft_parsing_block(char **token, t_hashtable *table)
 {
 	int		i;
 	int		size;
@@ -36,7 +36,7 @@ static char *ft_parsing_block(char **token, t_hashtable *table);
 		block[i++] = **token;
 		*token++;
 	}
-	// parsing_block = 머선함수(block);
+	// parsing_block = 머선함수(block, table);
 	free(block);
 	return (parsing_block);
 }
