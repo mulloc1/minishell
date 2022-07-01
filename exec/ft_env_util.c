@@ -20,7 +20,7 @@ void	ft_pop_envp(char **envp, char *name)
 	envp[i - 1] = NULL;
 }
 
-static void	ft_copy_envp(char **new, char **old)
+static void	ft_copy_envp(char **new, char **old, char *new_key_value)
 {
 	int	i;
 
@@ -32,6 +32,9 @@ static void	ft_copy_envp(char **new, char **old)
 			ft_error("malloc fail\n");
 		free(old[i]);
 	}
+	new[i] = ft_strdup(new_key_value);
+	if (!new[i])
+		ft_error("malloc fail\n");
 	free(old);
 }
 
@@ -53,9 +56,9 @@ void	ft_modify_envp(t_cmd *cmd, char *str, char *new_key)
 			return ;
 		}
 	}
-	new_envp = ft_calloc(i + 1, sizeof(char *));
+	new_envp = ft_calloc(i + 2, sizeof(char *));
 	if (!new_envp)
 		ft_error("malloc fail\n");
-	ft_copy_envp(new_envp, cmd->envp);
+	ft_copy_envp(new_envp, cmd->envp, str);
 	cmd->envp = new_envp;
 }
