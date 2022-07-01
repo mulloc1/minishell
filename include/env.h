@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:28:52 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/01 13:43:29 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/01 17:08:23 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 int		export_check(char *token);
 int		quote_check(char *token);
-int		ft_isnaming(char c);
+int		ft_isnaming(char *c);
 char	*check_env(char *temp, int idx);
 int		single_quote_processing(char **block, int idx);
 int		double_quote_processing(char **block, int idx, t_hashtable *table);

@@ -1,1 +1,1 @@
-gcc -I../include bintree.c block_make_valid/*.c sort_env_list/sort_env_list_insert.c utils/ft_split_mini.c utils/ft_error.c hashtable/hashtable_*.c init.c parser.c test_env.c ../exec/ft_export_util.c  ../libft/libft.a sort_env_list/sort_env_list_remove.c -g
+gcc -I../include bintree.c block_make_valid/*.c sort_env_list/sort_env_list_insert.c utils/ft_split_mini.c utils/ft_error.c hashtable/hashtable_*.c init.c parser.c block_main.c ../exec/ft_export_util.c  ../libft/libft.a sort_env_list/sort_env_list_remove.c -g

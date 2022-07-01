@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:09:52 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/01 14:22:54 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/01 16:39:50 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ static void	content_free(t_list *node)
 	}
 }
 
+static char	*value_allocate(char *value)
+{
+	if (value)
+		return (ft_strdup(value));
+	else
+		return (NULL);
+}
+
 int	hashtable_insert(t_hashtable *table, char *key, char *value)
 {
 	unsigned long long	hashcode;
@@ -42,7 +50,7 @@ int	hashtable_insert(t_hashtable *table, char *key, char *value)
 	data = ft_calloc(1, sizeof(t_hashtable_data));
 	null_guard(data);
 	data->key = ft_strdup(key);
-	data->value = ft_strdup(value);
+	data->value = value_allocate(value);
 	node = key_overlap_check(table->hashtable[idx].top, data->key);
 	if (node)
 	{

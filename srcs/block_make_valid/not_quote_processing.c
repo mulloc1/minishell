@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:17:30 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/01 14:14:55 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/01 18:21:05 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char	*processing(char *temp, \
 	*idx = i;
 	*point = i + 1;
 	j = i - j;
-	while ((temp[j] == '$' || ft_isnaming(temp[j])) && temp[j])
+	while ((temp[j] == '$' || ft_isnaming(&temp[j])) && temp[j])
 		j++;
 	while (temp[j])
 		temp2[i++] = temp[j++];
@@ -59,7 +59,10 @@ int	not_quote_processing(char **block, int idx, t_hashtable *hashtable)
 		{
 			data.key = check_env(*block, i);
 			if (ft_end_env(data.key, *block, point))
+			{
+				i++;
 				break ;
+			}
 			data.value = hashtable_search(hashtable, data.key);
 			temp = processing(*block, &data, &i, &point);
 			free(data.key);

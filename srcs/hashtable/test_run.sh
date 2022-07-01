@@ -1,1 +1,1 @@
-gcc *.c -I../../include ../../libft/libft.a -g
+gcc *.c -I../../include ../utils/*.c ../../libft/libft.a -g

@@ -6,22 +6,25 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:17:12 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 19:26:33 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/01 17:21:09 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-int	ft_isnaming(char c)
+int	ft_isnaming(char *c)
 {
-	if (c >= 97 && c <= 122)
+	if (*c >= 97 && *c <= 122)
 		return (1);
-	else if (c >= 48 && c <= 57)
+	else if (*c >= 48 && *c <= 57)
 		return (1);
-	else if (c >= 65 && c <= 90)
+	else if (*c >= 65 && *c <= 90)
 		return (1);
-	else if (c == '_')
+	else if (*c == '_')
+		return (1);
+	else if (*(c - 1) == '$' && *c == '?')
 		return (1);
 	else
 		return (0);
@@ -42,7 +45,7 @@ char	*check_env(char *temp, int idx)
 		return (NULL);
 	}
 	i = -1;
-	while (ft_isnaming(temp[++idx]) && temp[idx])
+	while (ft_isnaming(&temp[++idx]) && temp[idx])
 		res[++i] = temp[idx];
 	return (res);
 }
@@ -86,6 +89,10 @@ int	ft_end_env(char *key, char *token, int point)
 {
 	if (!key || !token[point] || \
 			(point > 0 && (token[point] == '\"' || token[point + 1] == '\"')))
+	{
+		if (key)
+			free(key);
 		return (1);
+	}
 	return (0);
 }

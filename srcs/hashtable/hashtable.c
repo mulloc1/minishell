@@ -8,6 +8,10 @@ int main(void)
     t_hashtable *table;
     
     table = hashtable_create();
+
+	hashtable_insert(table, "?", "1234");
+	printf("%s=%s\n", "?", hashtable_search(table, "?"));
+
     hashtable_insert(table, "TERM_SESSION_ID", "w0t0p1:7735EF5A-5EA6-4538-BBD4-77AF7C43E104");
     //hashtable_remove(table, "TERM_SESSION_ID");
     printf("%s=%s\n", "TERM_SESSION_ID", hashtable_search(table, "TERM_SESSION_ID"));

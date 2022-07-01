@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "parser.h"
 #include "libft.h"
+#include <stdlib.h>
 
 void displayTree(t_tree_node *node)
 {
@@ -45,5 +46,6 @@ void	test(char *str)
 int main(void)
 {
 	test(TEST1);
+	system("leaks a.out");
 	return (0);
 }
