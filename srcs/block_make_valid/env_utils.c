@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:17:12 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/28 16:23:44 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/06/30 19:26:33 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ char	*check_env(char *temp, int idx)
 	res = ft_calloc(50, sizeof(char));
 	while (temp[idx] != '$' && temp[idx])
 		idx++;
-	if (temp[idx] != '$' || temp[idx + 1] == '\0' || temp[idx + 1] == ' ' || temp[idx + 1] == '\"')
+	if (temp[idx] != '$' || temp[idx + 1] == '\0' || \
+			temp[idx + 1] == ' ' || temp[idx + 1] == '\"')
 	{
 		free(res);
 		return (NULL);
@@ -79,4 +80,12 @@ int	quote_check(char *token)
 		}
 	}
 	return (NOT_QUOTE);
+}
+
+int	ft_end_env(char *key, char *token, int point)
+{
+	if (!key || !token[point] || \
+			(point > 0 && (token[point] == '\"' || token[point + 1] == '\"')))
+		return (1);
+	return (0);
 }

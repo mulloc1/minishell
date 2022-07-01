@@ -1,17 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 17:23:31 by jaebae            #+#    #+#             */
+/*   Updated: 2022/07/01 14:49:18 by jaebae           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "minishell.h"
 #include <stdio.h>
 #include <stdlib.h>
-#define	TEST1 "cat \" < file1 ls -l \" | cat "
-#define	TEST2 "echo \" cat > file2 | ls -l \" | cat "
-#define	TEST3 "echo \' \"echo HelloWorld\" \' | ls -l > file1 | wc -l"
-#define	TEST4 "echo \"HelloWorld"
-#define	TEST5 "echo HelloWorld\""
 
 static int	ft_search_redirect(char *str)
 {
 	int	i;
 
+	if (!str)
+		return (-1);
 	i = 0;
 	while (!(str[i] == '>' || str[i] == '<') && str[i])
 	{
@@ -55,7 +64,9 @@ static t_token	ft_redirection_token_make(char *cmd, int i)
 
 	temp = i;
 	res.type = ft_redirection_case(cmd, &i);
-		len = -1;
+	len = -1;
+	while (cmd[++len + i] == ' ' && cmd[len + i])
+		;
 	while (cmd[++len + i] != ' ' && cmd[len + i])
 		;
 	res.token = ft_substr(cmd, i, len);
@@ -63,7 +74,8 @@ static t_token	ft_redirection_token_make(char *cmd, int i)
 	return (res);
 }
 
-static void	ft_pipe_tree_parsing(char *cmd, t_tree_node *left, t_tree_node *right)
+static void	ft_pipe_tree_parsing(char *cmd, \
+		t_tree_node *left, t_tree_node *right)
 {
 	int	temp;
 
@@ -88,62 +100,15 @@ t_tree	*ft_parser(char *str)
 	cmds = ft_split_mini(str, '|');
 	temp = tree->root;
 	ft_pipe_tree_parsing(cmds[0], tree->root, tree->root);
-	i = 0;
+	i = -1;
 	while (cmds[++i])
 	{
+		if (i == 0)
+			continue ;
 		temp = insert_right_node(temp, (t_tree_node){{0, 0}, 0, NULL, NULL});
 		ft_pipe_tree_parsing(cmds[i], temp, temp);
 	}
 	free(cmds[i]);
-    free(cmds);
-    return (tree);
+	free(cmds);
+	return (tree);
 }
-
-//void displayTree(t_tree_node *node)
-//{
-//	if (node)
-//	{
-//		switch (node->data.type)
-//		{
-//		case CMD:
-//			printf("type : %s\t", "CMD");
-//			break;
-//		case REDI_L:
-//			printf("type : %s\t", "<");
-//			break;
-//		case REDI_R:
-//			printf("type : %s\t", ">");
-//			break;
-//		case DREDI_R:
-//			printf("type : %s\t", ">>");
-//			break;
-//		case DREDI_L:
-//			printf("type : %s\t", "<<");
-//			break;
-//		default:
-//			break;
-//		}
-//		printf("%s\n", node->data.token);
-//		displayTree(node->left);
-//		displayTree(node->right);
-//	}
-//}
-//
-//void	test(char	*str)
-//{
-//	t_tree	*tree;
-//
-//	printf("============== %s ==============\n", str);
-//	tree = ft_parser(str);
-//	displayTree(tree->root);
-//}
-//
-//int	main(void)
-//{
-//	test(TEST1);
-//	test(TEST2);
-//	test(TEST3);
-//	test(TEST4);
-//	test(TEST5);
-//	return (0);
-//}

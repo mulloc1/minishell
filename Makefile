@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/06/30 18:32:07 by jaebae            #+#    #+#              #
+#    Updated: 2022/07/01 13:47:02 by jaebae           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = minishell
 
 CC = gcc
@@ -16,11 +28,11 @@ SRCS = srcs/mini.c \
 	   srcs/utils/ft_split_mini.c \
 	   srcs/sort_env_list/sort_env_list_insert.c \
 	   srcs/sort_env_list/sort_env_list_remove.c \
-	   srcs/env_quote_processing/double_quote_processing.c \
-	   srcs/env_quote_processing/env_quote_processing.c \
-	   srcs/env_quote_processing/env_utils.c \
-	   srcs/env_quote_processing/not_quote_processing.c \
-	   srcs/env_quote_processing/single_quote_processing.c \
+	   srcs/block_make_valid/double_quote_processing.c \
+	   srcs/block_make_valid/block_make_valid.c \
+	   srcs/block_make_valid/env_utils.c \
+	   srcs/block_make_valid/not_quote_processing.c \
+	   srcs/block_make_valid/single_quote_processing.c \
 
 EXECS = exec/ft_add_env.c \
 		exec/ft_builtin_run.c \

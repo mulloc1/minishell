@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 18:24:51 by jaebae            #+#    #+#             */
+/*   Updated: 2022/07/01 13:45:59 by jaebae           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -12,7 +24,6 @@
 # define STDIN 0
 # define STDOUT 1
 # define VALID 1
-
 
 enum e_builtins
 {
@@ -51,21 +62,21 @@ typedef struct s_token
 
 typedef struct s_tree_node
 {
-	t_token	data;
-	int		visited;
+	t_token				data;
+	int					visited;
 
 	struct s_tree_node	*left;
 	struct s_tree_node	*right;
-} t_tree_node;
+}						t_tree_node;
 
 typedef struct s_tree
 {
 	struct s_tree_node	*root;
-} t_tree;
+}						t_tree;
 
 typedef struct s_init_struct
 {
-    t_hashtable *table;
+	t_hashtable	*table;
 	t_list		*list;
     t_tree      *tree;
     char        **envp;
@@ -97,13 +108,11 @@ void			delete_tree(t_tree *tree);
 void			ft_error(char *str);
 
 t_init_struct	*init(int argc, char *envp[]);
-t_hashtable		*init_hashtable();
+t_hashtable		*init_hashtable(void);
 char			**ft_split_mini(char const *s, char c);
 void			ft_quote_shift(char const *s, int *idx);
 t_tree			*ft_parser(char *str);
-void			env_quote_processing(t_init_struct	*init_struct);
-int				double_quote_processing(t_tree_node *node, int idx, t_hashtable *hashtable);
-int				single_quote_processing(t_tree_node *node, int idx);
+int				ft_end_env(char *key, char *token, int point);
 
 void	ft_search_tree(t_tree_node *node, t_cmd	*cmd);
 void	ft_cmd_run(t_cmd *cmd);
@@ -122,6 +131,9 @@ void	ft_modyfy_split_path(t_cmd *cmd);
 void	ft_check_path(t_cmd *cmd, char *check_path);
 void	ft_check_join_path(t_cmd *cmd, char *env_path, char *path_tmp);
 char	**ft_split_argv(char *token, t_hashtable *table);
+void			dredi_l_check(t_tree_node *tree);
+void			null_guard(void *ptr);
+
 
 int				ft_add_env(t_cmd *cmd);
 void			ft_builtin_run(t_cmd *cmd);

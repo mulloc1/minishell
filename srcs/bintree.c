@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bintree.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 17:27:32 by jaebae            #+#    #+#             */
+/*   Updated: 2022/06/30 17:27:32 by jaebae           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -7,10 +19,10 @@ t_tree	*create_bin_tree(t_tree_node root_node)
 	t_tree		*bintree;
 	t_tree_node	*node;
 
-	bintree = malloc(sizeof(t_tree));
+	bintree = ft_calloc(1, sizeof(t_tree));
 	if (bintree == NULL)
 		ft_error("bintree malloc fail\n");
-	node = malloc(sizeof(t_tree_node));
+	node = ft_calloc(1, sizeof(t_tree_node));
 	if (node == NULL)
 		ft_error("bintree malloc fail\n");
 	*node = root_node;
@@ -24,7 +36,7 @@ t_tree_node	*insert_left_node(t_tree_node *parent, t_tree_node child)
 		return (NULL);
 	if (parent->left == NULL)
 	{
-		parent->left = malloc(sizeof(t_tree_node));
+		parent->left = ft_calloc(1, sizeof(t_tree_node));
 		if (parent->left == NULL)
 			ft_error("bintree malloc fail\n");
 		*parent->left = child;
@@ -38,7 +50,7 @@ t_tree_node	*insert_right_node(t_tree_node *parent, t_tree_node child)
 		return (NULL);
 	if (parent->right == NULL)
 	{
-		parent->right = malloc(sizeof(t_tree_node));
+		parent->right = ft_calloc(1, sizeof(t_tree_node));
 		if (parent->right == NULL)
 			ft_error("bintree malloc fail\n");
 		*parent->right = child;

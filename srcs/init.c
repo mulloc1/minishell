@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 17:27:16 by jaebae            #+#    #+#             */
+/*   Updated: 2022/07/01 14:21:48 by jaebae           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "hashtable.h"
 #include "libft.h"
 #include "minishell.h"
@@ -7,7 +19,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static t_hashtable *hashtable_init(char *envp[])
+static t_hashtable	*hashtable_init(char *envp[])
 {
 	t_hashtable	*table;
 	char		**sp_envp;
@@ -15,28 +27,28 @@ static t_hashtable *hashtable_init(char *envp[])
 	table = hashtable_create();
 	while (*envp)
 	{
-		sp_envp = ft_split(*envp, '=');
+		sp_envp = ft_export_split(*envp);
 		hashtable_insert(table, sp_envp[0], sp_envp[1]);
 		free(sp_envp[0]);
 		free(sp_envp[1]);
 		free(sp_envp);
-		envp++;	
+		envp++;
 	}
 	return (table);
 }
 
-static char    **envp_init(char **envp)
+static char	**envp_init(char *envp[])
 {
 	char	**res;
 	int		cnt;
 	int		idx;
 
 	cnt = -1;
-    while (envp[++cnt])
+	while (envp[++cnt])
 		;
 	res = malloc(cnt + 1 * sizeof(char *));
 	if (!res)
-		return (NULL);
+		ft_error("envp_init() char * malloc failed");
 	idx = -1;
 	while (++idx < cnt)
 	{
@@ -47,23 +59,13 @@ static char    **envp_init(char **envp)
 			while (res[++idx])
 				free(res[idx]);
 			free(res);
-			return (NULL);
+			ft_error("envp_init() ft_strdup() failed");
 		}
 	}
 	return (res);
 }
 
-void	display(t_list *list)
-{
-	while (list)
-	{
-		printf("%s\n", (char *)list->content);
-		list = list->next;
-	}
-	printf("\n");
-}
-
-static t_list *sort_env_list_init(char *envp[])
+static t_list	*sort_env_list_init(char *envp[])
 {
 	char	**envp_sp;
 	t_list	*list;
@@ -73,7 +75,7 @@ static t_list *sort_env_list_init(char *envp[])
 	i = -1;
 	while (envp[++i])
 	{
-		envp_sp = ft_split(envp[i], '=');
+		envp_sp = ft_export_split(envp[i]);
 		sort_env_list_insert(&list, envp_sp[0]);
 		free(envp_sp[0]);
 		free(envp_sp[1]);
@@ -90,9 +92,9 @@ static t_list *sort_env_list_init(char *envp[])
 //	signal(SIGTERM, sigteam_handler());
 //}
 
-t_init_struct   *init(int argc, char *envp[])
+t_init_struct	*init(int argc, char *envp[])
 {
-   t_init_struct    *init_struct;
+	t_init_struct	*init_struct;
 
    if (argc != 1)
 	   exit(1);
@@ -107,18 +109,3 @@ t_init_struct   *init(int argc, char *envp[])
    init_struct->split_path = NULL;
    return (init_struct);
 }
-
-//int main(int argc, char *argv[], char *envp[])
-//{
-//	argv++;
-//	t_init_struct *init_struct = init(argc, envp);
-//	display(init_struct->list);
-//	sort_env_list_remove(&init_struct->list, "COLORFGBG");
-//	sort_env_list_remove(&init_struct->list, "LANG");
-//	sort_env_list_remove(&init_struct->list, "SHLVL");
-//	sort_env_list_remove(&init_struct->list, "TERM");
-//	sort_env_list_remove(&init_struct->list, "TERM_PROGRAM");
-//	sort_env_list_remove(&init_struct->list, "USER");
-//	display(init_struct->list);
-//	return (0);
-//}

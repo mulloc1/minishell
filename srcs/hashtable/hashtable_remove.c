@@ -1,22 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hashtable_remove.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 17:03:26 by jaebae            #+#    #+#             */
+/*   Updated: 2022/06/30 17:07:52 by jaebae           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "hashtable.h"
 #include "libft.h"
 #include <stdlib.h>
 
-static t_list  *key_search(t_list *top, char *key)
+static t_list	*key_search(t_list *top, char *key)
 {
+	t_hashtable_data	*data;
+
+	data = top->content;
 	if (!top)
 		return (NULL);
-	if (!ft_strncmp(((t_hashtable_data *)top->content)->key, key, ft_strlen(key)))
+	if (!ft_strncmp(data->key, key, ft_strlen(key)))
 		return (top);
-	while (!top && ft_strncmp(((t_hashtable_data *)top->next->content)->key, key, ft_strlen(key)))
+	while (!top && ft_strncmp(\
+				((t_hashtable_data *)top->next->content)->key, \
+				key, ft_strlen(key)))
 		top = top->next;
 	return (top);
 }
 
 static void	del_node(void *node)
 {
-	t_list  *temp;
-	t_list  *del_node;
+	t_list	*temp;
+	t_list	*del_node;
 
 	if (!node)
 		return ;
@@ -34,11 +51,11 @@ static void	del_node(void *node)
 	free(del_node);
 }
 
-int hashtable_remove(t_hashtable *table, char *key)
+int	hashtable_remove(t_hashtable *table, char *key)
 {
-	unsigned long long  hashcode;
+	unsigned long long	hashcode;
 	unsigned int		idx;
-	t_list			  *temp;
+	t_list				*temp;
 
 	hashcode = hashcode_making(key);
 	idx = hashcode % table->size;
@@ -51,6 +68,5 @@ int hashtable_remove(t_hashtable *table, char *key)
 		table->hashtable[idx].top = table->hashtable[idx].top->next;
 	ft_lstdelone(temp, del_node);
 	table->hashtable[idx].size--;
-	return (1); 
+	return (1);
 }
-
