@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:24:51 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/01 13:45:59 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/01 15:13:33 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int		ft_visit(t_token token, t_cmd *cmd);
 char	*ft_check_eof(char *eof);
 void	ft_read_parsing(char *eof, t_cmd *cmd);
 void	ft_create_split_path(t_cmd *cmd);
-void	ft_modyfy_split_path(t_cmd *cmd);
+void	ft_modify_split_path(t_cmd *cmd);
 void	ft_check_path(t_cmd *cmd, char *check_path);
 void	ft_check_join_path(t_cmd *cmd, char *env_path, char *path_tmp);
 char	**ft_split_argv(char *token, t_hashtable *table);

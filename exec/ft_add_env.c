@@ -23,7 +23,7 @@ static int	ft_get_name_value(char *str, char **name, char **value)
 	return (result);
 }
 
-static void	ft_check_key_exit(t_cmd *cmd, char *key, char *value)
+static void	ft_check_key_exist(t_cmd *cmd, char *key, char *value)
 {
 	if (value)
 		return ;

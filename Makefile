@@ -6,7 +6,7 @@
 #    By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 18:32:07 by jaebae            #+#    #+#              #
-#    Updated: 2022/07/01 13:47:02 by jaebae           ###   ########.fr        #
+#    Updated: 2022/07/01 15:18:42 by jaebae           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,9 @@ EXECS = exec/ft_add_env.c \
 		exec/ft_visit_double_redi_right.c \
 		exec/ft_visit_redi_left.c \
 		exec/ft_visit_redi_right.c \
-		exec/ft_excution.c
+		exec/ft_excution.c \
+		exec/ft_split_argv.c \
+		exec/ft_env_util.c \
 
 OBJS = $(SRCS:.c=.o)
 OBJS += $(EXECS:.c=.o)

@@ -38,7 +38,6 @@ static void	ft_copy_envp(char **new, char **old)
 void	ft_modify_envp(t_cmd *cmd, char *str, char *new_key)
 {
 	char	**new_envp;
-	char	*old_key;
 	int		i;
 
 	i = -1;

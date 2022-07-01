@@ -1,5 +1,6 @@
 #include "minishell.h"
 #include "libft.h"
+#include "env.h"
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -23,7 +24,7 @@ int	ft_visit_redi_left(t_token token, t_cmd *cmd)
 {
 	char	*filename;
 
-	//filename = sdfnlsdf(token.token, cmd->table);
+	filename = block_make_valid(token.token, cmd->table);
 	if (cmd->in_fd != STDIN)
 		close(cmd->in_fd);
 	cmd->in_fd = open(filename, O_RDONLY);

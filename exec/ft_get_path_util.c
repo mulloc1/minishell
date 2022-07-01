@@ -10,7 +10,7 @@ void	ft_create_split_path(t_cmd *cmd)
 		ft_error("malloc fail\n");
 }
 
-void	ft_modyfy_split_path(t_cmd *cmd)
+void	ft_modify_split_path(t_cmd *cmd)
 {
 	char	*new_path;
 	int		i;
@@ -21,7 +21,7 @@ void	ft_modyfy_split_path(t_cmd *cmd)
 	free(cmd->split_path);
 	new_path = hashtable_search(cmd->table, "PATH");
 	if (!new_path)
-		cmd->split_path = ft_calloc(sizeof(char *));
+		cmd->split_path = ft_calloc(1, sizeof(char *));
 	else
 		cmd->split_path = ft_split(hashtable_search(cmd->table, "PATH"), ':');
 	if (!cmd->split_path)

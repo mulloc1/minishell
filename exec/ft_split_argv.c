@@ -1,5 +1,6 @@
 #include "minishell.h"
 #include "libft.h"
+#include "env.h"
 #include <stdlib.h>
 
 static int	ft_one_block_size(char *token, char quote)
@@ -34,9 +35,9 @@ static char *ft_parsing_block(char **token, t_hashtable *table)
 	while (i < size)
 	{
 		block[i++] = **token;
-		*token++;
+		(*token)++;
 	}
-	// parsing_block = 머선함수(block, table);
+	parsing_block = block_make_valid(block, table);
 	free(block);
 	return (parsing_block);
 }
@@ -87,4 +88,5 @@ char	**ft_split_argv(char *token, t_hashtable *table)
 			token++;
 		argv[i] = ft_parsing_block(&token, table);
 	}
+	return (argv);
 }
