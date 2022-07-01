@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:23:31 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 20:21:28 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/01 14:49:18 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ static t_token	ft_redirection_token_make(char *cmd, int i)
 	temp = i;
 	res.type = ft_redirection_case(cmd, &i);
 	len = -1;
-	// 이부분 수정 요망
-	// 공백 하나만 쉬프트가 아닌 printable이 나올때까지 이동
 	while (cmd[++len + i] == ' ' && cmd[len + i])
+		;
+	while (cmd[++len + i] != ' ' && cmd[len + i])
 		;
 	res.token = ft_substr(cmd, i, len);
 	ft_memset(cmd + temp, ' ', i - temp + len);

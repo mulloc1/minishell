@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:27:16 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/01 13:58:27 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/01 14:21:48 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static char	**envp_init(char *envp[])
 		;
 	res = malloc(cnt * sizeof(char *));
 	if (!res)
-		return (NULL);
+		ft_error("envp_init() char * malloc failed");
 	idx = -1;
 	while (++idx < cnt)
 	{
@@ -59,7 +59,7 @@ static char	**envp_init(char *envp[])
 			while (res[++idx])
 				free(res[idx]);
 			free(res);
-			return (NULL);
+			ft_error("envp_init() ft_strdup() failed");
 		}
 	}
 	return (res);
@@ -97,7 +97,7 @@ t_init_struct	*init(int argc, char *envp[])
 	t_init_struct	*init_struct;
 
 	if (argc != 1)
-		exit(1);
+		ft_error("argc few");
 	init_struct = malloc(sizeof(t_init_struct));
 	if (!init_struct)
 		ft_error("init_struct malloc failed");

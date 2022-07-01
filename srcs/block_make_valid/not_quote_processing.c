@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:17:30 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/01 13:38:41 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/01 14:14:55 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static char	*processing(char *temp, \
 {
 	char	*temp2;
 	int		i;
-	int		z;
 	int		j;
 
 	temp2 = ft_calloc(ft_strlen(temp) + \
@@ -31,17 +30,17 @@ static char	*processing(char *temp, \
 	i--;
 	while (temp[++i] != '$' && temp[i])
 		temp2[i] = temp[i];
-	z = i;
 	j = -1;
 	if (data->value)
 		while (data->value && data->value[++j])
 			temp2[i++] = data->value[j];
 	*idx = i;
 	*point = i + 1;
-	while ((temp[z] == '$' || ft_isnaming(temp[z])) && temp[z])
-		z++;
-	while (temp[z])
-		temp2[i++] = temp[z++];
+	j = i - j;
+	while ((temp[j] == '$' || ft_isnaming(temp[j])) && temp[j])
+		j++;
+	while (temp[j])
+		temp2[i++] = temp[j++];
 	return (temp2);
 }
 
