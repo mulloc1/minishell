@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:09:52 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 17:15:01 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/01 14:02:00 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,14 @@
 
 static void	content_free(t_list *node)
 {
-	free(((t_hashtable_data *)node->content)->key);
-	free(((t_hashtable_data *)node->content)->value);
-	free(node->content);
+	if (node->content)
+	{
+		if (((t_hashtable_data *)node->content)->key)
+			free(((t_hashtable_data *)node->content)->key);
+		if (((t_hashtable_data *)node->content)->value)
+			free(((t_hashtable_data *)node->content)->value);
+		free(node->content);
+	}
 }
 
 int	hashtable_insert(t_hashtable *table, char *key, char *value)

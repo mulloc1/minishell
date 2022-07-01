@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:27:16 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 19:26:51 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/01 13:58:27 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ t_init_struct	*init(int argc, char *envp[])
 		exit(1);
 	init_struct = malloc(sizeof(t_init_struct));
 	if (!init_struct)
-		return (NULL);
+		ft_error("init_struct malloc failed");
 	init_struct->list = sort_env_list_init(envp);
 	init_struct->table = hashtable_init(envp);
 	init_struct->envp = envp_init(envp);

@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:17:21 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 17:17:22 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/01 14:00:49 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ t_hashtable	*hashtable_create(void)
 
 	table = malloc(sizeof(t_hashtable));
 	if (!table)
-		return (NULL);
+		ft_error(hashtable_create() t_hashtable malloc failed);
 	table->hashtable = ft_calloc(100, sizeof(t_hashtable_node));
 	if (!table->hashtable)
 	{
 		free(table);
-		return (NULL);
+		ft_error(hashtable_create() t_hashtable_node malloc failed);
 	}
 	i = -1;
 	while (++i < 100)
