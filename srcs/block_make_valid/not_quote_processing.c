@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:17:30 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/04 02:03:06 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/04 02:20:47 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 #include "hashtable.h"
 #include "env.h"
 #include <stdlib.h>
+
+static void	something(char **block, int *idx)
+{
+	if (*(*block + 1) == '\'' || *(*block + 1) == '\"')
+		ft_memmove(*block + *idx, *block + *idx + 1, ft_strlen(*block) - *idx);
+	else
+		*idx += 1;
+}
 
 static int	init_j(int j, int i)
 {
@@ -68,10 +76,7 @@ int	not_quote_processing(char **block, int idx, t_hashtable *hashtable)
 			data.key = check_env(*block, i);
 			if (ft_end_env(data.key, *block, point))
 			{
-				if (*(*block + 1) == '\'' || *(*block + 1) == '\"')
-					ft_memmove(*block + i, *block + i + 1, ft_strlen(*block) - i);
-				else
-					i++;
+				something(block, &i);
 				break ;
 			}
 			data.value = hashtable_search(hashtable, data.key);

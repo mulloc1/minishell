@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:16:14 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/04 01:37:41 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/04 02:08:00 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static int	init_j(int j, int i)
 		return (i - j);
 }
 
-static char	*processing(char *temp, t_hashtable_data *data, int *idx, int *point)
+static char	*processing(char *temp, \
+		t_hashtable_data *data, int *idx, int *point)
 {
 	char	*temp2;
 	int		i;
@@ -52,7 +53,6 @@ static char	*processing(char *temp, t_hashtable_data *data, int *idx, int *point
 }
 
 int	double_quote_processing(char **block, int idx, t_hashtable *hashtable)
-
 {
 	t_hashtable_data	data;
 	char				*temp;
