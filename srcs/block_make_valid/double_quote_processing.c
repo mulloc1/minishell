@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:16:14 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/03 22:57:55 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/03 23:05:19 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	init_j(int j, int i)
 		return (i - j);
 }
 
-static char	*processing(char *temp, \ t_hashtable_data *data, int *idx, int *point)
+static char	*processing(char *temp, t_hashtable_data *data, int *idx, int *point)
 {
 	char	*temp2;
 	int		i;
