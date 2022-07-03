@@ -71,10 +71,11 @@ t_init_struct *test(char *str, int argc, char *envp[])
 # define TEST24 "echo \"$HO ME$HOME\""
 # define TEST25 "echo \"$HO ME $HOME"
 # define TEST26 "echo \"$HOME$HO ME$HOME\""
-# define TEST27 "echo $?"
-# define TEST28 "echo $?"
-# define TEST29 "echo $?"
-# define TEST30 "echo $?"
+# define TEST27 "echo $HO ME$HOM E$H ONE"
+# define TEST28 "echo \"$HO ME $HOM E $H ONE\""
+# define TEST29 "echo $\"\""
+# define TEST30 "echo $HOME$"
+# define TEST31 "echo HOME$"
 
 int	main(int argc, char *argv[], char *envp[])
 {
@@ -106,5 +107,10 @@ int	main(int argc, char *argv[], char *envp[])
 	t_init_struct *init_struct24 = test(TEST24, argc, envp);
 	t_init_struct *init_struct25 = test(TEST25, argc, envp);
 	t_init_struct *init_struct26 = test(TEST26, argc, envp);
+	t_init_struct *init_struct27 = test(TEST27, argc, envp);
+	t_init_struct *init_struct28 = test(TEST28, argc, envp);
+	t_init_struct *init_struct29 = test(TEST29, argc, envp);
+	t_init_struct *init_struct30 = test(TEST30, argc, envp);
+	t_init_struct *init_struct31 = test(TEST31, argc, envp);
 	return (0);
 }
