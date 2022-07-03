@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:17:12 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/01 17:21:09 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/03 22:02:22 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	ft_isnaming(char *c)
 		return (1);
 	else if (*(c - 1) == '$' && *c == '?')
 		return (1);
+	else if (*c == '$')
+		return (0);
 	else
 		return (0);
 }

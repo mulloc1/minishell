@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:17:30 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/01 18:21:05 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/03 22:47:15 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 #include "hashtable.h"
 #include "env.h"
 #include <stdlib.h>
+
+static int	init_j(int j, int i)
+{
+	if (j == -1)
+		return (i);
+	else
+		return (i - j);
+}
 
 static char	*processing(char *temp, \
 		t_hashtable_data *data, int *idx, int *point)
@@ -36,8 +44,8 @@ static char	*processing(char *temp, \
 			temp2[i++] = data->value[j];
 	*idx = i;
 	*point = i + 1;
-	j = i - j;
-	while ((temp[j] == '$' || ft_isnaming(&temp[j])) && temp[j])
+	j = init_j(j, i);
+	while (ft_isnaming(&temp[++j]) && temp[j])
 		j++;
 	while (temp[j])
 		temp2[i++] = temp[j++];

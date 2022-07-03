@@ -68,34 +68,43 @@ t_init_struct *test(char *str, int argc, char *envp[])
 # define TEST21 "echo \"$HOME $HOME $HOME $HOME       $HOME\""
 # define TEST22 "echo '$HOME     $HOME    \"$HOME\" '" 
 # define TEST23 "echo $?"
+# define TEST24 "echo \"$HO ME$HOME\""
+# define TEST25 "echo \"$HO ME $HOME"
+# define TEST26 "echo \"$HOME$HO ME$HOME\""
+# define TEST27 "echo $?"
+# define TEST28 "echo $?"
+# define TEST29 "echo $?"
+# define TEST30 "echo $?"
 
 int	main(int argc, char *argv[], char *envp[])
 {
 	argv++;
 
-//	t_init_struct *init_struct1 = test(TEST1, argc, envp);
-//	t_init_struct *init_struct2 = test(TEST2, argc, envp);
-//	t_init_struct *init_struct3 = test(TEST3, argc, envp);
-//	t_init_struct *init_struct4 = test(TEST4, argc, envp);
-//	t_init_struct *init_struct5 = test(TEST5, argc, envp);
-//	t_init_struct *init_struct6 = test(TEST6, argc, envp);
-//	t_init_struct *init_struct7 = test(TEST7, argc, envp);
-//	t_init_struct *init_struct8 = test(TEST8, argc, envp);
-//	t_init_struct *init_struct9 = test(TEST9, argc, envp);
-//	t_init_struct *init_struct10 = test(TEST10, argc, envp);
-//	t_init_struct *init_struct11 = test(TEST11, argc, envp);
-//	t_init_struct *init_struct12 = test(TEST12, argc, envp);
-//	t_init_struct *init_struct13 = test(TEST13, argc, envp);
-//	t_init_struct *init_struct14 = test(TEST14, argc, envp);
-//	t_init_struct *init_struct15 = test(TEST15, argc, envp);
-//	t_init_struct *init_struct16 = test(TEST16, argc, envp);
-//	t_init_struct *init_struct17 = test(TEST17, argc, envp);
-//	t_init_struct *init_struct18 = test(TEST18, argc, envp);
-//	t_init_struct *init_struct19 = test(TEST19, argc, envp);
-//	t_init_struct *init_struct20 = test(TEST20, argc, envp);
-//	t_init_struct *init_struct21 = test(TEST21, argc, envp);
-//	t_init_struct *init_struct22 = test(TEST22, argc, envp);
+	t_init_struct *init_struct1 = test(TEST1, argc, envp);
+	t_init_struct *init_struct2 = test(TEST2, argc, envp);
+	t_init_struct *init_struct3 = test(TEST3, argc, envp);
+	t_init_struct *init_struct4 = test(TEST4, argc, envp);
+	t_init_struct *init_struct5 = test(TEST5, argc, envp);
+	t_init_struct *init_struct6 = test(TEST6, argc, envp);
+	t_init_struct *init_struct7 = test(TEST7, argc, envp);
+	t_init_struct *init_struct8 = test(TEST8, argc, envp);
+	t_init_struct *init_struct9 = test(TEST9, argc, envp);
+	t_init_struct *init_struct10 = test(TEST10, argc, envp);
+	t_init_struct *init_struct11 = test(TEST11, argc, envp);
+	t_init_struct *init_struct12 = test(TEST12, argc, envp);
+	t_init_struct *init_struct13 = test(TEST13, argc, envp);
+	t_init_struct *init_struct14 = test(TEST14, argc, envp);
+	t_init_struct *init_struct15 = test(TEST15, argc, envp);
+	t_init_struct *init_struct16 = test(TEST16, argc, envp);
+	t_init_struct *init_struct17 = test(TEST17, argc, envp);
+	t_init_struct *init_struct18 = test(TEST18, argc, envp);
+	t_init_struct *init_struct19 = test(TEST19, argc, envp);
+	t_init_struct *init_struct20 = test(TEST20, argc, envp);
+	t_init_struct *init_struct21 = test(TEST21, argc, envp);
+	t_init_struct *init_struct22 = test(TEST22, argc, envp);
 	t_init_struct *init_struct23 = test(TEST23, argc, envp);
-	system("leaks a.out");
+	t_init_struct *init_struct24 = test(TEST24, argc, envp);
+	t_init_struct *init_struct25 = test(TEST25, argc, envp);
+	t_init_struct *init_struct26 = test(TEST26, argc, envp);
 	return (0);
 }

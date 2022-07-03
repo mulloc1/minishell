@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:16:14 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/01 18:21:21 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/03 22:57:55 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,15 @@
 #include "env.h"
 #include <stdlib.h>
 
-static char	*processing(char *temp, \
-		t_hashtable_data *data, int *idx, int *point)
+static int	init_j(int j, int i)
+{
+	if (j == -1)
+		return (i);
+	else
+		return (i - j);
+}
+
+static char	*processing(char *temp, \ t_hashtable_data *data, int *idx, int *point)
 {
 	char	*temp2;
 	int		i;
@@ -34,10 +41,10 @@ static char	*processing(char *temp, \
 	if (data->value)
 		while (data->value && data->value[++j])
 			temp2[i++] = data->value[j];
-	*idx = i;
+	*idx = i - 1;
 	*point = i;
-	j = i - j;
-	while ((temp[j] == '$' || ft_isnaming(&temp[j])) && temp[j])
+	j = init_j(j, i);
+	while (ft_isnaming(&temp[++j]) && temp[j])
 		j++;
 	while (temp[j])
 		temp2[i++] = temp[j++];
@@ -45,6 +52,7 @@ static char	*processing(char *temp, \
 }
 
 int	double_quote_processing(char **block, int idx, t_hashtable *hashtable)
+
 {
 	t_hashtable_data	data;
 	char				*temp;
@@ -53,11 +61,14 @@ int	double_quote_processing(char **block, int idx, t_hashtable *hashtable)
 
 	point = 0;
 	i = idx;
-	while (1)
+	while ((*block)[i])
 	{
 		data.key = check_env(*block, i);
 		if (ft_end_env(data.key, *block, point))
-			break ;
+		{
+			i++;
+			continue ;
+		}
 		data.value = hashtable_search(hashtable, data.key);
 		temp = processing(*block, &data, &i, &point);
 		free(data.key);
