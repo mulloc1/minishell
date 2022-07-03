@@ -23,15 +23,15 @@ static int	ft_get_name_value(char *str, char **name, char **value)
 	return (result);
 }
 
-static void	ft_check_key_exist(t_cmd *cmd, char *key, char *value)
+static void	ft_check_key_exist(t_cmd *cmd, char *key, char **value)
 {
-	if (value)
+	if (*value)
 		return ;
-	value = hashtable_search(cmd->table, key);
-	if (value)
+	*value = hashtable_search(cmd->table, key);
+	if (*value)
 	{
-		value = ft_strdup(value);
-		if (!value)
+		*value = ft_strdup(*value);
+		if (!(*value))
 			ft_error("malloc fail\n");
 	}
 }
@@ -51,7 +51,7 @@ int	ft_add_env(t_cmd *cmd)
 			exit_status = 1;
 		else
 		{
-			ft_check_key_exist(cmd, name, value);
+			ft_check_key_exist(cmd, name, &value);
 			if (value)
 				ft_modify_envp(cmd, cmd->argv[i], name);
 			hashtable_insert(cmd->table, name, value);

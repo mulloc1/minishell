@@ -1,5 +1,6 @@
 #include "minishell.h"
 #include "libft.h"
+#include "sort_env_list.h"
 #include <stdlib.h>
 
 void	ft_pop_envp(char **envp, char *name)
@@ -53,6 +54,7 @@ void	ft_modify_envp(t_cmd *cmd, char *str, char *new_key)
 			cmd->envp[i] = ft_strdup(str);
 			if (!cmd->envp[i])
 				ft_error("malloc fail\n");
+			sort_env_list_remove(&cmd->env_list, new_key);
 			return ;
 		}
 	}
