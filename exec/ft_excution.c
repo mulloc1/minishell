@@ -40,7 +40,10 @@ void	ft_excution(t_init_struct *init_struct)
 	if (cmd.last_pid > 0)
 	{
 		waitpid(cmd.last_pid, &status, 0);
-		exit_code = status;
+		if (WIFSIGNALED(status))
+			exit_code = 128 + WTERMSIG(status);
+		else
+			exit_code = WEXITSTATUS(status);
 		exit_str = ft_itoa(exit_code);
 		if (!exit_str)
 			ft_error("malloc fail\n");
