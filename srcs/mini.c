@@ -107,6 +107,7 @@ int	main(int argc, char *argv[], char *envp[])
 	char			*str;
 
 	argv++;
+	ft_set_signal();
 	init_struct = init(argc, envp);
 	while (1)
 	{
@@ -129,7 +130,13 @@ int	main(int argc, char *argv[], char *envp[])
 				init_struct->tree = NULL;
 			}
 		}
-		free(str);
+		if (str)
+			free(str);
+		else
+		{
+			printf("\033[1A\033[11Cexit\n");
+			exit(0);
+		}
 	}
 	return (0);
 }

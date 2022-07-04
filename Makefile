@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 18:32:07 by jaebae            #+#    #+#              #
-#    Updated: 2022/07/03 13:59:36 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/07/04 14:11:56 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,8 +62,12 @@ EXECS = exec/ft_add_env.c \
 		exec/ft_split_argv.c \
 		exec/ft_env_util.c \
 
+SIGNAL = signal/ft_handler.c \
+		 signal/ft_signal.c
+
 OBJS = $(SRCS:.c=.o)
 OBJS += $(EXECS:.c=.o)
+OBJS += $(SIGNAL:.c=.o)
 
 all : $(NAME)
 
