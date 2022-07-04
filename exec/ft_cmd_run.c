@@ -47,6 +47,7 @@ static void	ft_child_proc(t_cmd *cmd)
 {
 	if (cmd->path_state)
 		ft_cmd_error(cmd->path_state, cmd->argv[0]);
+	ft_set_signal(ft_child_sigint_handler, ft_child_sigquit_handler);
 	ft_set_fd(cmd);
 	execve(cmd->path, cmd->argv, cmd->envp);
 	exit(1);

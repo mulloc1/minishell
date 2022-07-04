@@ -32,7 +32,9 @@ void	ft_excution(t_init_struct *init_struct)
 		return ;
 	}
 	ft_init_struct_cmd(&cmd, init_struct);
+	ft_set_echoctl(PRINT);
 	ft_search_tree(init_struct->tree->root, &cmd);
+	ft_set_signal(ft_sigint_handler_wait_child, ft_sigquit_handler_wait_child);
 	init_struct->envp = cmd.envp;
 	init_struct->split_path = cmd.split_path;
 	if (cmd.last_pid > 0)
@@ -47,4 +49,6 @@ void	ft_excution(t_init_struct *init_struct)
 	}
 	while (wait(NULL) > 0)
 		;
+	ft_set_signal(ft_sigint_handler, ft_sigquit_handler);
+	ft_set_echoctl(NOT_PRINT);
 }

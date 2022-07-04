@@ -14,7 +14,7 @@ void	ft_get_path(t_cmd *cmd)
 	if (!path_tmp)
 		ft_error("malloc fail\n");
 	i = -1;
-	while (!cmd->path && cmd->split_path[++i])
+	while (!cmd->path && cmd->split_path[++i] && path_tmp[1])
 	{
 		ft_check_join_path(cmd, cmd->split_path[i], path_tmp);
 		if (cmd->path_state)

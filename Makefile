@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 18:32:07 by jaebae            #+#    #+#              #
-#    Updated: 2022/07/01 15:31:55 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/07/04 16:36:19 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = minishell
 
 CC = gcc
 CFLAG = -Werror -Wall -Wextra -I include -g
-OFLAG = -lreadline -L ~/.brew/opt/readline/lib -I ~/.brew/opt/readline/include
+OFLAG = -lreadline -L/opt/homebrew/opt/readline/lib -I/opt/homebrew/opt/readline/include
+# OFLAG = -lreadline -L ~/.brew/opt/readline/lib -I ~/.brew/opt/readline/include
 SRCS = srcs/mini.c \
 	   srcs/bintree.c \
 	   srcs/parser.c \
@@ -62,8 +63,12 @@ EXECS = exec/ft_add_env.c \
 		exec/ft_split_argv.c \
 		exec/ft_env_util.c \
 
+SIGNAL = signal/ft_handler.c \
+		 signal/ft_signal.c
+
 OBJS = $(SRCS:.c=.o)
 OBJS += $(EXECS:.c=.o)
+OBJS += $(SIGNAL:.c=.o)
 
 all : $(NAME)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:24:51 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/01 15:13:33 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/04 17:20:32 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@
 # define STDIN 0
 # define STDOUT 1
 # define VALID 1
-
+# define PRINT 1
+# define NOT_PRINT 0
+#include <stdio.h>//
 enum e_builtins
 {
 	ECHO = 1,
@@ -154,5 +156,15 @@ void			ft_unset(t_cmd *cmd);
 void			ft_excution(t_init_struct *init_struct);
 void			ft_pop_envp(char **envp, char *name);
 void			ft_modify_envp(t_cmd *cmd, char *str, char *new_key);
+
+void	ft_set_signal(void (*sig_int)(int), void (*sig_quit)(int));
+void	ft_set_echoctl(int flag);
+
+void	ft_sigint_handler(int num);
+void	ft_sigint_handler_wait_child(int num);
+void	ft_child_sigint_handler(int num);
+void	ft_sigquit_handler(int num);
+void	ft_sigquit_handler_wait_child(int num);
+void	ft_child_sigquit_handler(int num);
 
 #endif
