@@ -14,8 +14,33 @@ void	ft_sigint_handler(int num)
 	rl_redisplay();
 }
 
+void	ft_sigint_handler_wait_child(int num)
+{
+	num++;
+	printf("\n");
+}
+
 void	ft_child_sigint_handler(int num)
 {
 	num++;
 	exit(130);
+}
+
+void	ft_sigquit_handler(int num)
+{
+	num++;
+	rl_on_new_line();
+	rl_redisplay();
+}
+
+void	ft_sigquit_handler_wait_child(int num)
+{
+	num++;
+	printf("Quit: 3\n");
+}
+
+void	ft_child_sigquit_handler(int num)
+{
+	num++;
+	exit(131);
 }

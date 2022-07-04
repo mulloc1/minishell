@@ -2,34 +2,20 @@
 #include <signal.h>
 #include <termios.h>
 
-void	ft_set_signal(void)*())
+void	ft_set_signal(void (*sig_int)(int), void (*sig_quit)(int))
 {
-	struct termios	tms;
-
-	tcgetattr(STDIN, &tms);
-	tms.c_lflag &= ~ECHOCTL;
-	tcsetattr(STDIN, TCSANOW, &tms);
-	printf("parent : %lu\n", tms.c_lflag);
-	signal(SIGINT, ft_sigint_handler);
-	// signal(SIGQUIT, ft_sigquit_handler);
+	signal(SIGINT, sig_int);
+	signal(SIGQUIT, sig_quit);
 }
 
-void	ft_set_child_signal(void)
+void	ft_set_echoctl(int flag)
 {
-	struct termios	tms;
+	struct termios tms;
 
 	tcgetattr(STDIN, &tms);
-	tms.c_lflag |= ECHOCTL;
+	if (flag)
+		tms.c_lflag |= ECHOCTL;
+	else
+		tms.c_lflag &= ~ECHOCTL;
 	tcsetattr(STDIN, TCSANOW, &tms);
-	printf("child : %lu\n", tms.c_lflag);
-	signal(SIGINT, ft_child_sigint_handler);
-	// signal(SIGQUIT, ft_child_sigquit_handler);
-}
-
-void	print_tms(void)
-{
-	struct termios	tms;
-
-	tcgetattr(STDIN, &tms);
-	printf("print_tms : %lu\n", tms.c_lflag);
 }
