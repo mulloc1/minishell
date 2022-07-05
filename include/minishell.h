@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:24:51 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/05 17:33:21 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 20:55:54 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,5 +172,6 @@ int				ft_get_signal_num(int status);
 int				ft_exit_status(int status);
 int				ft_is_dir(unsigned short st_mode);
 int				ft_is_file(unsigned short st_mode);
+void			ft_ascii_art(void);
 
 #endif

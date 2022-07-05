@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 18:32:07 by jaebae            #+#    #+#              #
-#    Updated: 2022/07/05 18:02:08 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/07/05 20:55:25 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS = srcs/mini.c \
 	   srcs/block_make_valid/env_utils.c \
 	   srcs/block_make_valid/not_quote_processing.c \
 	   srcs/block_make_valid/single_quote_processing.c \
+	   srcs/ft_ascii_art.c
 
 EXECS = exec/ft_add_env.c \
 		exec/ft_builtin_run.c \
