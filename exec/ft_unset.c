@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_unset.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/05 12:12:43 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/07/05 12:12:49 by jaewchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 #include "hashtable.h"
 #include "sort_env_list.h"
@@ -58,4 +70,3 @@ void	ft_unset(t_cmd *cmd)
 	free(exit_str);
 	cmd->last_pid = -1;
 }
-

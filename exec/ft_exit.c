@@ -1,37 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/05 12:10:31 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/07/05 12:37:37 by jaewchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 #include "libft.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-// exit 인자는 exit명령어의 종료상태
-// 인자의 수는 0, 1
-// bash: exit: too many arguments
-// -> exit_status : 1
-// 인자의 범위는 LONG_MIN ~ LONG_MAX
-// bash: exit: -9223372036854775809: numeric argument required
-// bash: exit: 9223372036854775808: numeric argument required
-// -> exit_status : 255
-// +, - 부호는 한 개는 허용한다.
-
-static void	ft_set_fd(t_cmd *cmd)
-{
-	if (cmd->in_fd != STDIN)
-	{
-		dup2(cmd->in_fd, STDIN);
-		close(cmd->in_fd);
-	}
-	if (cmd->out_fd != STDOUT)
-	{
-		dup2(cmd->out_fd, STDOUT);
-		close(cmd->out_fd);
-	}
-	else if (cmd->pipe[P_WRITE] > 0)
-		dup2(cmd->pipe[P_WRITE], STDOUT);
-	close(cmd->pipe[P_READ]);
-	close(cmd->pipe[P_WRITE]);
-}
 
 static int	ft_run_exit(t_cmd *cmd)
 {

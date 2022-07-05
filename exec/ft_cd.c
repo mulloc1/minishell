@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_cd.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/05 12:09:25 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/07/05 12:18:16 by jaewchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 #include "libft.h"
 #include "hashtable.h"
@@ -37,7 +49,7 @@ static int	ft_cd_error(char *path, int flag)
 
 static int	ft_check_cd_path(t_cmd *cmd)
 {
-	struct stat st;
+	struct stat	st;
 
 	if (!cmd->argv[1])
 		return (ft_change_dir(cmd, NULL));

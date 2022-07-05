@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_path_util.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/05 12:12:00 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/07/05 12:12:08 by jaewchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "minishell.h"
 #include <stdlib.h>
@@ -43,7 +55,7 @@ void	ft_check_path(t_cmd *cmd, char *check_path)
 	}
 	else if (S_ISREG(st.st_mode))
 	{
-		if ((st.st_mode & S_IXOTH) == S_IXOTH\
+		if ((st.st_mode & S_IXOTH) == S_IXOTH \
 		&& (st.st_mode & S_IROTH) == S_IROTH)
 			cmd->path = check_path;
 		else

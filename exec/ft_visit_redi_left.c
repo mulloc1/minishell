@@ -1,23 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_visit_redi_left.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/05 12:13:17 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/07/05 12:13:18 by jaewchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 #include "libft.h"
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
-
-// static void	ft_clear_cmd(t_cmd *cmd)
-// {
-// 	int i;
-
-// 	if (cmd->out_fd > STDOUT)
-// 		close(cmd->out_fd);
-// 	free(cmd->path);
-// 	cmd->path = NULL;
-// 	i = -1;
-// 	while(cmd->argv[++i])
-// 		free(cmd->argv[i]);
-// 	free(cmd->argv);
-// 	cmd->argv = NULL;
-// }
 
 int	ft_visit_redi_left(t_token token, t_cmd *cmd)
 {

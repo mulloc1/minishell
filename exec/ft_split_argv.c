@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split_argv.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/05 12:12:39 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/07/05 12:17:24 by jaewchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 #include "libft.h"
 #include "env.h"
@@ -20,7 +32,7 @@ static int	ft_one_block_size(char *token, char quote)
 	return (i);
 }
 
-static char *ft_parsing_block(char **token, t_hashtable *table)
+static char	*ft_parsing_block(char **token, t_hashtable *table)
 {
 	int		i;
 	int		size;

@@ -1,18 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_visit_cmd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/05 12:12:54 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/07/05 12:16:52 by jaewchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 #include "libft.h"
-// exitstatus 필요 : cd, export(add), unset
-// ◦ echo with option -n
-// ◦ cd with only a relative or absolute path
-// ◦ pwd with no options
-// ◦ export with no options
-// ◦ unset with no options
-// ◦ env with no options or arguments
-// ◦ exit with no options
+
 static int	ft_is_builtin(t_cmd *cmd)
 {
 	const char	*builtins[8] = \
 	{"echo", "cd", "pwd", "export", "unset", "env", "exit", NULL};
-	int	i;
+	int			i;
 
 	i = -1;
 	while (builtins[++i])

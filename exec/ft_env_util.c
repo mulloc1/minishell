@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_env_util.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/05 12:10:05 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/07/05 12:17:58 by jaewchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 #include "libft.h"
 #include "sort_env_list.h"
@@ -13,12 +25,15 @@ void	ft_pop_envp(char **envp, char *name)
 		if (!ft_strncmp(envp[i], name, ft_strlen(name)))
 			break ;
 	}
-	free(envp[i]);
-	while (envp[++i])
+	if (envp[i])
 	{
-		envp[i - 1] = envp[i];
+		free(envp[i]);
+		while (envp[++i])
+		{
+			envp[i - 1] = envp[i];
+		}
+		envp[i - 1] = NULL;
 	}
-	envp[i - 1] = NULL;
 }
 
 static void	ft_copy_envp(char **new, char **old, char *new_key_value)
@@ -47,7 +62,7 @@ void	ft_modify_envp(t_cmd *cmd, char *str, char *new_key)
 	i = -1;
 	while (cmd->envp[++i])
 	{
-		if (cmd->envp[i][ft_strlen(new_key)] == '=' &&\
+		if (cmd->envp[i][ft_strlen(new_key)] == '=' && \
 		!ft_strncmp(cmd->envp[i], new_key, ft_strlen(new_key)))
 		{
 			free(cmd->envp[i]);

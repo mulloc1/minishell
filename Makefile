@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 18:32:07 by jaebae            #+#    #+#              #
-#    Updated: 2022/07/04 17:39:47 by mulloc           ###   ########.fr        #
+#    Updated: 2022/07/05 12:46:55 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME = minishell
 CC = gcc
 CFLAG = -Werror -Wall -Wextra -I include -g
 # OFLAG = -lreadline -L/opt/homebrew/opt/readline/lib -I/opt/homebrew/opt/readline/include
-OFLAG = -lreadline -L/usr/local/opt/readline/lib -I/usr/local/opt/readline/include
-# OFLAG = -lreadline -L ~/.brew/opt/readline/lib -I ~/.brew/opt/readline/include
+# OFLAG = -lreadline -L/usr/local/opt/readline/lib -I/usr/local/opt/readline/include
+OFLAG = -lreadline -L ~/.brew/opt/readline/lib -I ~/.brew/opt/readline/include
 SRCS = srcs/mini.c \
 	   srcs/bintree.c \
 	   srcs/parser.c \
@@ -63,6 +63,7 @@ EXECS = exec/ft_add_env.c \
 		exec/ft_excution.c \
 		exec/ft_split_argv.c \
 		exec/ft_env_util.c \
+		exec/ft_set_fd.c
 
 SIGNAL = signal/ft_handler.c \
 		 signal/ft_signal.c
