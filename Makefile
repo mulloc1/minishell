@@ -6,17 +6,18 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 18:32:07 by jaebae            #+#    #+#              #
-#    Updated: 2022/07/05 17:37:43 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/07/05 18:02:08 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = gcc
+
 CFLAG = -Werror -Wall -Wextra -I include -g
-# OFLAG = -lreadline -L/opt/homebrew/opt/readline/lib -I/opt/homebrew/opt/readline/include
-# OFLAG = -lreadline -L/usr/local/opt/readline/lib -I/usr/local/opt/readline/include
+
 OFLAG = -lreadline -L ~/.brew/opt/readline/lib -I ~/.brew/opt/readline/include
+
 SRCS = srcs/mini.c \
 	   srcs/bintree.c \
 	   srcs/parser.c \
@@ -84,13 +85,13 @@ fclean : clean
 	@rm -rf libft/libft.a
 	rm -f $(NAME)
 
-%.o : %.c
-	$(CC) $(CFLAG) -c $< -o $@
-
 re : fclean all
 
 $(NAME) : $(OBJS)
 	@make -C libft
 	$(CC) $(OFLAG) $(CFLAG) -o $@ $^ libft/libft.a
 
-.PHONY : re fclean clean all
+%.o : %.c
+	$(CC) $(CFLAG) -c $< -o $@
+
+.PHONY : all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:38:12 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 17:46:46 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 18:01:46 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # define INT_MAX 2147483647
-# define LONG_MAX 9223372036854775807
+# define LLONG_MAX 9223372036854775807
 
 typedef struct s_list
 {

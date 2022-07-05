@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 17:27:16 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/01 16:11:00 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/07/05 17:52:41 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/07/05 18:02:36 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hashtable.h"
 #include "libft.h"
 #include "minishell.h"
 #include "sort_env_list.h"
@@ -85,27 +84,19 @@ static t_list	*sort_env_list_init(char *envp[])
 	return (list);
 }
 
-//static void	signal_init()
-//{
-//	signal(SIGINT, sigint_handler());
-//	signal(SIGQUIT, sigquit_handler());
-//	signal(SIGTERM, sigteam_handler());
-//}
-
 t_init_struct	*init(int argc, char *envp[])
 {
 	t_init_struct	*init_struct;
 
-   if (argc != 1)
-	   exit(1);
-//   signal_init();
-   init_struct = malloc(sizeof(t_init_struct));
-   if (!init_struct)
-       return (NULL);
-   init_struct->list = sort_env_list_init(envp);
-   init_struct->table = hashtable_init(envp);
-   init_struct->envp = envp_init(envp);
-   init_struct->tree = NULL;
-   init_struct->split_path = NULL;
-   return (init_struct);
+	if (argc != 1)
+		exit(1);
+	init_struct = malloc(sizeof(t_init_struct));
+	if (!init_struct)
+		return (NULL);
+	init_struct->list = sort_env_list_init(envp);
+	init_struct->table = hashtable_init(envp);
+	init_struct->envp = envp_init(envp);
+	init_struct->tree = NULL;
+	init_struct->split_path = NULL;
+	return (init_struct);
 }

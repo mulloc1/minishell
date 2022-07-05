@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mini.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/05 17:54:46 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/07/05 17:59:16 by jaewchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
@@ -7,36 +19,6 @@
 #include "hashtable.h"
 #include "parser.h"
 #include "libft.h"
-
-void displayTree(t_tree_node *node)
-{
-	if (node)
-	{
-		switch (node->data.type)
-		{
-		case CMD:
-			printf("type : %s\t", "CMD");
-			break;
-		case REDI_L:
-			printf("type : %s\t", "<");
-			break;
-		case REDI_R:
-			printf("type : %s\t", ">");
-			break;
-		case DREDI_R:
-			printf("type : %s\t", ">>");
-			break;
-		case DREDI_L:
-			printf("type : %s\t", "<<");
-			break;
-		default:
-			break;
-		}
-		printf("%s\n", node->data.token);
-		displayTree(node->left);
-		displayTree(node->right);
-	}
-}
 
 void	dredi_l_check(t_tree_node *tree)
 {
@@ -75,7 +57,7 @@ int	is_spaces(char *str)
 void	syntax_error_check(t_init_struct *init_struct)
 {
 	t_tree_node	*cmd;
-	t_tree_node *redi;
+	t_tree_node	*redi;
 
 	cmd = init_struct->tree->root;
 	while (cmd)
@@ -101,6 +83,27 @@ void	syntax_error_check(t_init_struct *init_struct)
 	}
 }
 
+static void	ft_run(char *str, t_init_struct *init_struct)
+{
+	if (str && str[0] != '\0')
+	{
+		add_history(str);
+		if (str[0] != '|')
+			init_struct->tree = ft_parser(str);
+		if (init_struct->tree)
+		{
+			dredi_l_check(init_struct->tree->root);
+			syntax_error_check(init_struct);
+		}
+		ft_excution(init_struct);
+		if (init_struct->tree)
+		{
+			delete_tree(init_struct->tree);
+			init_struct->tree = NULL;
+		}
+	}
+}
+
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_init_struct	*init_struct;
@@ -113,24 +116,7 @@ int	main(int argc, char *argv[], char *envp[])
 	while (1)
 	{
 		str = readline("minishell$ ");
-		if (str && str[0] != '\0')
-		{
-		 	add_history(str);
-			if (str[0] != '|')
-				init_struct->tree = ft_parser(str);
-			if (init_struct->tree)
-			{
-				dredi_l_check(init_struct->tree->root);
-				syntax_error_check(init_struct);
-			}
-			//displayTree(init_struct->tree->root);
-			ft_excution(init_struct);
-			if (init_struct->tree)
-			{
-				delete_tree(init_struct->tree);
-				init_struct->tree = NULL;
-			}
-		}
+		ft_run(str, init_struct);
 		if (str)
 			free(str);
 		else
