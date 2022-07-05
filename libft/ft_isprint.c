@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:00:02 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/25 18:02:47 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:44:34 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)

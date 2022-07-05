@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:24:51 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/05 12:44:43 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:33:21 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,5 +166,11 @@ void			ft_child_sigint_handler(int num);
 void			ft_sigquit_handler(int num);
 void			ft_sigquit_handler_wait_child(int num);
 void			ft_child_sigquit_handler(int num);
+// macros
+int				ft_is_signal_end(int status);
+int				ft_get_signal_num(int status);
+int				ft_exit_status(int status);
+int				ft_is_dir(unsigned short st_mode);
+int				ft_is_file(unsigned short st_mode);
 
 #endif

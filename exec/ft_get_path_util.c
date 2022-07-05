@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:12:00 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 12:12:08 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:35:34 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ void	ft_check_path(t_cmd *cmd, char *check_path)
 		ft_error("malloc fail\n");
 	if (stat(check_path, &st) < 0)
 		free(check_path);
-	else if (S_ISDIR(st.st_mode))
+	else if (ft_is_dir(st.st_mode))
 	{
 		cmd->path_state = IS_DIR;
 		free(check_path);
 	}
-	else if (S_ISREG(st.st_mode))
+	else if (ft_is_file(st.st_mode))
 	{
 		if ((st.st_mode & S_IXOTH) == S_IXOTH \
 		&& (st.st_mode & S_IROTH) == S_IROTH)

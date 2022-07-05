@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:10:16 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 12:31:41 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:36:29 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static void	ft_wait_child(t_cmd *cmd)
 	if (cmd->last_pid > 0)
 	{
 		waitpid(cmd->last_pid, &status, 0);
-		if (WIFSIGNALED(status))
-			exit_code = 128 + WTERMSIG(status);
+		if (ft_is_signal_end(status))
+			exit_code = 128 + ft_get_signal_num(status);
 		else
-			exit_code = WEXITSTATUS(status);
+			exit_code = ft_exit_status(status);
 		exit_str = ft_itoa(exit_code);
 		if (!exit_str)
 			ft_error("malloc fail\n");

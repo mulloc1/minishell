@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 19:44:10 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/26 19:54:09 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:45:06 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t	i;

@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 20:30:05 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/26 13:26:20 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:46:04 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;

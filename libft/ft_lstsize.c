@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 20:40:42 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/27 20:40:43 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:45:03 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int	ft_lstsize(t_list *lst)
 {
 	int	i;

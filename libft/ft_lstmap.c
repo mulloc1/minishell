@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewchoi <jaewchoi@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 17:55:56 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/28 20:30:49 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:44:57 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 static void	ft_lstapply(t_list *lst, void *(*f)(void *))
 {
 	t_list	*temp;

@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:27:01 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/06/27 19:07:00 by mulloc           ###   ########.fr       */
+/*   Updated: 2022/07/05 17:45:52 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;

@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 15:53:16 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/25 13:07:23 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:45:46 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 size_t	ft_strlcat(char *dst, const char *src, size_t n)
 {
 	size_t	dst_index;

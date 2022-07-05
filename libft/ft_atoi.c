@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 21:03:52 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/23 17:38:37 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:44:12 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 static int	ft_check_over(size_t result, int minus)
 {
 	if (result >= LLONG_MAX && minus == 1)

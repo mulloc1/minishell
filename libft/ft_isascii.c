@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 22:51:41 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/23 17:45:44 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:44:29 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)

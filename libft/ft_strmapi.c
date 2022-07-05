@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 14:40:51 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/28 15:42:52 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:45:56 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char			*result;

@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 19:02:37 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/29 15:08:22 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:45:27 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 static void	ft_nbr_recursive(int n, int fd)
 {
 	if (n >= 10)

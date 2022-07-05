@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 22:12:03 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/23 17:45:35 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:44:32 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')

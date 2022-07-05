@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 20:08:49 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/25 17:25:08 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:45:09 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t	i;

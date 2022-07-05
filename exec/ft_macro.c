@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_macro.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 23:34:58 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 17:45:17 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/07/05 17:20:08 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/07/05 17:39:59 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memset(void *s, int c, size_t n)
+int	ft_is_signal_end(int status)
 {
-	size_t	i;
+	return ((status & 0177) != 0177 && (status & 0177) != 0);
+}
 
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)s)[i] = (unsigned char)c;
-		i++;
-	}
-	return (s);
+int	ft_get_signal_num(int status)
+{
+	return (status & 0177);
+}
+
+int	ft_exit_status(int status)
+{
+	return (status >> 8 & 0x000000ff);
+}
+
+int	ft_is_dir(unsigned short st_mode)
+{
+	return ((st_mode & 0170000) == 0040000);
+}
+
+int	ft_is_file(unsigned short st_mode)
+{
+	return ((st_mode & 0170000) == 0100000);
 }

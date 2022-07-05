@@ -21,6 +21,7 @@
 		"utility": "c",
 		"vector": "c",
 		"wait.h": "c",
-		"signal.h": "c"
+		"signal.h": "c",
+		"stat.h": "c"
 	}
 }

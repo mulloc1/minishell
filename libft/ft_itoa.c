@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 13:37:32 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/25 13:38:29 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:47:21 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 static char	*ft_ptoa(int n, int size)
 {
 	char	temp[11];
@@ -25,7 +26,7 @@ static char	*ft_ptoa(int n, int size)
 	return (ft_strdup(temp));
 }
 
-static char	*ft_mtoa(int n, int	size)
+static char	*ft_mtoa(int n, int size)
 {
 	char	temp[12];
 
