@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:13:02 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/06 19:47:13 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/06 21:41:52 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,20 +74,40 @@ static void	ft_read_multiline(char *eof, t_cmd *cmd)
 {
 	char	*new_eof;
 
+	ft_set_echoctl(NOT_PRINT);
+	ft_set_signal(ft_sigint_handler_here_doc, ft_sigquit_handler_here_doc);
 	new_eof = ft_check_eof(eof);
 	if (!new_eof)
 		ft_read_parsing(eof, cmd);
 	else
 		ft_read(new_eof, cmd->pipe[P_WRITE]);
 	close(cmd->pipe[P_WRITE]);
+	exit(0);
 }
 
 int	ft_visit_double_redi_left(t_token token, t_cmd *cmd)
 {
+	pid_t	pid;
+	int		status;
+
 	if (cmd->in_fd != STDIN)
 		close(cmd->in_fd);
 	ft_open_pipe(cmd, (t_tree_node *)TRUE);
 	cmd->in_fd = cmd->pipe[P_READ];
-	ft_read_multiline(token.token, cmd);
+	pid = fork();
+	if (pid < 0)
+		ft_error("fork fail\n");
+	else if (pid == 0)
+		ft_read_multiline(token.token, cmd);
+	close(cmd->pipe[P_WRITE]);
+	waitpid(pid, &status, 0);
+	ft_set_echoctl(PRINT);
+	ft_set_signal(ft_sigint_handler_wait_child, ft_sigquit_handler_wait_child);
+	if (ft_exit_status(status))
+	{
+		printf("\033[1A\033[11C\n");
+		cmd->path_state = IN_PUT_ERR;
+		return (FAIL);
+	}
 	return (SUCCESS);
 }
