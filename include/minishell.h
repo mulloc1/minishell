@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:24:51 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/06 19:46:11 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/06 20:01:31 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ t_tree_node		*insert_right_node(t_tree_node *parent, t_tree_node child);
 void			delorder(t_tree_node **node);
 void			delete_tree(t_tree *tree);
 void			ft_error(char *str);
+int				ft_isspace(char c);
 // parsing line
 t_init_struct	*init(int argc, char *envp[]);
 t_hashtable		*init_hashtable(void);

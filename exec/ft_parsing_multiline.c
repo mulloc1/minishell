@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:12:27 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/06 19:57:44 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/06 20:04:25 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	ft_read_parsing(char *eof, t_cmd *cmd)
 {
 	char	*str;
 	size_t	len;
+	printf("eof : %s", eof);
 
 	while (1)
 	{

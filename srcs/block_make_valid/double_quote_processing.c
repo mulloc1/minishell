@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:16:14 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/04 02:08:00 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/06 18:51:34 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static char	*processing(char *temp, \
 	*point = i;
 	j = init_j(j, i);
 	while (ft_isnaming(&temp[++j]) && temp[j])
-		;
+		if (j > 1 && temp[j - 2] == '$' && temp[j - 1] == '?')
+			break ;
 	while (temp[j])
 		temp2[i++] = temp[j++];
 	return (temp2);
