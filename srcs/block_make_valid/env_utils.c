@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:17:12 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/04 01:26:57 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/06 18:09:01 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ char	*check_env(char *temp, int idx)
 	}
 	i = -1;
 	while (ft_isnaming(&temp[++idx]) && temp[idx])
+	{
 		res[++i] = temp[idx];
+		if (temp[idx - 1] == '$' && temp[idx] == '?')
+			break ;
+	}
 	return (res);
 }
 
