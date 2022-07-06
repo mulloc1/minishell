@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:09:52 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/01 16:39:50 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/06 13:03:55 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	hashtable_insert(t_hashtable *table, char *key, char *value)
 	data->key = ft_strdup(key);
 	data->value = value_allocate(value);
 	node = key_overlap_check(table->hashtable[idx].top, data->key);
+	printf("%s=%p\n", key, node);
 	if (node)
 	{
 		content_free(node);

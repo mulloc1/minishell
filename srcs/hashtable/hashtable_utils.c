@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:57:13 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/04 20:20:20 by mulloc           ###   ########.fr       */
+/*   Updated: 2022/07/06 13:12:43 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,9 @@ t_list	*key_overlap_check(t_list *top, char *key)
 {
 	if (!top)
 		return (NULL);
-	while (!top && !ft_strncmp(\
+	while (top && ft_strncmp(\
 				((t_hashtable_data *)top->content)->key, \
 				key, ft_strlen(key) + 1))
 		top = top->next;
-	if (!top && ft_strncmp(\
-				((t_hashtable_data *)top->content)->key, \
-				key, ft_strlen(key) + 1))
-		top = NULL;
 	return (top);
 }
