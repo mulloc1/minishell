@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 17:52:41 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/06 13:04:11 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/06 13:13:55 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,6 @@ static t_hashtable	*hashtable_init(char *envp[])
 	{
 		sp_envp = ft_export_split(envp[idx]);
 		hashtable_insert(table, sp_envp[0], sp_envp[1]);
-		free(sp_envp[0]);
-		free(sp_envp[1]);
-		free(sp_envp);
-	}
-	idx = -1;
-	while (envp[++idx])
-	{
-		sp_envp = ft_export_split(envp[idx]);
-	//	printf("%s=%s\n", sp_envp[0], hashtable_search(table, sp_envp[0]));
 		free(sp_envp[0]);
 		free(sp_envp[1]);
 		free(sp_envp);

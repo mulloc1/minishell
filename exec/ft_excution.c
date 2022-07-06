@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:10:16 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 17:36:29 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/06 14:29:21 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	ft_excution(t_init_struct *init_struct)
 	ft_set_signal(ft_sigint_handler_wait_child, ft_sigquit_handler_wait_child);
 	init_struct->envp = cmd.envp;
 	init_struct->split_path = cmd.split_path;
+	init_struct->list = cmd.env_list;
 	ft_wait_child(&cmd);
 	ft_set_signal(ft_sigint_handler, ft_sigquit_handler);
 	ft_set_echoctl(NOT_PRINT);

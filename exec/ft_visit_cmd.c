@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:12:54 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 12:16:52 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/06 13:27:01 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static int	ft_is_builtin(t_cmd *cmd)
 int	ft_visit_cmd(t_token token, t_cmd *cmd)
 {
 	cmd->argv = ft_split_argv(token.token, cmd->table);
+	if (!cmd->split_path)
+		ft_create_split_path(cmd);
 	if (ft_is_builtin(cmd))
 		return (SUCCESS);
 	ft_get_path(cmd);

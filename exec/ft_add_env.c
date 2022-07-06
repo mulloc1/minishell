@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:09:07 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 12:09:15 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/06 14:32:45 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,22 @@ static int	ft_get_name_value(char *str, char **name, char **value)
 	return (result);
 }
 
-static void	ft_check_key_exist(t_cmd *cmd, char *key, char **value)
+static int	ft_check_key_exist(t_cmd *cmd, char *key)
 {
-	if (*value)
-		return ;
-	*value = hashtable_search(cmd->table, key);
-	if (*value)
+	if (hashtable_search(cmd->table, key))
 	{
-		*value = ft_strdup(*value);
-		if (!(*value))
-			ft_error("malloc fail\n");
+		free(key);
+		return (TRUE);
 	}
+	return (FALSE);
+}
+
+static void	ft_free_name_value(char **name, char **value)
+{
+	free(*name);
+	free(*value);
+	*name = NULL;
+	*value = NULL;
 }
 
 int	ft_add_env(t_cmd *cmd)
@@ -63,15 +68,15 @@ int	ft_add_env(t_cmd *cmd)
 			exit_status = 1;
 		else
 		{
-			ft_check_key_exist(cmd, name, &value);
+			if (!value && ft_check_key_exist(cmd, name))
+				continue ;
 			if (value)
 				ft_modify_envp(cmd, cmd->argv[i], name);
 			hashtable_insert(cmd->table, name, value);
 			sort_env_list_insert(&cmd->env_list, name);
 			if (!ft_strncmp(name, "PATH", ft_strlen(name)))
 				ft_modify_split_path(cmd);
-			free(name);
-			free(value);
+			ft_free_name_value(&name, &value);
 		}
 	}
 	return (exit_status);

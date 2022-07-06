@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 09:36:54 by mulloc            #+#    #+#             */
-/*   Updated: 2022/07/01 13:59:28 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/06 14:27:46 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,37 @@ void	tree_free(t_list *node)
 
 static int	top_node_insert(t_list **list, t_list *new, char *key, int key_len)
 {
-	if (ft_strncmp(key, (char *)((*list)->content), key_len + 1) == -1)
+	int	temp;
+
+	temp = ft_strncmp(key, (char *)((*list)->content), key_len + 1);
+	if (temp == -1)
 	{
 		new->next = *list;
 		*list = new;
 		return (1);
 	}
+	else if (temp == 0)
+	{
+		tree_free(new);
+		return (1);
+	}
 	return (0);
 }
 
-static int	mid_node_insert(t_list *temp, t_list *new, char *key, int key_len)
+static int	mid_node_insert(t_list *list, t_list *new, char *key, int key_len)
 {
-	if (ft_strncmp(key, (char *)temp->next->content, key_len + 1) == -1)
+	int	temp;
+
+	temp = ft_strncmp(key, (char *)((*list).next->content), key_len + 1);
+	if (temp == -1)
 	{
-		new->next = temp->next;
-		temp->next = new;
+		new->next = list->next;
+		list->next = new;
+		return (1);
+	}
+	else if (temp == 0)
+	{
+		tree_free(new);
 		return (1);
 	}
 	return (0);
