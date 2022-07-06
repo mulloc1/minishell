@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:17:12 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/06 18:09:01 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/06 18:51:16 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*check_env(char *temp, int idx)
 	while (temp[idx] != '$' && temp[idx])
 		idx++;
 	if (temp[idx] != '$' || temp[idx + 1] == '\0' || \
-			temp[idx + 1] == ' ' || temp[idx + 1] == '\"')
+			ft_isspace(temp[idx + 1]) || temp[idx + 1] == '\"')
 	{
 		free(res);
 		return (NULL);
@@ -63,7 +63,7 @@ int	export_check(char *token)
 	i = -1;
 	while (token[++i])
 	{
-		if (ft_isprint(token[i]) && token[i] != ' ')
+		if (ft_isprint(token[i]) && !ft_isspace(token[i]))
 			if (!ft_strncmp(&token[i], "export ", 7))
 				return (1);
 	}

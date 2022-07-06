@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 18:32:07 by jaebae            #+#    #+#              #
-#    Updated: 2022/07/06 12:34:54 by jaebae           ###   ########.fr        #
+#    Updated: 2022/07/06 18:52:14 by jaebae           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS = srcs/mini.c \
 	   srcs/hashtable/hashtable_search.c \
 	   srcs/utils/ft_error.c \
 	   srcs/utils/ft_split_pipe.c \
+	   srcs/utils/ft_isspace.c \
 	   srcs/sort_env_list/sort_env_list_insert.c \
 	   srcs/sort_env_list/sort_env_list_remove.c \
 	   srcs/block_make_valid/double_quote_processing.c \

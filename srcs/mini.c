@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 17:54:46 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/06 18:36:26 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/06 18:48:48 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	is_spaces(char *str)
 		return (1);
 	i = -1;
 	while (str[++i])
-		if (str[i] != ' ' && str[i] != '\t')
+		if (!ft_isspace(str[i]))
 			return (0);
 	return (1);
 }
