@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 20:07:00 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 19:25:46 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/06 12:34:41 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static char	*ft_word_create(char const *s, char *c, int *idx)
 	return (result);
 }
 
-char	**ft_split_mini(char const *s, char c)
+char	**ft_split_pipe(char const *s, char c)
 {
 	int		word_cnt;
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:24:51 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/05 20:55:54 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/06 12:34:17 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void			ft_error(char *str);
 // parsing line
 t_init_struct	*init(int argc, char *envp[]);
 t_hashtable		*init_hashtable(void);
-char			**ft_split_mini(char const *s, char c);
+char			**ft_split_pipe(char const *s, char c);
 void			ft_quote_shift(char const *s, int *idx);
 t_tree			*ft_parser(char *str);
 int				ft_end_env(char *key, char *token, int point);

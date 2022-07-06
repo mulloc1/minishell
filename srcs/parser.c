@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:23:31 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/01 14:49:18 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/06 12:33:52 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_tree	*ft_parser(char *str)
 	int			i;
 
 	tree = create_bin_tree((t_tree_node){{0, 0}, 0, NULL, NULL});
-	cmds = ft_split_mini(str, '|');
+	cmds = ft_split_pipe(str, '|');
 	temp = tree->root;
 	ft_pipe_tree_parsing(cmds[0], tree->root, tree->root);
 	i = -1;
