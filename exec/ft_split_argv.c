@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:12:39 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 12:17:24 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/06 21:47:43 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_one_block_size(char *token, char quote)
 	i = -1;
 	while (token[++i])
 	{
-		if (!quote && token[i] == ' ')
+		if (!quote && ft_isspace(token[i]))
 			break ;
 		if ((token[i] == '\"' || token[i] == '\'') && !quote)
 			quote = token[i];
@@ -60,7 +60,7 @@ static int	ft_get_block_cnt(char *token, char quote)
 	int		cnt;
 
 	i = -1;
-	while (token[++i] == ' ')
+	while (ft_isspace(token[++i]))
 		;
 	if (!token[i])
 		return (0);
@@ -74,7 +74,8 @@ static int	ft_get_block_cnt(char *token, char quote)
 			else if (quote == token[i])
 				quote = 0;
 		}
-		if (!quote && token[i] == ' ' && token[i + 1] && token[i + 1] != ' ')
+		if (!quote && ft_isspace(token[i]) && \
+		token[i + 1] && !ft_isspace(token[i + 1]))
 			cnt++;
 		i++;
 	}
@@ -96,7 +97,7 @@ char	**ft_split_argv(char *token, t_hashtable *table)
 	i = -1;
 	while (++i < block_cnt)
 	{
-		while (*token == ' ')
+		while (ft_isspace(*token))
 			token++;
 		argv[i] = ft_parsing_block(&token, table);
 	}

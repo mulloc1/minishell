@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:10:03 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 12:37:21 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/06 22:02:47 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static void	ft_print(char **argv)
+static int	ft_is_option(char *argv)
 {
 	int	i;
 
+	if (argv[0] != '-')
+		return (FALSE);
 	i = 1;
-	while (argv[i])
+	while (argv[i] && argv[i] == 'n')
+		i++;
+	if (argv[i])
+		return (FALSE);
+	return (TRUE);
+}
+
+static void	ft_print(char **argv)
+{
+	int	i;
+	int	flag;
+
+	flag = ft_is_option(argv[1]);
+	if (!flag)
 	{
-		printf("%s", argv[i++]);
-		if (argv[i])
+		printf("%s", argv[1]);
+		if (argv[2])
 			printf(" ");
 	}
-	if (!argv[i] || ft_strncmp(argv[1], "-n", 5))
+	i = 1;
+	while (argv[++i])
+	{
+		printf("%s", argv[i]);
+		if (argv[i + 1])
+			printf(" ");
+	}
+	if (!flag)
 		printf("\n");
 }
 
