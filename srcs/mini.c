@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 17:54:46 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 20:52:29 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/06 18:46:14 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	main(int argc, char *argv[], char *envp[])
 	char			*str;
 
 	argv++;
-	ft_ascii_art();
+	// ft_ascii_art();
 	ft_set_signal(ft_sigint_handler, ft_sigquit_handler);
 	ft_set_echoctl(NOT_PRINT);
 	init_struct = init(argc, envp);

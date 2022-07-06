@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:24:51 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/06 14:30:09 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/06 19:46:11 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ void			ft_check_path(t_cmd *cmd, char *check_path);
 void			ft_check_join_path(t_cmd *cmd, char *env_path, char *path_tmp);
 char			**ft_split_argv(char *token, t_hashtable *table);
 void			dredi_l_check(t_tree_node *tree);
+char			*ft_gnl(void);
 void			null_guard(void *ptr);
 // builtin
 int				ft_add_env(t_cmd *cmd);

@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:12:27 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 12:12:27 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/06 19:57:44 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
+void	rl_replace_line(const char *text, int clear_undo);
+
 static int	ft_parsing_env(char *str, t_cmd *cmd)
 {
 	char	*key;
@@ -27,7 +29,7 @@ static int	ft_parsing_env(char *str, t_cmd *cmd)
 
 	i = 0;
 	while (str[++i])
-		if (str[i] == ' ')
+		if (ft_isspace(str[i]) || str[i] == '\n')
 			break ;
 	key = malloc(sizeof(char) * i);
 	if (!key)
@@ -66,12 +68,14 @@ void	ft_read_parsing(char *eof, t_cmd *cmd)
 
 	while (1)
 	{
-		str = readline("> ");
-		len = ft_strlen(str);
-		if (!ft_strncmp(eof, str, len + 10))
+		write(1, "> ", 2);
+		str = ft_gnl();
+		if (!str)
+			break ;
+		len = ft_strlen(eof);
+		if (!ft_strncmp(eof, str, len) && str[len] == '\n')
 			break ;
 		ft_print_line(str, cmd);
-		write(cmd->pipe[P_WRITE], "\n", 1);
 		free(str);
 	}
 	free(str);
