@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:10:31 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 12:37:37 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/06 23:49:56 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_run_exit(t_cmd *cmd)
 	if (!cmd->argv[1])
 		exit (0);
 	else if (cmd->argv[2])
-		return (ft_exit_error(NULL));
+		ft_exit_error(NULL);
 	ft_check_exit_status(cmd->argv[1]);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:24:51 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/06 21:41:48 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/06 23:50:38 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ void			ft_cd(t_cmd *cmd);
 char			*ft_check_eof(char *eof);
 void			ft_echo(t_cmd *cmd);
 void			ft_env(t_cmd *cmd);
-int				ft_exit_error(char *argv);
+void			ft_exit_error(char *argv);
 void			ft_check_exit_status(char *num);
 void			ft_exit(t_cmd *cmd);
 void			ft_export_error(char *name, int type);

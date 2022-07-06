@@ -6,14 +6,14 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:10:26 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 12:10:26 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/06 23:50:25 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-int	ft_exit_error(char *argv)
+void	ft_exit_error(char *argv)
 {
 	char	*err_msg;
 	int		exit_status;
@@ -21,7 +21,7 @@ int	ft_exit_error(char *argv)
 	if (argv)
 	{
 		err_msg = ": numeric argument required";
-		exit (255);
+		exit_status = 255;
 	}
 	else
 	{
@@ -31,7 +31,7 @@ int	ft_exit_error(char *argv)
 	ft_putstr_fd("minishell: exit: ", 2);
 	ft_putstr_fd(argv, 2);
 	ft_putendl_fd(err_msg, 2);
-	return (exit_status);
+	exit (exit_status);
 }
 
 void	ft_check_exit_status(char *num)

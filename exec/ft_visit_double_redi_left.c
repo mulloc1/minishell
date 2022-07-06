@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:13:02 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/06 21:41:52 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/07 00:30:56 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_gnl(void)
 		buf_size = read(0, buf, 1000);
 		if (buf_size < 0)
 			ft_error("read fail\n");
-		else if (!buf_size)
+		else if (!result[0] && !buf_size)
 		{
 			free(result);
 			return (NULL);
