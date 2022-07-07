@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:13:02 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/07 13:46:28 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/07 14:41:31 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,9 @@ int	ft_visit_double_redi_left(t_token token, t_cmd *cmd)
 
 	if (cmd->in_fd != STDIN)
 		close(cmd->in_fd);
+	status = cmd->is_pipe;
 	ft_open_pipe(cmd, (t_tree_node *)TRUE);
+	cmd->is_pipe = status;
 	cmd->in_fd = cmd->pipe[P_READ];
 	pid = fork();
 	if (pid < 0)
