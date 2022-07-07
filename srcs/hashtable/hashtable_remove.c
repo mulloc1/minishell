@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:03:26 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 17:07:52 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/07 16:26:54 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static t_list	*key_search(t_list *top, char *key)
 {
 	t_hashtable_data	*data;
 
-	data = top->content;
 	if (!top)
 		return (NULL);
+	data = top->content;
 	if (!ft_strncmp(data->key, key, ft_strlen(key)))
 		return (top);
 	while (!top && ft_strncmp(\
