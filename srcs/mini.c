@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 17:54:46 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/06 20:02:19 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/07 13:48:12 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	dredi_l_check(t_tree_node *tree)
 		tree = tree->right;
 	}
 	if (cnt > 16)
-		ft_error("bash: maximum here-document count exceeded\n");
+		ft_error("minishell: maximum here-document count exceeded\n");
 }
 
 int	is_spaces(char *str)
