@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:12:27 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/07 00:05:42 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/07 13:29:41 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,10 @@ void	ft_read_parsing(char *eof, t_cmd *cmd)
 	while (1)
 	{
 		write(1, "> ", 2);
-		str = ft_gnl();
+		str = ft_strdup("");
+		if (!str)
+			ft_error("malloc fail\n");
+		str = ft_gnl(str);
 		if (!str)
 			break ;
 		len = ft_strlen(eof);
