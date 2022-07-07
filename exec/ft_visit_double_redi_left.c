@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:13:02 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/07 00:30:56 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/07 13:27:58 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,31 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-char	*ft_gnl(void)
+char	*ft_gnl(char *str)
 {
 	char	buf[1024];
 	int		buf_size;
 	char	*temp;
-	char	*result;
 
-	result = ft_strdup("");
-	if (!result)
-		ft_error("malloc fail\n");
 	buf[0] = '\0';
 	while (!ft_strchr(buf, '\n'))
 	{
 		buf_size = read(0, buf, 1000);
 		if (buf_size < 0)
 			ft_error("read fail\n");
-		else if (!result[0] && !buf_size)
+		else if (!str[0] && !buf_size)
 		{
-			free(result);
+			free(str);
 			return (NULL);
 		}
 		buf[buf_size] = 0;
-		temp = result;
-		result = ft_strjoin(result, buf);
-		if (!result)
+		temp = str;
+		str = ft_strjoin(str, buf);
+		if (!str)
 			ft_error("malloc fail\n");
 		free(temp);
 	}
-	return (result);
+	return (str);
 }
 
 static void	ft_read(char *eof, int out_fd)
@@ -57,7 +53,10 @@ static void	ft_read(char *eof, int out_fd)
 	while (1)
 	{
 		write(1, "> ", 2);
-		str = ft_gnl();
+		str = ft_strdup("");
+		if (!str)
+			ft_error("malloc fail\n");
+		str = ft_gnl(str);
 		if (!str)
 			break ;
 		len = ft_strlen(eof);
