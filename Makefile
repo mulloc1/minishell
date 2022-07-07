@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 18:32:07 by jaebae            #+#    #+#              #
-#    Updated: 2022/07/07 00:50:33 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/07/07 14:18:35 by jaebae           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS = srcs/mini.c \
 	   srcs/bintree.c \
 	   srcs/parser.c \
 	   srcs/init.c \
+	   srcs/init_utils.c \
 	   srcs/hashtable/hashtable_utils.c \
 	   srcs/hashtable/hashtable_create.c \
 	   srcs/hashtable/hashtable_insert.c \

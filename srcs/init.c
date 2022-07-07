@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 17:52:41 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/06 13:13:55 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/07 14:19:06 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static t_hashtable	*hashtable_init(char *envp[])
 	while (envp[++idx])
 	{
 		sp_envp = ft_export_split(envp[idx]);
+		if (!ft_strncmp(sp_envp[0], "SHLVL", 6))
+			increase_str_int(&sp_envp[1]);
 		hashtable_insert(table, sp_envp[0], sp_envp[1]);
 		free(sp_envp[0]);
 		free(sp_envp[1]);
@@ -54,13 +56,9 @@ static char	**envp_init(char *envp[])
 	{
 		res[idx] = ft_strdup(envp[idx]);
 		if (!res[idx])
-		{
-			idx = -1;
-			while (res[++idx])
-				free(res[idx]);
-			free(res);
 			ft_error("envp_init() ft_strdup() failed");
-		}
+		if (!ft_strncmp(res[idx], "SHLVL=", 6))
+			increase_shlvl(&res[idx]);
 	}
 	return (res);
 }
