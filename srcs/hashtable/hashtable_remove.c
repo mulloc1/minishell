@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:03:26 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/07 16:26:54 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/08 15:04:58 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,14 @@ static t_list	*key_search(t_list *top, char *key)
 static void	del_node(void *node)
 {
 	t_list	*temp;
-	t_list	*del_node;
 
 	if (!node)
 		return ;
 	temp = (t_list *)node;
-	if (!temp->next)
-		del_node = temp;
-	else
-	{
-		del_node = temp->next;
-		temp->next = temp->next->next;
-	}
-	free(((t_hashtable_data *)del_node->content)->key);
-	free(((t_hashtable_data *)del_node->content)->value);
-	free(del_node->content);
-	free(del_node);
+	free(((t_hashtable_data *)temp->content)->key);
+	free(((t_hashtable_data *)temp->content)->value);
+	free(temp->content);
+	free(temp);
 }
 
 int	hashtable_remove(t_hashtable *table, char *key)
@@ -56,6 +48,7 @@ int	hashtable_remove(t_hashtable *table, char *key)
 	unsigned long long	hashcode;
 	unsigned int		idx;
 	t_list				*temp;
+	t_list				*temp2;
 
 	hashcode = hashcode_making(key);
 	idx = hashcode % table->size;
@@ -66,6 +59,12 @@ int	hashtable_remove(t_hashtable *table, char *key)
 		table->hashtable[idx].top = NULL;
 	if (table->hashtable[idx].top == temp)
 		table->hashtable[idx].top = table->hashtable[idx].top->next;
+	else
+	{
+		temp2 = temp->next;
+		temp->next = temp->next->next;
+		temp = temp2;
+	}
 	ft_lstdelone(temp, del_node);
 	table->hashtable[idx].size--;
 	return (1);

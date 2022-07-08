@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:23:31 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/06 20:15:36 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:39:14 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,14 @@ static int	ft_redirection_case(char *cmd, int *i)
 	int	res;
 
 	len = 0;
-	res = 0;
+	res = -1;
 	while (cmd[(*i) + len] == '<' || cmd[(*i) + len] == '>')
 		len++;
 	if (len > 2)
+	{
+		*i += len;
 		return (-1);
+	}
 	if (cmd[(*i)] == '<' && cmd[(*i) + 1] == '<')
 		res = DREDI_L;
 	else if (cmd[(*i)] == '<' || (cmd[(*i)] == '<' && cmd[(*i) + 1] == '>'))
@@ -52,7 +55,7 @@ static int	ft_redirection_case(char *cmd, int *i)
 		res = DREDI_R;
 	else if (cmd[(*i)] == '>')
 		res = REDI_R;
-	*i += len + 1;
+	*i += len;
 	return (res);
 }
 
@@ -67,8 +70,11 @@ static t_token	ft_redirection_token_make(char *cmd, int i)
 	len = -1;
 	while (ft_isspace(cmd[++len + i]) && cmd[len + i])
 		;
-	while (!ft_isspace(cmd[++len + i]) && cmd[len + i])
-		;
+	while (!ft_isspace(cmd[len + i]) && \
+			(cmd[len + i] != '<' && cmd[len + i] != '>') && cmd[len + i])
+		len++;
+	if (cmd[len + i] == '<' || cmd[len + i] == '>')
+		res.type = -1;
 	res.token = ft_substr(cmd, i, len);
 	ft_memset(cmd + temp, ' ', i - temp + len);
 	return (res);
