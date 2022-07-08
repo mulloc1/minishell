@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 17:54:46 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/07 16:16:43 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/08 13:40:14 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	syntax_error_check(t_init_struct *init_struct)
 		redi = cmd->left;
 		while (redi)
 		{
-			if (redi->data.token == NULL || redi->data.token[0] == '\0')
+			if (redi->data.token == NULL || redi->data.token[0] == '\0' || redi->data.type == -1)
 			{
 				delete_tree(init_struct->tree);
 				init_struct->tree = NULL;
