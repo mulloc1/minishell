@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 17:03:26 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/08 15:04:58 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/08 16:21:08 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_list	*key_search(t_list *top, char *key)
 	data = top->content;
 	if (!ft_strncmp(data->key, key, ft_strlen(key)))
 		return (top);
-	while (!top && ft_strncmp(\
+	while (top && ft_strncmp(\
 				((t_hashtable_data *)top->next->content)->key, \
 				key, ft_strlen(key)))
 		top = top->next;
@@ -59,7 +59,7 @@ int	hashtable_remove(t_hashtable *table, char *key)
 		table->hashtable[idx].top = NULL;
 	if (table->hashtable[idx].top == temp)
 		table->hashtable[idx].top = table->hashtable[idx].top->next;
-	else
+	else if (temp->next)
 	{
 		temp2 = temp->next;
 		temp->next = temp->next->next;
