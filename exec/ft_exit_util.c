@@ -6,32 +6,29 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:10:26 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/06 23:50:25 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/08 14:43:46 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-void	ft_exit_error(char *argv)
+static void	ft_print_exit_err_msg(char *msg, char *arg)
 {
-	char	*err_msg;
-	int		exit_status;
+	ft_putstr_fd("minishell: exit: ", 2);
+	ft_putstr_fd(arg, 2);
+	ft_putendl_fd(msg, 2);
+}
 
+int	ft_exit_error(char *argv)
+{
 	if (argv)
 	{
-		err_msg = ": numeric argument required";
-		exit_status = 255;
+		ft_print_exit_err_msg(": numeric argument required", argv);
+		exit (255);
 	}
-	else
-	{
-		err_msg = "too many arguments";
-		exit_status = 1;
-	}
-	ft_putstr_fd("minishell: exit: ", 2);
-	ft_putstr_fd(argv, 2);
-	ft_putendl_fd(err_msg, 2);
-	exit (exit_status);
+	ft_print_exit_err_msg("too many arguments", NULL);
+	return (1);
 }
 
 void	ft_check_exit_status(char *num)
