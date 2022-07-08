@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:31:52 by jaebae            #+#    #+#             */
-/*   Updated: 2022/06/30 18:31:53 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/08 17:37:25 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_hashtable			*hashtable_create(void);
 int					hashtable_insert(t_hashtable *table, \
 		char *key, char *value);
 int					hashtable_remove(t_hashtable *table, char *key);
-// int				hashtable_delete(t_hashtable *table);
 char				*hashtable_search(t_hashtable *table, char *key);
 
 #endif

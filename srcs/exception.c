@@ -6,7 +6,7 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:28:27 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/08 15:32:14 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/08 17:37:56 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int	is_spaces(char *str)
 
 int	ft_isinvalid_token(t_tree_node *redi)
 {
-	if (!redi->data.token || ft_isspace(redi->data.token[0]) || redi->data.type == -1)
+	if (!redi->data.token || ft_isspace(redi->data.token[0]) \
+			|| redi->data.type == -1)
 		return (1);
 	return (0);
 }

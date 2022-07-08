@@ -6,12 +6,13 @@
 /*   By: jaebae <jaebae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:57:13 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/06 13:12:43 by jaebae           ###   ########.fr       */
+/*   Updated: 2022/07/08 17:37:20 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "hashtable.h"
+#include <stdio.h>
 
 unsigned long long	hashcode_making(char *key)
 {
