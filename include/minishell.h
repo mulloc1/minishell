@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:24:51 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/08 14:40:12 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:30:03 by jaebae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,9 @@ char			**ft_split_pipe(char const *s, char c);
 void			ft_quote_shift(char const *s, int *idx);
 t_tree			*ft_parser(char *str);
 int				ft_end_env(char *key, char *token, int point);
+void			dredi_l_check(t_tree_node *tree);
+int				is_spaces(char *str);
+void			syntax_error_check(t_init_struct *init_struct);
 // command exec
 void			ft_search_tree(t_tree_node *node, t_cmd	*cmd);
 void			ft_cmd_run(t_cmd *cmd);
