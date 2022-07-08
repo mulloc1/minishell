@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:10:05 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 12:17:58 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/08 16:45:36 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@
 void	ft_pop_envp(char **envp, char *name)
 {
 	int	i;
+	int	len;
 
 	i = -1;
+	len = ft_strlen(name);
 	while (envp[++i])
 	{
-		if (!ft_strncmp(envp[i], name, ft_strlen(name)))
+		if (envp[i][len] == '=' && !ft_strncmp(envp[i], name, ft_strlen(name)))
 			break ;
 	}
 	if (envp[i])
