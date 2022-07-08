@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:10:48 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 12:37:44 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/08 16:13:22 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_check_name_valid(char *name, int type)
 {
 	int	i;
 
-	if (!ft_isalpha(name[0]))
+	if (!ft_isalpha(name[0]) && name[0] != '_')
 	{
 		ft_export_error(name, type);
 		return (FALSE);

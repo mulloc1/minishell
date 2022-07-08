@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:10:03 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/06 22:02:47 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/08 16:10:25 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,28 @@ static int	ft_is_option(char *argv)
 static void	ft_print(char **argv)
 {
 	int	i;
+	int	is_newline;
 	int	flag;
 
-	flag = ft_is_option(argv[1]);
-	if (!flag)
+	is_newline = ft_is_option(argv[1]);
+	if (!is_newline)
 	{
 		printf("%s", argv[1]);
 		if (argv[2])
 			printf(" ");
 	}
 	i = 1;
+	flag = is_newline;
 	while (argv[++i])
 	{
+		if (flag && ft_is_option(argv[i]))
+			continue ;
+		flag = FALSE;
 		printf("%s", argv[i]);
 		if (argv[i + 1])
 			printf(" ");
 	}
-	if (!flag)
+	if (!is_newline)
 		printf("\n");
 }
 
