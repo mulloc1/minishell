@@ -6,13 +6,14 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:09:25 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 12:18:16 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:47:44 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "libft.h"
 #include "hashtable.h"
+#include "sort_env_list.h"
 #include <sys/stat.h>
 #include <stdlib.h>
 
@@ -31,6 +32,9 @@ static int	ft_change_dir(t_cmd *cmd, char *path)
 	newpwd = getcwd(NULL, 10);
 	hashtable_insert(cmd->table, "PWD", newpwd);
 	hashtable_insert(cmd->table, "OLDPWD", oldpwd);
+	sort_env_list_insert(&cmd->env_list, "PWD");
+	sort_env_list_insert(&cmd->env_list, "OLDPWD");
+	ft_pwd_set(cmd, oldpwd, newpwd);
 	free(oldpwd);
 	free(newpwd);
 	return (0);

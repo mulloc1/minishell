@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 18:32:07 by jaebae            #+#    #+#              #
-#    Updated: 2022/07/07 14:18:35 by jaebae           ###   ########.fr        #
+#    Updated: 2022/07/08 15:31:41 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,8 +67,9 @@ EXECS = exec/ft_add_env.c \
 		exec/ft_excution.c \
 		exec/ft_split_argv.c \
 		exec/ft_env_util.c \
-		exec/ft_set_fd.c\
-		exec/ft_macro.c
+		exec/ft_set_fd.c \
+		exec/ft_macro.c \
+		exec/ft_cd_util.c
 
 SIGNAL = signal/ft_handler.c \
 		 signal/ft_signal.c

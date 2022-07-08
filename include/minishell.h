@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:24:51 by jaebae            #+#    #+#             */
-/*   Updated: 2022/07/08 14:40:12 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:31:15 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ void			ft_unset(t_cmd *cmd);
 void			ft_excution(t_init_struct *init_struct);
 void			ft_pop_envp(char **envp, char *name);
 void			ft_modify_envp(t_cmd *cmd, char *str, char *new_key);
+void			ft_pwd_set(t_cmd *cmd, char *old, char *new);
 // signal
 void			ft_set_signal(void (*sig_int)(int), void (*sig_quit)(int));
 void			ft_set_echoctl(int flag);
