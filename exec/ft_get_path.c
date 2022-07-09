@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 12:12:16 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/06 13:26:55 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/09 13:21:56 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_get_path(t_cmd *cmd)
 	int		i;
 	char	*path_tmp;
 
-	ft_check_path(cmd, ft_strdup(cmd->argv[0]));
 	path_tmp = ft_strjoin("/", cmd->argv[0]);
 	if (!path_tmp)
 		ft_error("malloc fail\n");
@@ -31,6 +30,8 @@ void	ft_get_path(t_cmd *cmd)
 			break ;
 	}
 	free(path_tmp);
+	if (!cmd->path && !cmd->path_state)
+		ft_check_path(cmd, ft_strdup(cmd->argv[0]));
 	if (!cmd->path && !cmd->path_state)
 		cmd->path_state = NOT_VALID;
 }
